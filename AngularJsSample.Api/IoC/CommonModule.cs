@@ -1,4 +1,5 @@
-﻿using AngularJsSample.Model.Users;
+﻿using AngularJsSample.Model.MoviePersons;
+using AngularJsSample.Model.Users;
 using AngularJsSample.Repositories;
 using AngularJsSample.Services;
 using AngularJsSample.Services.Impl;
@@ -12,9 +13,13 @@ namespace AngularJsSample.Api.IoC
         {
             //repositories
             builder.RegisterType<UserRepository>().As<IUserRepository>();
+            builder.RegisterType<MoviePersonRepository>().As<IMoviePersonRepository>();
+
 
             //services
             builder.RegisterType<UserService>().As<IUserService>();
+            builder.RegisterType<MoviePersonService>().As<IMoviePersonService>();
+
         }
     }
 }

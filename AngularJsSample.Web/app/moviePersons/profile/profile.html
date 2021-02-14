@@ -1,0 +1,59 @@
+﻿<h1>{{vm.moviePerson.firstname}} {{vm.moviePerson.lastname}}</h1>
+<hr />
+<div class="row">
+    <div class="col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">PODACI O REDATELJU</div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Ime:</div>
+                    <div>{{vm.moviePerson.firstname}}</div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Prezime:</div>
+                    <div>{{vm.moviePerson.lastname}}</div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Datum rođenja:</div>
+                    <div>{{vm.moviePerson.birthday}}</div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Mjesto rođenja:</div>
+                    <div>{{vm.moviePerson.birthplace}}</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>Biografija:</div>
+                    <div>{{vm.moviePerson.biography}}</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>IMDB url:</div>
+                    <div>{{vm.moviePerson.imdburl}}</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>Popularnost:</div>
+                    <div>#{{vm.moviePerson.popularity}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <img src={{vm.moviePerson.photourl}} alt="Movie person" width="100%">
+    </div>
+</div>
+<button class="btn btn-danger" ng-click="vm.delete(vm.moviePerson.id)">Delete</button>
+
+

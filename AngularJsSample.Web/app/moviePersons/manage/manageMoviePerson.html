@@ -1,0 +1,68 @@
+﻿<form role="form" name="newMoviePersonForm" id="newMoviePersonForm" novalidate>
+    <div class="row">
+        <div class="col-sm-8">
+            <h1>{{vm.moviePerson.firstname}} {{vm.moviePerson.lastname}}</h1>
+        </div>
+        <div>
+            <button class="btn btn-success" ng-click="vm.update(vm.moviePerson)">Save</button>
+            <button class="btn btn-default" ui-sref="moviePersonsOverview">Cancel</button>
+        </div>
+    </div>
+    <hr />
+    <div class="col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">PODACI O REDATELJU</div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Ime:</div>
+                    <div><input class="form-control" contenteditable="true" ng-model="vm.moviePerson.firstname" /></div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Ime:</div>
+                    <div><input class="form-control" contenteditable="true" ng-model="vm.moviePerson.lastname" /></div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Datum rođenja:</div>
+                    <div>{{vm.moviePerson.birthday}}</div>
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Mjesto rođenja:</div>
+                    <div><input class="form-control" ng-model="vm.moviePerson.birthplace" /></div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>Biografija:</div>
+                    <div><input class="form-control" ng-model="vm.moviePerson.biography" style="height: 20%;" /></div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>IMDB url:</div>
+                    <div><input class="form-control" ng-model="vm.moviePerson.imdburl" /></div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>Popularnost:</div>
+                    <div>
+                        #<input kendo-numeric-text-box k-min="0" k-max="100" k-ng-model="vm.moviePerson.popularity" style="width: 50%;" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
