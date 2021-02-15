@@ -14,7 +14,18 @@
         $("#datepicker").kendoDatePicker({
         });
         var datepicker = $("#datepicker").data("kendoDatePicker");
-   
+
+
+        $("#confirmBtn").on("click", function () {
+            title: "Delete",
+            kendo.confirm("Are you sure that you want to proceed?").then(function () {
+                vm.delete(vm.moviePerson.id)
+            }, function () {
+            });
+        });
+
+       
+
         //#endregion 
 
 
@@ -27,7 +38,7 @@
         vm.update = saveMoviePerson;
         vm.delete = deleteMoviePerson;
 
-   
+      
        
         //#endregion
 
@@ -47,22 +58,16 @@
             });
         }
 
+        //DELETE
         function deleteMoviePerson(id) {
             moviePersonsSvc.deleteMoviePerson(id).then(function () {
-                $state.go("manageMoviePerson");
+                $state.go("moviePersonsOverview");
             }, function (error) {
                 //add error handling
             });
         }
 
-        vm.moviePerson = moviePerson ? moviePerson.data : null;
-
-        if (vm.author) {
-            //update
-        }
-        else {
-            //create
-        }
+  
 
     }
        

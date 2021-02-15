@@ -1,4 +1,6 @@
-﻿<form role="form" name="newMoviePersonForm" id="newMoviePersonForm" novalidate>
+﻿
+
+<form role="form" name="newMoviePersonForm" id="newMoviePersonForm" novalidate>
     <div class="row">
         <div class="col-sm-8">
             <h1>{{vm.moviePerson.firstname}} {{vm.moviePerson.lastname}}</h1>
@@ -6,9 +8,9 @@
         <div>
             <button class="btn btn-success" ng-click="vm.update(vm.moviePerson)">Save</button>
             <button class="btn btn-default" ui-sref="moviePersonsOverview">Cancel</button>
-            <button class="btn btn-danger" ng-show="!win2visible" ng-click="win2.open()">Delete</button>
-        </div>
+            <button id="confirmBtn" class="k-button">Delete</button>
 
+        </div>
     </div>
     <hr />
     <div class="col-sm-8">
@@ -83,8 +85,10 @@
         </div>
     </div>
 </form>
-<div kendo-window="win2" k-title="'AJAX content'"
-     k-width="600" k-height="200" k-visible="false"
+<div kendo-window="win2"
+     k-modal="true"
+     k-width="250" k-height="200" k-visible="false"
      k-content="{ url: 'app/moviePersons/manage/deleteModularWindow.html' }"
-     k-on-open="win2visible = true" k-on-close="win2visible = false"></div>
+     k-on-open="win2visible = true" k-on-close="win2visible = false">
+</div>
 

@@ -1,24 +1,39 @@
-﻿body {
+﻿/*body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
+}*/
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
-}
+}*/
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
-.dl-horizontal dt {
+/*.dl-horizontal dt {
     white-space: normal;
-}
+}*/
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
+/*input,
 select,
 textarea {
     max-width: 280px;
+}*/
+
+/* Kendo confirmation dialog*/
+.k-confirm .k-window-titlebar::before,
+.k-alert .k-window-titlebar::before {
+    content: 'Delete';
+    font-weight: bold;
+}
+
+.k-confirm .k-window-titlebar .k-dialog-title {
+    visibility: collapse;
+}
+
+.k-dialog .k-window-titlebar .k-dialog-title {
+    visibility: hidden;
 }
