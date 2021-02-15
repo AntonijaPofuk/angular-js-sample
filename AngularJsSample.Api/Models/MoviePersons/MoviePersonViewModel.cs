@@ -18,7 +18,7 @@ namespace AngularJsSample.Api.Models
         public string Photourl { get; set; }
         public int Popularity { get; set; }
         public DateTimeOffset? Birthday { get; set; }
-        public string IMDBurl { get; set; }
+        public string IMDBUrl { get; set; }
         public DateTimeOffset Datecreated { get; set; }
         public DateTimeOffset Lastmodified { get; set; }
         public UserViewModel UserLastModified { get; set; }

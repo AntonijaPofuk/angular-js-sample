@@ -26,7 +26,7 @@ namespace AngularJsSample.Api.Mapping.MoviePersons
                 Popularity = view.Popularity,
                 Birthday = view.Birthday,
                 Datecreated = view.DateCreated,
-                IMDBurl = view.IMDBUrl,
+                IMDBUrl = view.IMDBUrl,
                 UserLastModified = view.UserLastModified.MapToViewModel(),
                 UserCreated = view.UserCreated.MapToViewModel()
 
@@ -50,7 +50,7 @@ namespace AngularJsSample.Api.Mapping.MoviePersons
                 Popularity = viewModel.Popularity,
                 Birthday = viewModel.Birthday,
                 DateCreated = viewModel.Datecreated,
-                IMDBUrl = viewModel.IMDBurl,
+                IMDBUrl = viewModel.IMDBUrl,
                 UserLastModified = viewModel.UserLastModified.MapToView()
 
             };

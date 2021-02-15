@@ -14,27 +14,32 @@
             <div class="panel-heading">
                 <div class="panel-title">PODACI O REDATELJU</div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="panel-body">
                     <div>Ime:</div>
-                    <div><input class="form-control" contenteditable="true" ng-model="vm.moviePerson.firstname" /></div>
+                    <div><input class="form-control" ng-model="vm.moviePerson.firstname" /></div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="panel-body">
-                    <div>Ime:</div>
-                    <div><input class="form-control" contenteditable="true" ng-model="vm.moviePerson.lastname" /></div>
+                    <div>Prezime:</div>
+                    <div><input class="form-control" ng-model="vm.moviePerson.lastname" /></div>
                 </div>
             </div>
-            <div class="col-sm-6">
+
+            <!--<div class="col-sm-12">
                 <div class="panel-body">
                     <div>Datum rođenja:</div>
-                    <div>{{vm.moviePerson.birthday}}</div>
+                    <div>{{vm.moviePerson.birthday| date:'dd.MM.yyyy.'}}</div>
                     <div>
                     </div>
                 </div>
+            </div>-->
+            <div class="col-sm-12">
+                <input id="datepicker" title="datepicker" style="width: 100%" />
             </div>
-            <div class="col-sm-6">
+
+            <div class="col-sm-12">
                 <div class="panel-body">
                     <div>Mjesto rođenja:</div>
                     <div><input class="form-control" ng-model="vm.moviePerson.birthplace" /></div>
@@ -49,20 +54,31 @@
             <div class="col-sm-12">
                 <div class="panel-body">
                     <div>IMDB url:</div>
-                    <div><input class="form-control" ng-model="vm.moviePerson.imdburl" /></div>
+                    <div>
+                        <input class="form-control" name="imdbUrl" ng-model="vm.moviePerson.imdbUrl" ng-pattern="/^(http|https):///" />
+                        <span style="color:Red" ng-show="newMoviePersonForm.imdbUrl.$error.pattern">Url doesn't start with http or https</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>Picture url:</div>
+                    <div>
+                        <input class="form-control" name="pictureUrl" ng-model="vm.moviePerson.photourl" ng-pattern="/^(http|https)://.*\.(jpg|png|gif|jpeg)$/g" />
+                        <span style="color:Red" ng-show="newMoviePersonForm.pictureUrl.$error.pattern">Url doesn't start with http or https or ends with photo extension</span>
+                        <div class="font-italic">(*.gif, *.png, *.jpeg, *.jpg)</div>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-12">
                 <div class="panel-body">
                     <div>Popularnost:</div>
                     <div>
-                        #<input kendo-numeric-text-box k-min="0" k-max="100" k-ng-model="vm.moviePerson.popularity" style="width: 50%;" />
+                        #<input kendo-numeric-text-box k-min="1" k-max="100" k-ng-model="vm.moviePerson.popularity" style="width: 50%;" />
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
 </form>
 

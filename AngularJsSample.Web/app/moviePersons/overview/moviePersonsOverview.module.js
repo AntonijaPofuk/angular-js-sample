@@ -76,16 +76,11 @@
                     field: "popularity",
                     template: "\\\\\#  #: popularity #",
                     title: "Popularnost"
-                    },
-                {
-                    field: "datecreated",
-                    title: "Datum kreiranja",
-                    },
+                    },          
                 {
                     template: `
                     <button class="btn btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
                     <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
-
                         `,
                     headerTemplate: '<label> Edit </label>',
                     width: "200px"
