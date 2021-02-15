@@ -14,19 +14,20 @@
         $("#datepicker").kendoDatePicker({
         });
         var datepicker = $("#datepicker").data("kendoDatePicker");
-
+   
         //#endregion 
 
 
         //#region Bindable Members
         vm.moviePerson = moviePerson.data; // data is in general.routing.js
-
         //vm.birthday = moviePerson.data.birthday;
         //datepicker.value(new Date(vm.birthday));
         datepicker.value(new Date(2020, 9, 9));
 
         vm.update = saveMoviePerson;
+        vm.delete = deleteMoviePerson;
 
+   
        
         //#endregion
 
@@ -35,9 +36,7 @@
         //#endregion
 
         //#region JS functions
-        function activate() {
-           
-        }
+        function activate() {}
 
         //UPDATE
         function saveMoviePerson(dataItem) {
@@ -48,9 +47,13 @@
             });
         }
 
-
-    
-
+        function deleteMoviePerson(id) {
+            moviePersonsSvc.deleteMoviePerson(id).then(function () {
+                $state.go("manageMoviePerson");
+            }, function (error) {
+                //add error handling
+            });
+        }
 
         vm.moviePerson = moviePerson ? moviePerson.data : null;
 

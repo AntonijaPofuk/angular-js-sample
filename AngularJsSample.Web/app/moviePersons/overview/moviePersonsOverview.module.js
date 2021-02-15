@@ -9,7 +9,7 @@
     //OVERVIEW
     moviePersonsOverviewCtrl.$inject = ['$scope', '$http'];
     function moviePersonsOverviewCtrl($scope, $http) {
-        
+
         //#region JS variables
         var vm = this;
         //#endregion 

@@ -3,6 +3,8 @@ using AngularJsSample.Services.Mapping;
 using AngularJsSample.Services.Messaging;
 using AngularJsSample.Services.Messaging.MoviePersons;
 using System;
+using System.Web;
+using System.Web.ModelBinding;
 
 namespace AngularJsSample.Services.Impl
 {
@@ -99,30 +101,31 @@ namespace AngularJsSample.Services.Impl
                 Request = request,
                 ResponseToken = Guid.NewGuid()
             };
+                try
+                {
 
-            try
-            {
-                if (request.MoviePerson?.Id == 0)
-                {
-                    response.MoviePerson = request.MoviePerson;
-                    response.MoviePerson.Id = _repository.Add(request.MoviePerson.MapToModel());
-                    response.Success = true;
+                    if (request.MoviePerson?.Id == 0)
+                    {
+                        response.MoviePerson = request.MoviePerson;
+                        response.MoviePerson.Id = _repository.Add(request.MoviePerson.MapToModel());
+                        response.Success = true;
+                    }
+                    else if (request.MoviePerson?.Id > 0)
+                    {
+                        response.MoviePerson = _repository.Save(request.MoviePerson.MapToModel()).MapToView();
+                        response.Success = true;
+                    }
+                    else
+                    {
+                        response.Success = false;
+                    }
                 }
-                else if (request.MoviePerson?.Id > 0)
+                catch (Exception ex)
                 {
-                    response.MoviePerson = _repository.Save(request.MoviePerson.MapToModel()).MapToView();
-                    response.Success = true;
-                }
-                else
-                {
+                    response.Message = ex.Message;
                     response.Success = false;
                 }
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
-                response.Success = false;
-            }
+            
 
             return response;
         }

@@ -6,7 +6,9 @@
         <div>
             <button class="btn btn-success" ng-click="vm.update(vm.moviePerson)">Save</button>
             <button class="btn btn-default" ui-sref="moviePersonsOverview">Cancel</button>
+            <button class="btn btn-danger" ng-show="!win2visible" ng-click="win2.open()">Delete</button>
         </div>
+
     </div>
     <hr />
     <div class="col-sm-8">
@@ -64,7 +66,7 @@
                 <div class="panel-body">
                     <div>Picture url:</div>
                     <div>
-                        <input class="form-control" name="pictureUrl" ng-model="vm.moviePerson.photourl" ng-pattern="/^(http|https)://.*\.(jpg|png|gif|jpeg)$/g" />
+                        <input class="form-control" name="pictureUrl" ng-model="vm.moviePerson.photourl" ng-pattern="/^(http|https):\/\/.*\.(jpg|png|gif|jpeg)$/g" />
                         <span style="color:Red" ng-show="newMoviePersonForm.pictureUrl.$error.pattern">Url doesn't start with http or https or ends with photo extension</span>
                         <div class="font-italic">(*.gif, *.png, *.jpeg, *.jpg)</div>
                     </div>
@@ -81,4 +83,8 @@
         </div>
     </div>
 </form>
+<div kendo-window="win2" k-title="'AJAX content'"
+     k-width="600" k-height="200" k-visible="false"
+     k-content="{ url: 'app/moviePersons/manage/deleteModularWindow.html' }"
+     k-on-open="win2visible = true" k-on-close="win2visible = false"></div>
 

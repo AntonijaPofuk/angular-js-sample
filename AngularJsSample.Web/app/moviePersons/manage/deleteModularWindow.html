@@ -1,0 +1,12 @@
+﻿<form >
+    <div class="row">
+        <div class="col-sm-8">
+            <h1>Delete:{{vm.moviePerson.firstname}} {{vm.moviePerson.lastname}}</h1>
+        </div>
+        <div>
+            <button class="btn btn-danger" ng-click="vm.delete(vm.moviePerson.id)">Delete</button>
+            <button class="btn btn-default" ui-sref="moviePersonProfile">Cancel</button>
+        </div>
+</div>
+    </form>
+

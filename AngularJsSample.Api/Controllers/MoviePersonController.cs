@@ -7,6 +7,9 @@ using AngularJsSample.Api.Mapping.MoviePersons;
 using AngularJsSample.Services.Messaging.MoviePersons;
 using AngularJsSample.Services.Messaging;
 using AngularJsSample.Api.Models;
+using System.Net.Http;
+using System.Web.Services.Description;
+using System.Net;
 
 namespace AngularJsSample.Api.Controllers
 {
@@ -135,22 +138,31 @@ namespace AngularJsSample.Api.Controllers
             };
             moviePerson.Lastmodified = DateTimeOffset.Now;
 
-            var request = new SaveMoviePersonRequest()
-            {
-                RequestToken = Guid.NewGuid(),
-                UserId = loggedUserId,
-                MoviePerson = moviePerson.MapToView()
-            };
 
-            var moviePersonsResponse = _moviePersonService.SaveMoviePerson(request);
-
-            if (!moviePersonsResponse.Success)
+            if (ModelState.IsValid)
             {
-                return BadRequest(moviePersonsResponse.Message);
+                var request = new SaveMoviePersonRequest()
+                {
+                    RequestToken = Guid.NewGuid(),
+                    UserId = loggedUserId,
+                    MoviePerson = moviePerson.MapToView()
+                };
+
+                var moviePersonsResponse = _moviePersonService.SaveMoviePerson(request);
+
+                if (!moviePersonsResponse.Success)
+                {
+                    return BadRequest(moviePersonsResponse.Message);
+                }
+
+                return Ok(moviePerson = moviePersonsResponse.MoviePerson.MapToViewModel());
+            }
+            else {
+                return BadRequest();
             }
 
-            return Ok(moviePerson = moviePersonsResponse.MoviePerson.MapToViewModel());
         }
+
     }
 }
 
