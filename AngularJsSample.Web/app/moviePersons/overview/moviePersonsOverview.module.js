@@ -1,7 +1,5 @@
 ﻿(function () {
-
     'use strict';
-
     angular
         .module('moviePersonsOverview', ['moviePersonsServices'])
         .controller('moviePersonsOverviewCtrl', moviePersonsOverviewCtrl);
@@ -29,10 +27,6 @@
             vm.mainGridOptions = getMainGridOptions();
         }
 
-        function getProfile() {
-            return "PROFILE";
-        }
-
         function getMainGridOptions() {
             let options = {
                 dataSource: {
@@ -52,43 +46,43 @@
                 pageable: true,
                 selectable: true,
                 columns: [
-                {
-                    field: "id",
-                    title: "#"
-                },
-                {
-                    field: "photourl",
-                    title: "Foto"
-                },{
-                field: "firstname",
-                title: "Ime"
-                },
-                {
-                field: "lastname",
-                title: "Prezime",
-                },
-                {
-                    field: "birthplace",
-                    title: "Mjesto rođenja"
-                },
-              
-                {
-                    field: "popularity",
-                    template: "\\\\\#  #: popularity #",
-                    title: "Popularnost"
-                    },          
-                {
-                    template: `
+                    {
+                        field: "id",
+                        title: "#"
+                    },
+                    {
+                        field: "photourl",
+                        title: "Foto"
+                    },
+                    {
+                        field: "firstname",
+                        title: "Ime"
+                    },
+                    {
+                        field: "lastname",
+                        title: "Prezime",
+                    },
+                    {
+                        field: "birthplace",
+                        title: "Mjesto rođenja"
+                    },
+                    {
+                        field: "popularity",
+                        template: "\\\\\#  #: popularity #",
+                        title: "Popularnost"
+                    },
+                    {
+                        template: `
                     <button class="btn btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
                     <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
                         `,
-                    headerTemplate: '<label> Edit </label>',
-                    width: "200px"
-                }
-               ]
+                        headerTemplate: '<label> Edit </label>',
+                        width: "200px"
+                    }
+                ]
             };
 
-        
+
 
             return options;
         }

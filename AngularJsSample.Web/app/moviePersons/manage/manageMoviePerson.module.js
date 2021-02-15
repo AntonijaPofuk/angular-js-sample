@@ -11,21 +11,12 @@
         
         //#region JS variables
         var vm = this;
+
         $("#datepicker").kendoDatePicker({
         });
         var datepicker = $("#datepicker").data("kendoDatePicker");
 
-
-        $("#confirmBtn").on("click", function () {
-            title: "Delete",
-            kendo.confirm("Are you sure that you want to proceed?").then(function () {
-                vm.delete(vm.moviePerson.id)
-            }, function () {
-            });
-        });
-
-       
-
+      
         //#endregion 
 
 
@@ -67,10 +58,19 @@
             });
         }
 
+        $scope.dialog = {
+            message: ""
+        }
+
+        $scope.showDialog = function (title, message) {
+            $scope.dialog.message = message;
+            $scope.deleteDialogWindow.title(title);
+            $scope.deleteDialogWindow.center();
+            $scope.deleteDialogWindow.open();
+        }
   
 
-    }
-       
+    }      
         //#endregion
 
 
