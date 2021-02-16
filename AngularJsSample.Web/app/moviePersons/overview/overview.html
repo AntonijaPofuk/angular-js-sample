@@ -1,16 +1,25 @@
-﻿<h1 class="page-header">Osobe</h1>
-<a class="btn btn-success" ui-sref="createMoviePerson"> + Nova osoba</a>
-<div>
-    <div>
-        <div>Selected value is {{ movieperson.id }}</div>
-        <select kendo-drop-down-list
-                k-options="dropOptions"
-                ng-model="movieperson.id"
-                class="glow"></select>
-    </div>
-    <kendo-grid options="vm.mainGridOptions"></kendo-grid>
-    <div id="window"></div>
-</div>
+﻿<div class="container">
+    <h1 class="page-header">Osobe</h1>
+    <div class="row" style="padding-bottom: 20px;">
+        <div class="col-lg-9 col-md-9">
+            <a class="btn btn-success" ui-sref="createMoviePerson"> + Nova osoba</a>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2">
+            <select kendo-drop-down-list
+                    k-options="vm.dropOptions"
+                    ng-model="dataSource.name" 
+                    class="glow"></select>
+            <!-- ng-model="moviePerson.datecreated" -->
 
+        </div>
+    </div>
+
+
+    <div>
+        <kendo-grid options="vm.mainGridOptions"  
+                    k-sortable="true"></kendo-grid>
+        <div id="window"></div>
+    </div>
+</div>
 
 

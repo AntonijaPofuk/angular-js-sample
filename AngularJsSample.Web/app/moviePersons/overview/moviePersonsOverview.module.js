@@ -24,27 +24,28 @@
         //#region JS functions
         //cal for the viewModel vm
         function activate() {
+            vm.sortVariable = getSortVariable();
             vm.mainGridOptions = getMainGridOptions();
+            vm.dropOptions = getDropOptions();
         }
 
-        $scope.dropOptions = {
-            dataSource: {
-                transport: {
-                    read: function (options) {
-                        $http.get(serviceBase + "api/moviepersons")
-                            .then(function (result) {
-                                options.success(result.data.moviePersons);
-                            }, function (error) {
-                                //add error handling
-                            });
-                    },
-                },
-                pageSize: 5
-            },
-            dataTextField: 'firstname',
-            dataValueField: 'id',
-            optionLabel: "Select one..."
-        };
+        function getSortVariable() {
+            return "datecreated";
+        }
+
+        function getDropOptions() {
+            let dropOptions = {
+                dataSource:[
+                    {name:"Date created"},
+                    {name:"Popularity"}
+                ],          
+                optionLabel: "Select one...",
+                dataTextField: "name",
+                dataValueField: "name"
+            };
+            return dropOptions;
+        }
+
 
         function getMainGridOptions() {
             let options = {
@@ -59,9 +60,11 @@
                                 });
                         },
                     },
-                    pageSize: 5
+                    pageSize: 5,
+                    sort: {
+                        field: vm.sortVariable, dir: "asc"
+                    }
                 },
-                sortable: true,
                 pageable: true,
                 selectable: true,
                 columns: [
