@@ -27,6 +27,25 @@
             vm.mainGridOptions = getMainGridOptions();
         }
 
+        $scope.dropOptions = {
+            dataSource: {
+                transport: {
+                    read: function (options) {
+                        $http.get(serviceBase + "api/moviepersons")
+                            .then(function (result) {
+                                options.success(result.data.moviePersons);
+                            }, function (error) {
+                                //add error handling
+                            });
+                    },
+                },
+                pageSize: 5
+            },
+            dataTextField: 'firstname',
+            dataValueField: 'id',
+            optionLabel: "Select one..."
+        };
+
         function getMainGridOptions() {
             let options = {
                 dataSource: {

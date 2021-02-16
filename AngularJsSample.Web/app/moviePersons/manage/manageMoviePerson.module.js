@@ -12,9 +12,7 @@
         //#region JS variables
         var vm = this;
 
-        $("#datepicker").kendoDatePicker({
-        });
-        var datepicker = $("#datepicker").data("kendoDatePicker");
+      
 
       
         //#endregion 
@@ -22,13 +20,11 @@
 
         //#region Bindable Members
         vm.moviePerson = moviePerson.data; // data is in general.routing.js
-        //vm.birthday = moviePerson.data.birthday;
-        //datepicker.value(new Date(vm.birthday));
-        datepicker.value(new Date(2020, 9, 9));
+       
 
         vm.update = saveMoviePerson;
         vm.delete = deleteMoviePerson;
-
+        vm.datepicker = datePicker;
       
        
         //#endregion
@@ -57,11 +53,17 @@
                 //add error handling
             });
         }
+        function datePicker() {
+            monthPickerConfig = {
+                start: "year",
+                format: "dd.MM.yyyy"
+            };
+        }
 
         $scope.dialog = {
             message: ""
         }
-
+        
         $scope.showDialog = function (title, message) {
             $scope.dialog.message = message;
             $scope.deleteDialogWindow.title(title);

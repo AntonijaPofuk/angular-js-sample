@@ -1,8 +1,16 @@
 ﻿<h1 class="page-header">Osobe</h1>
 <a class="btn btn-success" ui-sref="createMoviePerson"> + Nova osoba</a>
 <div>
+    <div>
+        <div>Selected value is {{ movieperson.id }}</div>
+        <select kendo-drop-down-list
+                k-options="dropOptions"
+                ng-model="movieperson.id"
+                class="glow"></select>
+    </div>
     <kendo-grid options="vm.mainGridOptions"></kendo-grid>
     <div id="window"></div>
 </div>
+
 
 

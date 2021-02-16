@@ -142,5 +142,10 @@ namespace AngularJsSample.Repositories.DatabaseModel
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MoviePerson_Get_Result>("MoviePerson_Get");
         }
+    
+        public virtual ObjectResult<MoviePerson_GetDateCreated_Result> MoviePerson_GetDateCreated()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MoviePerson_GetDateCreated_Result>("MoviePerson_GetDateCreated");
+        }
     }
 }

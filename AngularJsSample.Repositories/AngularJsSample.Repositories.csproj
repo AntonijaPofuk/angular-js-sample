@@ -71,6 +71,9 @@
     <Compile Include="DatabaseModel\MoviePersonData_Get_Result.cs">
       <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseModel\MoviePerson_GetDateCreated_Result.cs">
+      <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseModel\MoviePerson_Get_Result.cs">
       <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
     </Compile>
