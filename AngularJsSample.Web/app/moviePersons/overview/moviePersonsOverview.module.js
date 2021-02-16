@@ -24,26 +24,32 @@
         //#region JS functions
         //cal for the viewModel vm
         function activate() {
-            vm.sortVariable = getSortVariable();
+            vm.sortVariable = getSortVariable; //function
             vm.mainGridOptions = getMainGridOptions();
             vm.dropOptions = getDropOptions();
-        }
-
-        function getSortVariable() {
-            return "datecreated";
-        }
-
+            vm.selectedSortValue = "";     //variable
+        }    
+            
         function getDropOptions() {
             let dropOptions = {
                 dataSource:[
-                    {name:"Date created"},
-                    {name:"Popularity"}
+                    {name:"datecreated"},
+                    {name:"popularity"}
                 ],          
                 optionLabel: "Select one...",
                 dataTextField: "name",
                 dataValueField: "name"
             };
             return dropOptions;
+        }
+
+        function getSortVariable(selectedSortValue) {
+            console.log("Sort value is:" + selectedSortValue);
+            //vm.mainGridOptions.dataSource.sort({
+            //    field: selectedSortValue,
+            //    dir:"asc"
+            //})
+            return "id";
         }
 
 
@@ -103,9 +109,6 @@
                     }
                 ]
             };
-
-
-
             return options;
         }
         //#endregion
