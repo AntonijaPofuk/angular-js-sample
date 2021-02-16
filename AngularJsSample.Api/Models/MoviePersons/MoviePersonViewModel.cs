@@ -29,8 +29,5 @@ namespace AngularJsSample.Api.Models
         public DateTimeOffset Lastmodified { get; set; }
         public UserViewModel UserLastModified { get; set; }
         public UserViewModel UserCreated { get; set; }
-
-
-
     }
 }

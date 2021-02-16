@@ -10,9 +10,7 @@
     function manageMoviePersonCtrl($scope, $http, moviePerson, moviePersonsSvc, $state ) {
         
         //#region JS variables
-        var vm = this;
-
-      
+        var vm = this;              
 
       
         //#endregion 
@@ -23,6 +21,7 @@
        
 
         vm.update = saveMoviePerson;
+        vm.create = createMoviePerson;
         vm.delete = deleteMoviePerson;
         vm.datepicker = datePicker;
       
@@ -45,6 +44,15 @@
             });
         }
 
+        //CREATE
+        function createMoviePerson(dataItem) {
+            moviePersonsSvc.createMoviePerson(vm.moviePerson).then(function () {
+                $state.go("moviePersonsOverview");
+            }, function (error) {
+                //add error handling
+            });
+        }
+
         //DELETE
         function deleteMoviePerson(id) {
             moviePersonsSvc.deleteMoviePerson(id).then(function () {
@@ -53,6 +61,7 @@
                 //add error handling
             });
         }
+
         function datePicker() {
             monthPickerConfig = {
                 start: "year",

@@ -24,8 +24,8 @@ namespace AngularJsSample.Repositories
                 PhotoUrl = model.PhotoUrl,
                 Popularity = model.Popularity,
                 IMDBUrl = model.IMDBUrl,
-                DateCreated = model.DateCreated
-               
+                DateCreated = model.DateCreated              
+
             };
         }
 
@@ -46,7 +46,6 @@ namespace AngularJsSample.Repositories
                 IMDBUrl = dbResult.IMDBUrl,
                 DateCreated = dbResult.DateCreated
               
-
             };
             }
 
@@ -68,6 +67,7 @@ namespace AngularJsSample.Repositories
                 IMDBUrl = dbResult.IMDBUrl,
                 DateCreated = dbResult.DateCreated
               
+
             };
         }
     }

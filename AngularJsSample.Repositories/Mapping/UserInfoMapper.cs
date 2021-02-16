@@ -29,5 +29,7 @@ namespace AngularJsSample.Repositories
             result.AddRange(items.Select(u => u.MapToUserInfo()));
             return result;
         }
+
+
     }
 }

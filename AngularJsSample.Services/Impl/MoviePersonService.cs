@@ -103,7 +103,6 @@ namespace AngularJsSample.Services.Impl
             };
                 try
                 {
-
                     if (request.MoviePerson?.Id == 0)
                     {
                         response.MoviePerson = request.MoviePerson;

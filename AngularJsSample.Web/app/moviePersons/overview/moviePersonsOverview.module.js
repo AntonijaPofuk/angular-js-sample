@@ -12,9 +12,19 @@
         var vm = this;
         //#endregion 
 
-
+      
         //#region Bindable Members
+      
+        vm.mainGridOptions = getMainGridOptions();
+        vm.dropOptions = getDropOptions();
 
+        vm.selectedSortValue = getSortVariable; 
+
+        vm.sortVariable = putSortVariable();
+        vm.catchedSortVariable = getSortVariable;
+
+        //var sort = [{field: "firstname", dir: "asc"}];
+        var sort = [{ field: vm.selectedSortValue, dir: "asc" }];
         //#endregion 
 
         //#region On activate 
@@ -23,36 +33,31 @@
 
         //#region JS functions
         //cal for the viewModel vm
-        function activate() {
-            vm.sortVariable = getSortVariable; //function
-            vm.mainGridOptions = getMainGridOptions();
-            vm.dropOptions = getDropOptions();
-            vm.selectedSortValue = "";     //variable
-        }    
-            
+        function activate() { }    
+
+        function getSortVariable(a) {            
+            console.log("Sort value is:" + a); //getting from dropdown
+            return a;
+            vm.mainGridOptions.refresh()
+        }
+        
         function getDropOptions() {
             let dropOptions = {
                 dataSource:[
                     {name:"datecreated"},
                     {name:"popularity"}
                 ],          
-                optionLabel: "Select one...",
+                optionLabel: "Select sorting value",
                 dataTextField: "name",
                 dataValueField: "name"
             };
             return dropOptions;
         }
 
-        function getSortVariable(selectedSortValue) {
-            console.log("Sort value is:" + selectedSortValue);
-            //vm.mainGridOptions.dataSource.sort({
-            //    field: selectedSortValue,
-            //    dir:"asc"
-            //})
+        function putSortVariable() { //sending into grid.sort
             return "id";
         }
-
-
+               
         function getMainGridOptions() {
             let options = {
                 dataSource: {
@@ -67,9 +72,7 @@
                         },
                     },
                     pageSize: 5,
-                    sort: {
-                        field: vm.sortVariable, dir: "asc"
-                    }
+                    sort: sort
                 },
                 pageable: true,
                 selectable: true,

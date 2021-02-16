@@ -7,11 +7,13 @@
         </div>
         <div>
             <button class="btn btn-success" ng-click="vm.update(vm.moviePerson)">Save</button>
+            <button class="btn btn-success" ng-click="vm.create(vm.moviePerson)">Create</button>
+
             <button class="btn btn-default" ui-sref="moviePersonsOverview">Cancel</button>
 
-            <div kendo-window="deleteDialogWindow" 
-                 k-modal="true" 
-                 k-visible="false" 
+            <div kendo-window="deleteDialogWindow"
+                 k-modal="true"
+                 k-visible="false"
                  k-width="250">
                 <div style="text-align: center; width:100%">
                     <div style="margin:10px 0 15px 0">{{ dialog.message }}</div>
@@ -19,7 +21,7 @@
                     <button class="k-button" id="noButton" ng-click="deleteDialogWindow.close()">No</button>
                 </div>
             </div>
-            <button  class="btn btn-danger" ng-click="showDialog('Delete Confirmation', 'Delete selected person?')">Delete</button>
+            <button class="btn btn-danger" ng-click="showDialog('Delete Confirmation', 'Delete selected person?')">Delete</button>
         </div>
     </div>
     <hr />
@@ -42,16 +44,17 @@
             </div>
 
             <!--<div class="col-sm-12">
-                <div class="panel-body">
-                    <div>Datum rođenja:</div>
-                    <div>{{vm.moviePerson.birthday| date:'dd.MM.yyyy.'}}</div>
-                    <div>
-                    </div>
-                </div>
-            </div>-->
-        <div class="col-sm-12">
-            <input kendo-date-picker k-options="vm.datepicker">
+        <div class="panel-body">
+            <div>Datum rođenja:</div>
+            <div>{{vm.moviePerson.birthday| date:'dd.MM.yyyy.'}}</div>
+            <div>
+            </div>
         </div>
+    </div>-->
+            <!--<div class="col-sm-12">
+        <input kendo-date-picker k-options="vm.datepicker">
+    </div>-->
+            <div><input class="form-control" ng-model="vm.moviePerson.birthday" /></div>
 
             <div class="col-sm-12">
                 <div class="panel-body">
