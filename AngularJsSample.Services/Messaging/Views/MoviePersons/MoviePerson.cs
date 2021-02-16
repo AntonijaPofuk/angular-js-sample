@@ -20,7 +20,7 @@ namespace AngularJsSample.Services.Messaging.Views.MoviePersons
         public int Popularity { get; set; }
         public DateTimeOffset? Birthday { get; set; }
         public string IMDBUrl { get; set; }
-        public DateTimeOffset DateCreated { get; set; }
+        public DateTimeOffset? DateCreated { get; set; }
         public UserInfo UserLastModified { get; set; }
         public UserInfo UserCreated { get; set; }
         public DateTimeOffset? LastModified { get; set; }

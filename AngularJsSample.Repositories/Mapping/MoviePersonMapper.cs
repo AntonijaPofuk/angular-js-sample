@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AngularJsSample.Repositories.DatabaseModel;
-
-
+using System;
 
 namespace AngularJsSample.Repositories
 {
@@ -20,11 +19,11 @@ namespace AngularJsSample.Repositories
                 LastName = model.LastName,
                 BirthPlace = model.BirthPlace,
                 Biography = model.Biography,
-                Birthday = model.Birthday,
+                Birthday = model.Birthday.DateTime,
                 PhotoUrl = model.PhotoUrl,
                 Popularity = model.Popularity,
                 IMDBUrl = model.IMDBUrl,
-                DateCreated = model.DateCreated              
+                DateCreated = model.DateCreated.DateTime              
 
             };
         }
@@ -42,12 +41,11 @@ namespace AngularJsSample.Repositories
                 Biography = dbResult.Biography,
                 PhotoUrl = dbResult.PhotoUrl,
                 Popularity = dbResult.Popularity,
-                Birthday = dbResult.Birthday,
+                Birthday = dbResult.Birthday.DateTime,
                 IMDBUrl = dbResult.IMDBUrl,
-                DateCreated = dbResult.DateCreated
-              
+                DateCreated = dbResult.DateCreated.DateTime
             };
-            }
+    }
 
 
         public static Model.MoviePersons.MoviePerson MapToModels(this MoviePerson_Get_Result dbResult)
@@ -63,10 +61,9 @@ namespace AngularJsSample.Repositories
                 Biography = dbResult.Biography,
                 PhotoUrl = dbResult.PhotoUrl,
                 Popularity = dbResult.Popularity,
-                Birthday = dbResult.Birthday,
+                Birthday = dbResult.Birthday.DateTime,
                 IMDBUrl = dbResult.IMDBUrl,
-                DateCreated = dbResult.DateCreated
-              
+                DateCreated = dbResult.DateCreated.DateTime             
 
             };
         }

@@ -20,9 +20,9 @@
         vm.moviePerson = moviePerson.data; // data is in general.routing.js
        
 
-        vm.update = saveMoviePerson;
-        vm.create = createMoviePerson;
+      
         vm.delete = deleteMoviePerson;
+        vm.save = saveMoviePerson;
         vm.datepicker = datePicker;
       
        
@@ -35,23 +35,26 @@
         //#region JS functions
         function activate() {}
 
-        //UPDATE
-        function saveMoviePerson(dataItem) {
-            moviePersonsSvc.updateMoviePerson(dataItem.id, vm.moviePerson).then(function () {
-                $state.go("moviePersonsOverview");
-            }, function (error) {
-                //add error handling
-            });
-        }
 
-        //CREATE
-        function createMoviePerson(dataItem) {
-            moviePersonsSvc.createMoviePerson(vm.moviePerson).then(function () {
-                $state.go("moviePersonsOverview");
-            }, function (error) {
-                //add error handling
-            });
+        function saveMoviePerson(dataItem) {
+            if (vm.moviePerson.id>0) {
+                //update
+                moviePersonsSvc.updateMoviePerson(dataItem.id, vm.moviePerson).then(function () {
+                    $state.go("moviePersonsOverview");
+                }, function (error) {
+                    //add error handling
+                });
+            }
+            else {
+                //create
+                moviePersonsSvc.createMoviePerson(vm.moviePerson).then(function () {
+                    $state.go("moviePersonsOverview");
+                }, function (error) {
+                    //add error handling
+                });
+            }
         }
+       
 
         //DELETE
         function deleteMoviePerson(id) {
@@ -71,8 +74,7 @@
 
         $scope.dialog = {
             message: ""
-        }
-        
+        }        
         $scope.showDialog = function (title, message) {
             $scope.dialog.message = message;
             $scope.deleteDialogWindow.title(title);

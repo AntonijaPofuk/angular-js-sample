@@ -76,6 +76,7 @@
                 },
                 pageable: true,
                 selectable: true,
+                
                 columns: [
                     {
                         field: "id",

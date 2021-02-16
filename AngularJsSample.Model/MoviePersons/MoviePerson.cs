@@ -19,9 +19,9 @@ namespace AngularJsSample.Model.MoviePersons
         public int Popularity { get; set; }
         public DateTimeOffset? Birthday { get; set; }
         public string IMDBUrl { get; set; }
-        public DateTimeOffset DateCreated { get; set; }
+        public DateTimeOffset? DateCreated { get; set; }
         public UserInfo UserLastModified { get; set; }
-        public DateTimeOffset LastModified { get; set; }
+        public DateTimeOffset? LastModified { get; set; }
         public UserInfo UserCreated { get; set; }
 
 

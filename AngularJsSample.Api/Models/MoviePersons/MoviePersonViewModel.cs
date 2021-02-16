@@ -25,8 +25,8 @@ namespace AngularJsSample.Api.Models
         [Required]
         public DateTimeOffset? Birthday { get; set; }
         public string IMDBUrl { get; set; }
-        public DateTimeOffset Datecreated { get; set; }
-        public DateTimeOffset Lastmodified { get; set; }
+        public DateTimeOffset? Datecreated { get; set; }
+        public DateTimeOffset? Lastmodified { get; set; }
         public UserViewModel UserLastModified { get; set; }
         public UserViewModel UserCreated { get; set; }
     }
