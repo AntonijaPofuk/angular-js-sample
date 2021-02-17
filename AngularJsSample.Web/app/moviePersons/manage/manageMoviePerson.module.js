@@ -18,9 +18,7 @@
 
         //#region Bindable Members
         vm.moviePerson = moviePerson.data; // data is in general.routing.js
-       
-
-      
+                    
         vm.delete = deleteMoviePerson;
         vm.save = saveMoviePerson;
         vm.datepicker = datePicker;

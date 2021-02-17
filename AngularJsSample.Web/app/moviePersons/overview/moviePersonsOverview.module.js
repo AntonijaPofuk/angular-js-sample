@@ -40,8 +40,10 @@
         //DELETE
         function deleteMoviePerson(id) {
             moviePersonsSvc.deleteMoviePerson(id).then(function () {
-                $state.go("moviePersonsOverview");
+                $state.reload();
+                //$state.go("moviePersonsOverview");
             }, function (error) {
+                    console.log(error);
                 //add error handling
             });
         }
