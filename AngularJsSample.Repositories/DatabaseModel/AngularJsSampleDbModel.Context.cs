@@ -29,6 +29,7 @@ namespace AngularJsSample.Repositories.DatabaseModel
     
         public virtual DbSet<UserInfo> UserInfoes { get; set; }
         public virtual DbSet<MoviePerson> MoviePersons { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
     
         public virtual int MoviePerson_Delete(Nullable<int> id, Nullable<int> userLastModified)
         {
@@ -146,6 +147,20 @@ namespace AngularJsSample.Repositories.DatabaseModel
         public virtual ObjectResult<MoviePerson_GetDateCreated_Result> MoviePerson_GetDateCreated()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MoviePerson_GetDateCreated_Result>("MoviePerson_GetDateCreated");
+        }
+    
+        public virtual ObjectResult<GenreData_Get_Result> GenreData_Get(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GenreData_Get_Result>("GenreData_Get", idParameter);
+        }
+    
+        public virtual ObjectResult<Genres_Get_Result> Genres_Get()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Genres_Get_Result>("Genres_Get");
         }
     }
 }

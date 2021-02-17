@@ -109,6 +109,13 @@
     <Content Include="app\login\controllers\loginCtrl.js" />
     <Content Include="app\login\loginModule.js" />
     <Content Include="app\login\partials\login.html" />
+    <Content Include="app\genres\manage\manageGenres.html" />
+    <Content Include="app\genres\manage\manageGenres.module.js" />
+    <Content Include="app\genres\genresServices.module.js" />
+    <Content Include="app\genres\overview\genresOverview.module.js" />
+    <Content Include="app\genres\overview\overview.html" />
+    <Content Include="app\genres\profile\genresProfile.module.js" />
+    <Content Include="app\genres\profile\profile.html" />
     <Content Include="app\moviePersons\manage\deleteModularWindow.html" />
     <Content Include="app\moviePersons\manage\manageMoviePerson.module.js" />
     <Content Include="app\moviePersons\manage\deleteMoviePerson.module.js" />

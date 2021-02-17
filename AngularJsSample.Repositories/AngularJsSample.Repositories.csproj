@@ -65,6 +65,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AngularJsSampleDbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseModel\Genre.cs">
+      <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\GenreData_Get_Result.cs">
+      <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseModel\Genres_Get_Result.cs">
+      <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseModel\MoviePerson.cs">
       <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
     </Compile>

@@ -1,0 +1,39 @@
+﻿<div class="container">
+    <h1 class="page-header">
+        Osobe {{vm.sortValue}}
+    </h1>
+    <div class="row" style="padding-bottom: 20px;">
+        <div class="col-lg-9 col-md-9">
+            <a class="btn btn-success" ui-sref="createMoviePerson"> + Nova osoba</a>
+        </div>
+        <!-- Selected value is: {{dataSource.name}} -->
+        <div class="col-lg-2 col-md-2 col-sm-2">
+            <select kendo-drop-down-list
+                    k-options="vm.dropOptions"
+                    ng-model="dataSource.name"
+                    ng-change="vm.sortValue(dataSource.name);"
+                    class="glow"></select>
+        </div>
+    </div>
+    <div>
+        <kendo-grid options="vm.mainGridOptions"
+                    k-sortable="true"
+                    id="grid">
+
+        <div kendo-window="deleteDialogWindow"
+                k-modal="true"
+                k-visible="false"
+                k-width="250">
+            <div style="text-align: center; width:100%">
+                <div style="margin:10px 0 15px 0">{{ dialog.message }}</div>
+                <button class="k-button k-primary" id="yesButton" ng-click="vm.delete(selectedId)">Yes</button>
+                <button class="k-button" id="noButton" ng-click="deleteDialogWindow.close()">No</button>
+            </div>
+        </div>
+
+        </kendo-grid>
+        <div id="window"></div>
+    </div>
+</div>
+
+
