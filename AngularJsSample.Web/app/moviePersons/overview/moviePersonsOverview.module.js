@@ -65,6 +65,7 @@
         }
 
         function getSortVariable(a) {
+
             console.log("Sort value is:" + a); //getting from dropdown          
 
             vm.sortBy = a;
