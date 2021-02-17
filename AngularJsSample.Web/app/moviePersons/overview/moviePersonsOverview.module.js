@@ -14,19 +14,20 @@
 
       
         //#region Bindable Members
-      
-        vm.mainGridOptions = getMainGridOptions();
+
         vm.dropOptions = getDropOptions();
+
+        vm.sortValue = getSortVariable;
+
+        vm.sortBy = "";       
+        //vm.sortBy = getSortVariable;
+
+        vm.mainGridOptions = getMainGridOptions();
+
         vm.delete = deleteMoviePerson;
 
-
-        vm.selectedSortValue = getSortVariable; 
-
-        vm.sortVariable = putSortVariable();
-        vm.catchedSortVariable = getSortVariable;
-
         //var sort = [{field: "firstname", dir: "asc"}];
-        var sort = [{ field: vm.selectedSortValue, dir: "asc" }];
+
         //#endregion 
 
         //#region On activate 
@@ -34,8 +35,9 @@
         //#endregion
 
         //#region JS functions
-        //cal for the viewModel vm
-        function activate() { }    
+        //call for the viewModel vm
+        function activate() {
+            }    
 
         //DELETE
         function deleteMoviePerson(id) {
@@ -48,12 +50,7 @@
             });
         }
 
-        function getSortVariable(a) {            
-            console.log("Sort value is:" + a); //getting from dropdown
-            return a;
-            vm.mainGridOptions.refresh()
-        }
-        
+        //DROPDOWN
         function getDropOptions() {
             let dropOptions = {
                 dataSource:[
@@ -67,12 +64,18 @@
             return dropOptions;
         }
 
+        function getSortVariable(a) {
+            console.log("Sort value is:" + a); //getting from dropdown          
 
-        function putSortVariable() { //sending into grid.sort
-            return "id";
-        }
-               
+            vm.sortBy = a;
+
+            angular.element('#grid').data("kendo-grid").dataSource.read();
+
+            return a;
+        }            
+        
         function getMainGridOptions() {
+
             let options = {
                 dataSource: {
                     transport: {
@@ -86,12 +89,17 @@
                         },
                     },
                     pageSize: 5,
-                    sort: sort
+                    sort: {
+                        field: vm.sortBy , dir: "desc"
+                    }
                 },
                 pageable: true,
-                selectable: true,
-                
+                selectable: true,                
                 columns: [
+                    {
+                        field: "datecreated",
+                        title: "datecreated"
+                    },
                     {
                         field: "id",
                         title: "#",
@@ -118,6 +126,7 @@
                     {
                         field: "firstname",
                         title: "Ime",
+                        width: 100,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -147,8 +156,9 @@
                     },
                     {
                         field: "popularity",
-                        template: "\\\\\#  #: popularity #",
+                       
                         title: "Popularnost",
+                        width: 120,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -157,11 +167,11 @@
                         } 
                     },
                     {
+                        width: 450,
                         template: `
-                    <button class="btn btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
-                    <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
-                    <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
-
+                        <button class="btn btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
+                        <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
+                        <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
                         `,
                         width: "200px"
                     }
