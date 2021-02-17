@@ -17,12 +17,10 @@ namespace AngularJsSample.Api.IoC
             builder.RegisterType<MoviePersonRepository>().As<IMoviePersonRepository>();
             builder.RegisterType<GenreRepository>().As<IGenreRepository>();
 
-
-
             //services
             builder.RegisterType<UserService>().As<IUserService>();
             builder.RegisterType<MoviePersonService>().As<IMoviePersonService>();
-            builder.RegisterType<GenreService>().As<IGenreRepository>();
+            builder.RegisterType<GenreService>().As<IGenreService>();
 
 
         }

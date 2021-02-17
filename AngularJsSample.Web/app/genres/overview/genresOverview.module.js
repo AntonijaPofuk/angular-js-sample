@@ -1,12 +1,12 @@
 ﻿(function () {
     'use strict';
     angular
-        .module('moviePersonsOverview', ['moviePersonsServices'])
-        .controller('moviePersonsOverviewCtrl', moviePersonsOverviewCtrl);
+        .module('genresOverview', ['genresServices'])
+        .controller('genresOverviewCtrl', genresOverviewCtrl);
 
     //OVERVIEW
-    moviePersonsOverviewCtrl.$inject = ['$scope', '$http', 'moviePersonsSvc', '$state'];
-    function moviePersonsOverviewCtrl($scope, $http, moviePersonsSvc, $state) {
+    genresOverviewCtrl.$inject = ['$scope', '$http', 'genresSvc', '$state'];
+    function genresOverviewCtrl($scope, $http, genresSvc, $state) {
 
         //#region JS variables
         var vm = this;
@@ -41,9 +41,9 @@
 
         //DELETE
         function deleteMoviePerson(id) {
-            moviePersonsSvc.deleteMoviePerson(id).then(function () {
+            genresSvc.deleteMoviePerson(id).then(function () {
                 $state.reload();
-                //$state.go("moviePersonsOverview");
+                //$state.go("genresOverview");
             }, function (error) {
                     console.log(error);
                 //add error handling
@@ -81,9 +81,9 @@
                 dataSource: {
                     transport: {
                         read: function (options) {
-                            $http.get(serviceBase + "api/moviepersons")
+                            $http.get(serviceBase + "api/genres")
                                 .then(function (result) {
-                                    options.success(result.data.moviePersons);
+                                    options.success(result.data.genres);
                                 }, function (error) {
                                     //add error handling
                                 });
@@ -96,11 +96,7 @@
                 },
                 pageable: true,
                 selectable: true,                
-                columns: [
-                    {
-                        field: "datecreated",
-                        title: "datecreated"
-                    },
+                columns: [                   
                     {
                         field: "id",
                         title: "#",
@@ -111,22 +107,10 @@
                         attributes: {
                             style: "text-align: center;"
                         } 
-                    },
+                    },                    
                     {
-                        title: "Foto",
-                        template: `        
-                           <img src="#=photourl#" alt="Movie person" onerror="this.src='https://media.istockphoto.com/vectors/creative-vector-illustration-of-default-avatar-profile-placeholder-vector-id1008665336?b=1&k=6&m=1008665336&s=612x612&w=0&h=RwhZJIlY7x6Yf8pRwcKhQ_YkPiVFTfNw5Zg8FPzkv2A=';" width="100%">
-                                `,
-                        headerAttributes: {
-                            style: "text-align: center"
-                        },
-                        attributes: {
-                            style: "text-align: center;"
-                        } 
-                    },
-                    {
-                        field: "firstname",
-                        title: "Ime",
+                        field: "name",
+                        title: "Naziv",
                         width: 100,
                         headerAttributes: {
                             style: "text-align: center"
@@ -136,41 +120,19 @@
                         } 
                     },
                     {
-                        field: "lastname",
-                        title: "Prezime",
+                        field: "description",
+                        title: "Opis",
                         headerAttributes: {
                             style: "text-align: center"
                         },
                         attributes: {
                             style: "text-align: center;"
                         } 
-                    },
-                    {
-                        field: "birthplace",
-                        title: "Mjesto rođenja",
-                        headerAttributes: {
-                            style: "text-align: center"
-                        },
-                        attributes: {
-                            style: "text-align: center;"
-                        } 
-                    },
-                    {
-                        field: "popularity",
-                       
-                        title: "Popularnost",
-                        width: 120,
-                        headerAttributes: {
-                            style: "text-align: center"
-                        },
-                        attributes: {
-                            style: "text-align: center;"
-                        } 
-                    },
+                    },                   
                     {
                         width: 450,
                         template: `
-                        <button class="btn btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
+                        <button class="btn btn-success" ui-sref="genreProfile({id:dataItem.id})">Profile</button>
                         <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
                         <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
                         `,

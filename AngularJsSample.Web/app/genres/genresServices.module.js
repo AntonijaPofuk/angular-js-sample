@@ -3,26 +3,26 @@
     'use strict';
 
     angular
-        .module('moviePersonsServices', [])
-        .service('moviePersonsSvc', moviePersonsSvc)
+        .module('genresServices', [])
+        .service('genresSvc', genresSvc)
         ;
 
-    moviePersonsSvc.$inject = ['$http'];
-    function moviePersonsSvc($http) {
-        this.getMoviePersons = function () {
-            return $http.get(`${serviceBase}/api/moviepersons`);
+    genresSvc.$inject = ['$http'];
+    function genresSvc($http) {
+        this.getGenres = function () {
+            return $http.get(`${serviceBase}/api/genres`);
         }
-        this.getMoviePerson = function (id) {
-            return $http.get(`${serviceBase}/api/moviepersons/${id}`);
+        this.getGenre = function (id) {
+            return $http.get(`${serviceBase}/api/genres/${id}`);
         }
-        this.deleteMoviePerson = function (id) {
-            return $http.delete(`${serviceBase}/api/moviepersons/${id}`);
+        this.deleteGenre = function (id) {
+            return $http.delete(`${serviceBase}/api/genres/${id}`);
         }
-        this.createMoviePerson = function (moviePerson) {
-            return $http.post(`${serviceBase}/api/moviepersons`, moviePerson);
+        this.createGenre = function (genre) {
+            return $http.post(`${serviceBase}/api/genres`, genre);
         }
-        this.updateMoviePerson = function (id, moviePerson) {
-            return $http.put(`${serviceBase}/api/moviepersons/${id}`, moviePerson);
+        this.updateGenre = function (id, genre) {
+            return $http.put(`${serviceBase}/api/genres/${id}`, genre);
         }
     };
 

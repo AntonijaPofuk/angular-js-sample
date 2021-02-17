@@ -4,6 +4,7 @@ using AngularJsSample.Services.Messaging.Views;
 
 namespace AngularJsSample.Services
 {
+
     public interface IMoviePersonService
     {
         GetMoviePersonResponse GetMoviePerson(GetMoviePersonRequest request);

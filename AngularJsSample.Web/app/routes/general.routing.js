@@ -93,6 +93,35 @@
                 }
             })
 
+
+            .state('genresOverview', {
+                url: "/genres",
+                controller: "genresOverviewCtrl",
+                controllerAs: "vm",
+                templateUrl: "app/genres/overview/overview.html",
+                resolve: {
+                    loginRequired: loginRequired,
+                    genresServices: function ($ocLazyLoad) { // loading services
+                        return $ocLazyLoad.load({
+                            name: "genresServices",
+                            files: [
+                                "app/genres/genresServices.module.js"
+                            ]
+                        });
+                    },
+                    // loading controller
+                    genresOverview: function ($ocLazyLoad, genresServices) {
+                        return $ocLazyLoad.load({
+                            name: "genresOverview",
+                            files: [
+                                "app/genres/overview/genresOverview.module.js"
+                            ]
+                        });
+                    }
+
+                }
+            })
+
             .state('authorProfile', {
                 url: "/authors/:id",
                 controller: "authorProfileCtrl",
