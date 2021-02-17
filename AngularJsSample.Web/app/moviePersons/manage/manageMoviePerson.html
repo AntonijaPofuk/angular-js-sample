@@ -10,18 +10,7 @@
         </div>
         <div style="margin-top: 25px">
             <button class="btn btn-success" ng-click="vm.save(vm.moviePerson)">Save</button>
-            <button class="btn btn-default" ui-sref="moviePersonsOverview">Cancel</button>
-            <div kendo-window="deleteDialogWindow"
-                 k-modal="true"
-                 k-visible="false"
-                 k-width="250">
-                <div style="text-align: center; width:100%">
-                    <div style="margin:10px 0 15px 0">{{ dialog.message }}</div>
-                    <button class="k-button k-primary" id="yesButton" ng-click="vm.delete(vm.moviePerson.id)">Yes</button>
-                    <button class="k-button" id="noButton" ng-click="deleteDialogWindow.close()">No</button>
-                </div>
-            </div>
-            <button class="btn btn-danger" ng-click="showDialog('Delete Confirmation', 'Delete selected person?')">Delete</button>
+            <button class="btn btn-default" ui-sref="moviePersonsOverview">Cancel</button>   
         </div>
     </div>
     <hr />
