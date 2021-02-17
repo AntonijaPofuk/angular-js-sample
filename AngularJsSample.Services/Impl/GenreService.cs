@@ -63,5 +63,37 @@ namespace AngularJsSample.Services.Impl
 
             return response;
         }
+
+        public DeleteGenreResponse DeleteGenre(DeleteGenreRequest request)
+        {
+            var response = new DeleteGenreResponse()
+            {
+                Request = request,
+                ResponseToken = Guid.NewGuid()
+            };
+
+            try
+            {
+                _repository.Delete(
+                    new Genre()
+                    {
+                        Id = request.Id,
+                        LastModified = DateTimeOffset.Now,
+                        UserLastModified = new Model.Users.UserInfo()
+                        {
+                            Id = request.UserId
+                        }
+                    }
+                    );
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+
+            return response;
+        }
     }
 }

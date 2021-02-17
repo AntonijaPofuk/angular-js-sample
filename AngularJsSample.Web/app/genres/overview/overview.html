@@ -10,7 +10,17 @@
     <div>
         <kendo-grid options="vm.mainGridOptions"
                     k-sortable="true"
-                    id="grid">  
+                    id="grid">
+            <div kendo-window="deleteDialogWindow"
+                 k-modal="true"
+                 k-visible="false"
+                 k-width="250">
+                <div style="text-align: center; width:100%">
+                    <div style="margin:10px 0 15px 0">{{ dialog.message }}</div>
+                    <button class="k-button k-primary" id="yesButton" ng-click="vm.delete(selectedId)">Yes</button>
+                    <button class="k-button" id="noButton" ng-click="deleteDialogWindow.close()">No</button>
+                </div>
+            </div>
         </kendo-grid>
         <div id="window"></div>
     </div>

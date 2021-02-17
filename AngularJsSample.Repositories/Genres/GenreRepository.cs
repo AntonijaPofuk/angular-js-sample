@@ -18,7 +18,19 @@ namespace AngularJsSample.Repositories
 
         public bool Delete(Model.Genres.Genre item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var context = new AngularJsSampleDbEntities())
+                {
+                    context.Genre_Delete(item.Id, item.UserLastModified?.Id);
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"The exception is: '{e}'");
+                return false;
+            }
         }
 
         public List<Model.Genres.Genre> FindAll()

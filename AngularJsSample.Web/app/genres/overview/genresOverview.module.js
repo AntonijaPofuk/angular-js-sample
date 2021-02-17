@@ -102,7 +102,7 @@
                         template: `
                         <button class="btn btn-success" ui-sref="genreProfile({id:dataItem.id})">Profile</button>
                         <button class="btn btn-success" ui-sref="manageGenre({id:dataItem.id})"> Update</button>
-                        <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
+                        <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected genre?')">Delete</button>
                         `,
                         width: "200px"
                     }

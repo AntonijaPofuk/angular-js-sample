@@ -73,8 +73,30 @@ namespace AngularJsSample.Api.Controllers
             }
 
             return Ok( genreResponse.Genre.MapToViewModel());
-        }      
+        }
 
+        [HttpDelete]
+        [Route("{id}")]
+        public IHttpActionResult Delete(int id)
+        {
+            var loggedUserId = HttpContext.Current.GetOwinContext().GetUserId();
+
+            var request = new DeleteGenreRequest()
+            {
+                RequestToken = Guid.NewGuid(),
+                UserId = loggedUserId,
+                Id = id
+            };
+
+            var genresResponse = _genreService.DeleteGenre(request);
+
+            if (!genresResponse.Success)
+            {
+                return BadRequest(genresResponse.Message);
+            }
+
+            return Ok();
+        }
     }
 }
 
