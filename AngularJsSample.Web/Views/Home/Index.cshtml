@@ -11,8 +11,8 @@
     <link href="@Url.Content("~/Content/kendo/kendo.common.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/kendo/kendo.silver.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/kendo/kendo.dataviz.min.css")" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-
 </head>
 <body ng-controller="LayoutCtrl" ng-cloak>
     <div id="wrapper">
@@ -111,6 +111,11 @@
     <script src="~/Scripts/sb-admin-2.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/assets/plugins/metisMenu/src/metisMenu.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.15.2/sweetalert2.all.min.js" integrity="sha512-ALa9YnJTBbfk54yH9/+88ePgixUB3j/U7QwLe9VYpY8f6Ex8hzXFG6tKlzd/5x+Ng8MW59xUBLcOIe7Ppjtomw==" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
     <script>
         var serviceBase = '@System.Web.Configuration.WebConfigurationManager.AppSettings["app:serviceUrl"]';
         kendo.culture('hr-HR');
