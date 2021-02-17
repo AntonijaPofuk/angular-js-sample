@@ -177,6 +177,7 @@
     <Compile Include="IoC\CommonModule.cs" />
     <Compile Include="Mapping\MoviePersons\MoviePersonMapper.cs" />
     <Compile Include="Mapping\Users\UsersMapper.cs" />
+    <Compile Include="Models\Genres\GenreViewModel.cs" />
     <Compile Include="Models\MoviePersons\MoviePersonViewModel.cs" />
     <Compile Include="Models\Users\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

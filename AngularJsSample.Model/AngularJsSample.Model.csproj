@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Genres\IGenreRepository.cs" />
+    <Compile Include="Genres\Genre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MoviePersons\IMoviePersonRepository.cs" />
     <Compile Include="MoviePersons\MoviePerson.cs" />
