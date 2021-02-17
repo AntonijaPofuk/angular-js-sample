@@ -130,15 +130,6 @@ namespace AngularJsSample.Repositories.DatabaseModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MoviePerson_Save", idParameter, firstNameParameter, lastNameParameter, birthPlaceParameter, birthdayParameter, biographyParameter, photoUrlParameter, iMDBUrlParameter, popularityParameter, userLastModifiedParameter);
         }
     
-        public virtual ObjectResult<MoviePersonData_Get_Result> MoviePersonData_Get(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MoviePersonData_Get_Result>("MoviePersonData_Get", idParameter);
-        }
-    
         public virtual ObjectResult<MoviePerson_Get_Result> MoviePerson_Get()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MoviePerson_Get_Result>("MoviePerson_Get");
@@ -161,6 +152,15 @@ namespace AngularJsSample.Repositories.DatabaseModel
         public virtual ObjectResult<Genres_Get_Result> Genres_Get()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Genres_Get_Result>("Genres_Get");
+        }
+    
+        public virtual ObjectResult<MoviePersonData_Get_Result> MoviePersonData_Get(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MoviePersonData_Get_Result>("MoviePersonData_Get", idParameter);
         }
     }
 }

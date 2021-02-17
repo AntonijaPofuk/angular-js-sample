@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\MoviePersonController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -175,6 +176,7 @@
     </Compile>
     <Compile Include="Helpers\IdentityHelper.cs" />
     <Compile Include="IoC\CommonModule.cs" />
+    <Compile Include="Mapping\Genres\GenreMapper.cs" />
     <Compile Include="Mapping\MoviePersons\MoviePersonMapper.cs" />
     <Compile Include="Mapping\Users\UsersMapper.cs" />
     <Compile Include="Models\Genres\GenreViewModel.cs" />

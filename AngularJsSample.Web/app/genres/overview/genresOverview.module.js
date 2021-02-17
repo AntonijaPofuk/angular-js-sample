@@ -15,18 +15,10 @@
       
         //#region Bindable Members
 
-        vm.dropOptions = getDropOptions();
-
-        vm.sortValue = getSortVariable;
-
-        vm.sortBy = "";       
-        //vm.sortBy = getSortVariable;
-
         vm.mainGridOptions = getMainGridOptions();
 
-        vm.delete = deleteMoviePerson;
+        vm.delete = deleteGenre;
 
-        //var sort = [{field: "firstname", dir: "asc"}];
 
         //#endregion 
 
@@ -40,40 +32,16 @@
             }    
 
         //DELETE
-        function deleteMoviePerson(id) {
-            genresSvc.deleteMoviePerson(id).then(function () {
+        function deleteGenre(id) {
+            genresSvc.deleteGenre(id).then(function () {
                 $state.reload();
-                //$state.go("genresOverview");
             }, function (error) {
                     console.log(error);
                 //add error handling
             });
         }
 
-        //DROPDOWN
-        function getDropOptions() {
-            let dropOptions = {
-                dataSource:[
-                    {name:"datecreated", field: "Date created"},
-                    { name: "popularity", field: "Popularity"}
-                ],          
-                optionLabel: "Select sorting value",
-                dataTextField: "field",
-                dataValueField: "name"
-            };
-            return dropOptions;
-        }
-
-        function getSortVariable(a) {
-
-            console.log("Sort value is:" + a); //getting from dropdown          
-
-            vm.sortBy = a;
-
-            angular.element('#grid').data("kendo-grid").dataSource.read();
-
-            return a;
-        }            
+        
         
         function getMainGridOptions() {
 
@@ -91,7 +59,7 @@
                     },
                     pageSize: 5,
                     sort: {
-                        field: vm.sortBy , dir: "desc"
+                        field: "id" , dir: "asc"
                     }
                 },
                 pageable: true,
@@ -133,7 +101,7 @@
                         width: 450,
                         template: `
                         <button class="btn btn-success" ui-sref="genreProfile({id:dataItem.id})">Profile</button>
-                        <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
+                        <button class="btn btn-success" ui-sref="manageGenre({id:dataItem.id})"> Update</button>
                         <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
                         `,
                         width: "200px"

@@ -23,12 +23,23 @@ namespace AngularJsSample.Repositories
 
         public List<Model.Genres.Genre> FindAll()
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                List<Model.Genres.Genre> list = new List<Model.Genres.Genre>();
+                foreach (var item in context.Genres_Get().ToList())
+                {
+                    list.Add(item.MapToModels());
+                }
+                return list;
+            }
         }
 
         public Model.Genres.Genre FindBy(int key)
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                return context.GenreData_Get(key).SingleOrDefault().MapToModel();
+            }
         }
 
         public Model.Genres.Genre Save(Model.Genres.Genre item)

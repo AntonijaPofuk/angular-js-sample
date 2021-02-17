@@ -4,25 +4,13 @@
     </h1>
     <div class="row" style="padding-bottom: 20px;">
         <div class="col-lg-9 col-md-9">
-            <a class="btn btn-success" ui-sref="createMoviePerson"> + Nova osoba</a>
+            <a class="btn btn-success" ui-sref="createGenre"> + Novi žanr</a>
         </div>      
     </div>
     <div>
         <kendo-grid options="vm.mainGridOptions"
                     k-sortable="true"
-                    id="grid">
-
-        <div kendo-window="deleteDialogWindow"
-                k-modal="true"
-                k-visible="false"
-                k-width="250">
-            <div style="text-align: center; width:100%">
-                <div style="margin:10px 0 15px 0">{{ dialog.message }}</div>
-                <button class="k-button k-primary" id="yesButton" ng-click="vm.delete(selectedId)">Yes</button>
-                <button class="k-button" id="noButton" ng-click="deleteDialogWindow.close()">No</button>
-            </div>
-        </div>
-
+                    id="grid">  
         </kendo-grid>
         <div id="window"></div>
     </div>

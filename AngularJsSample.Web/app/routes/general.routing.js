@@ -183,6 +183,39 @@
                 }
             })
 
+            .state('genreProfile', {
+                url: "/moviepersons/:id",
+                controller: "genreProfileCtrl",
+                controllerAs: "vm",
+                templateUrl: "app/genres/profile/profile.html",
+                resolve: { //loading services
+                    loginRequired: loginRequired,
+                    genresServices: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name: "genresServices",
+                            files: [
+                                "app/genres/genresServices.module.js"
+                            ]
+                        });
+                    },
+
+                    genre: function (genresServices, genresSvc, $stateParams) { //geting id from route
+                        return genresSvc.getGenre($stateParams.id);
+                        //calling services
+                    }, //geting value from route
+
+
+                    genreProfile: function ($ocLazyLoad, genresServices, genre) {
+                        return $ocLazyLoad.load({ //loading controller
+                            name: "genreProfile",
+                            files: [
+                                "app/genres/profile/genreProfile.module.js"
+                            ]
+                        });
+                    }
+
+                }
+            })
 
             .state('manageMoviePerson', {
                 url: "/moviepersons/update/:id",
