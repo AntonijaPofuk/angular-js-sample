@@ -44,15 +44,16 @@
         function getDropOptions() {
             let dropOptions = {
                 dataSource:[
-                    {name:"datecreated"},
-                    {name:"popularity"}
+                    {name:"datecreated", field: "Date created"},
+                    { name: "popularity", field: "Popularity"}
                 ],          
                 optionLabel: "Select sorting value",
-                dataTextField: "name",
+                dataTextField: "field",
                 dataValueField: "name"
             };
             return dropOptions;
         }
+
 
         function putSortVariable() { //sending into grid.sort
             return "id";
@@ -80,35 +81,73 @@
                 columns: [
                     {
                         field: "id",
-                        title: "#"
+                        title: "#",
+                        width: 80,
+                        headerAttributes: {                          
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        } 
                     },
                     {
-                        field: "photourl",
-                        title: "Foto"
+                        title: "Foto",
+                        template: `        
+                           <img src="#=photourl#" alt="Movie person" onerror="this.src='https://media.istockphoto.com/vectors/creative-vector-illustration-of-default-avatar-profile-placeholder-vector-id1008665336?b=1&k=6&m=1008665336&s=612x612&w=0&h=RwhZJIlY7x6Yf8pRwcKhQ_YkPiVFTfNw5Zg8FPzkv2A=';" width="100%">
+                                `,
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        } 
                     },
                     {
                         field: "firstname",
-                        title: "Ime"
+                        title: "Ime",
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        } 
                     },
                     {
                         field: "lastname",
                         title: "Prezime",
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        } 
                     },
                     {
                         field: "birthplace",
-                        title: "Mjesto rođenja"
+                        title: "Mjesto rođenja",
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        } 
                     },
                     {
                         field: "popularity",
                         template: "\\\\\#  #: popularity #",
-                        title: "Popularnost"
+                        title: "Popularnost",
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        } 
                     },
                     {
                         template: `
                     <button class="btn btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
                     <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
                         `,
-                        headerTemplate: '<label> Edit </label>',
                         width: "200px"
                     }
                 ]
