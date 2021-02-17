@@ -9,6 +9,8 @@ namespace AngularJsSample.Services
         GetGenreResponse GetGenre(GetGenreRequest request);
         GetGenresResponse GetGenres(GetGenresRequest request);
         DeleteGenreResponse DeleteGenre(DeleteGenreRequest request);
+        SaveGenreResponse SaveGenre(SaveGenreRequest request);
+
 
     }
 }

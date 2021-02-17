@@ -56,7 +56,13 @@ namespace AngularJsSample.Repositories
 
         public Model.Genres.Genre Save(Model.Genres.Genre item)
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                context.Genre_Save(item.Id, item.Name, item.Description,                  
+                     item.UserLastModified?.Id);
+                return item;
+            }
+        }
         }
     }
-}
+

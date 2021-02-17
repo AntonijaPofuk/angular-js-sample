@@ -97,6 +97,44 @@ namespace AngularJsSample.Api.Controllers
 
             return Ok();
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IHttpActionResult Put(int id, GenreViewModel genre)
+        {
+            var loggedUserId = HttpContext.Current.GetOwinContext().GetUserId();
+
+            genre.UserLastModified = new Models.Users.UserViewModel()
+            {
+                Id = loggedUserId
+            };
+            genre.Lastmodified = DateTimeOffset.Now;
+
+
+            if (ModelState.IsValid)
+            {
+                var request = new SaveGenreRequest()
+                {
+                    RequestToken = Guid.NewGuid(),
+                    UserId = loggedUserId,
+                    Genre = genre.MapToView()
+                };
+
+                var genresResponse = _genreService.SaveGenre(request);
+
+                if (!genresResponse.Success)
+                {
+                    return BadRequest(genresResponse.Message);
+                }
+
+                return Ok(genre = genresResponse.Genre.MapToViewModel());
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+        }
     }
 }
 

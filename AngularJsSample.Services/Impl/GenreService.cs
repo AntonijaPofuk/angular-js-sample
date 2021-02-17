@@ -95,5 +95,38 @@ namespace AngularJsSample.Services.Impl
 
             return response;
         }
+
+        SaveGenreResponse IGenreService.SaveGenre(SaveGenreRequest request)
+        {
+            var response = new SaveGenreResponse()
+            {
+                Request = request,
+                ResponseToken = Guid.NewGuid()
+            };
+            try
+            {
+                if (request.Genre?.Id == 0)
+                {
+                    response.Genre = request.Genre;
+                    response.Genre.Id = _repository.Add(request.Genre.MapToModel());
+                    response.Success = true;
+                }
+                else if (request.Genre?.Id > 0)
+                {
+                    response.Genre = _repository.Save(request.Genre.MapToModel()).MapToView();
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+            return response;
+        }
     }
 }

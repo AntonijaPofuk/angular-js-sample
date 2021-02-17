@@ -44,7 +44,6 @@
             Swal.fire({
                 title: '',
                 width: "60vw",
-                height: "60vw",
                 html: `<h1>Novi žanr</h1>    
                         <div>Ime:</div>
                         <input id="genreName" class="form-control" value="`+ genre.name + `"/>
@@ -70,6 +69,23 @@
                         Name: ${result.value.name}
                         Description: ${result.value.description}
                         `.trim())
+
+                if (genre.id > 0) {
+                    //update
+                    genresSvc.updateGenre(genre.id, genre).then(function () {
+                        $state.go("genresOverview");
+                    }, function (error) {
+                        //add error handling
+                    });
+                }
+                else {
+                    //create
+                    genresSvc.createGenre(genre).then(function () {
+                        $state.go("genresOverview");
+                    }, function (error) {
+                        //add error handling
+                    });
+                }
 
             })          
         }       

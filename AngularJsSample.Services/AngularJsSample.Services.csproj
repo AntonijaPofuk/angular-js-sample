@@ -63,6 +63,8 @@
     <Compile Include="Messaging\Genres\GetGenreResponse.cs" />
     <Compile Include="Messaging\Genres\GetGenresRequest.cs" />
     <Compile Include="Messaging\Genres\GetGenresResponse.cs" />
+    <Compile Include="Messaging\Genres\SaveGenreRequest.cs" />
+    <Compile Include="Messaging\Genres\SaveGenreResponse.cs" />
     <Compile Include="Messaging\MoviePersons\SaveMoviePersonRequest.cs" />
     <Compile Include="Messaging\MoviePersons\DeleteMoviePersonRequest.cs" />
     <Compile Include="Messaging\MoviePersons\SaveMoviePersonResponse.cs" />

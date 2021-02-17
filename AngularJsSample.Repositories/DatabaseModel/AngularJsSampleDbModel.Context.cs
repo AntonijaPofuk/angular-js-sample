@@ -175,5 +175,26 @@ namespace AngularJsSample.Repositories.DatabaseModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Genre_Delete", idParameter, userLastModifiedParameter);
         }
+    
+        public virtual int Genre_Save(Nullable<int> id, string name, string description, Nullable<int> userLastModified)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var userLastModifiedParameter = userLastModified.HasValue ?
+                new ObjectParameter("UserLastModified", userLastModified) :
+                new ObjectParameter("UserLastModified", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Genre_Save", idParameter, nameParameter, descriptionParameter, userLastModifiedParameter);
+        }
     }
 }
