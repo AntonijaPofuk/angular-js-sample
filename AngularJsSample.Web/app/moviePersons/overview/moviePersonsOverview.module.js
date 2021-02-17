@@ -5,8 +5,8 @@
         .controller('moviePersonsOverviewCtrl', moviePersonsOverviewCtrl);
 
     //OVERVIEW
-    moviePersonsOverviewCtrl.$inject = ['$scope', '$http'];
-    function moviePersonsOverviewCtrl($scope, $http) {
+    moviePersonsOverviewCtrl.$inject = ['$scope', '$http', 'moviePersonsSvc', '$state'];
+    function moviePersonsOverviewCtrl($scope, $http, moviePersonsSvc, $state) {
 
         //#region JS variables
         var vm = this;
@@ -17,6 +17,8 @@
       
         vm.mainGridOptions = getMainGridOptions();
         vm.dropOptions = getDropOptions();
+        vm.delete = deleteMoviePerson;
+
 
         vm.selectedSortValue = getSortVariable; 
 
@@ -34,6 +36,15 @@
         //#region JS functions
         //cal for the viewModel vm
         function activate() { }    
+
+        //DELETE
+        function deleteMoviePerson(id) {
+            moviePersonsSvc.deleteMoviePerson(id).then(function () {
+                $state.go("moviePersonsOverview");
+            }, function (error) {
+                //add error handling
+            });
+        }
 
         function getSortVariable(a) {            
             console.log("Sort value is:" + a); //getting from dropdown
@@ -147,6 +158,8 @@
                         template: `
                     <button class="btn btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
                     <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
+                    <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
+
                         `,
                         width: "200px"
                     }
@@ -154,6 +167,19 @@
             };
             return options;
         }
+
+
+        $scope.dialog = {
+            message: ""
+        }
+        $scope.showDialog = function (id, title, message) {
+            $scope.selectedId = id;
+            $scope.dialog.message = message;
+            $scope.deleteDialogWindow.title(title);
+            $scope.deleteDialogWindow.center();
+            $scope.deleteDialogWindow.open();
+        }
+
         //#endregion
 
     };
