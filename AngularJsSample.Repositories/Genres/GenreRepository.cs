@@ -13,7 +13,11 @@ namespace AngularJsSample.Repositories
     {
         public int Add(Model.Genres.Genre item)
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                return context.Genre_Insert(item.Name, item.Description, item.UserCreated?.Id);
+
+            }
         }
 
         public bool Delete(Model.Genres.Genre item)

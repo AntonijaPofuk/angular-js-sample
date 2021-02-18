@@ -41,6 +41,11 @@
           <Parameter Name="Id" Type="int" Mode="In" />
           <Parameter Name="UserLastModified" Type="int" Mode="In" />
         </Function>
+        <Function Name="Genre_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserCreated" Type="int" Mode="In" />
+        </Function>
         <Function Name="Genre_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
           <Parameter Name="Name" Type="nvarchar" Mode="In" />
@@ -149,6 +154,11 @@
             <Parameter Name="Name" Mode="In" Type="String" />
             <Parameter Name="Description" Mode="In" Type="String" />
             <Parameter Name="UserLastModified" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Genre_Insert">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="UserCreated" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="MoviePerson">
@@ -416,6 +426,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Genre_Delete" FunctionName="AngularJsSampleDbModel.Store.Genre_Delete" />
           <FunctionImportMapping FunctionImportName="Genre_Save" FunctionName="AngularJsSampleDbModel.Store.Genre_Save" />
+          <FunctionImportMapping FunctionImportName="Genre_Insert" FunctionName="AngularJsSampleDbModel.Store.Genre_Insert" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
