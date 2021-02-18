@@ -9,10 +9,13 @@
             </div>
         </div>
         <div style="margin-top: 25px">
-            <button class="btn btn-success" ng-click="vm.save(vm.moviePerson)">Spremi</button>
-            <button class="btn btn-default" ui-sref="moviePersonsOverview">Odustani</button>   
+                    <button ng-disabled="vm.moviePerson.firstname===empty||vm.moviePerson.lastname===empty||vm.moviePerson.birthplace===empty||vm.moviePerson.popularity===empty||vm.moviePerson.birthday===empty||vm.moviePerson.popularity===empty"
+                            class="btn btn-success" ng-click="vm.save(vm.moviePerson)">
+                        Spremi
+                    </button>
+                <button class="btn btn-default" ui-sref="moviePersonsOverview">Odustani</button>
+            </div>
         </div>
-    </div>
     <hr />
     <div class="col-sm-8">
         <div class="panel panel-default">
@@ -23,13 +26,15 @@
                 <div class="col-sm-5">
                     <div class="panel-body">
                         <strong><div>Ime:</div></strong>
-                        <div><input class="form-control" ng-model="vm.moviePerson.firstname" /></div>
+                        <div><input ng-required=true class="form-control" name="mpName" ng-model="vm.moviePerson.firstname" /></div>
+                        <p class="text-danger" ng-if="!newMoviePersonForm.mpName.$valid">Ime je obavezno za unijeti.</p>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="panel-body">
                         <strong><div>Prezime:</div></strong>
-                        <div><input class="form-control" ng-model="vm.moviePerson.lastname" /></div>
+                        <div><input ng-required=true class="form-control" name="mpLastName" ng-model="vm.moviePerson.lastname" /></div>
+                        <p class="text-danger" ng-if="!newMoviePersonForm.mpLastName.$valid">Prezime je obavezno za unijeti.</p>
                     </div>
                 </div>
             </div>
@@ -39,15 +44,19 @@
                     <div class="panel-body">
                         <strong><div>Datum rođenja:</div></strong>
                         <input kendo-date-picker
+                               name="mpbirthday"
+                               ng-required=true
                                ng-model="vm.moviePerson.birthday"
                                k-format="dd/MM/yyyy"
                                k-parse-formats="['yyyy-MM-ddTHH:mm:sszzz']" />
+                        <p class="text-danger" ng-if="!newMoviePersonForm.mpbirthday.$valid">Datum rođenja je obavezno za unijeti.</p>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="panel-body">
                         <strong><div>Mjesto rođenja:</div></strong>
-                        <div><input class="form-control" ng-model="vm.moviePerson.birthplace" /></div>
+                        <div><input ng-required=true name="mpbirthplace" class="form-control" ng-model="vm.moviePerson.birthplace" /></div>
+                        <p class="text-danger" ng-if="!newMoviePersonForm.mpbirthplace.$valid">Mjesto rođenja je obavezno za unijeti.</p>
                     </div>
                 </div>
                 <div class="col-sm-10">
@@ -61,7 +70,7 @@
                         <div>IMDB url:</div>
                         <div>
                             <input class="form-control" name="imdbUrl" ng-model="vm.moviePerson.imdbUrl" ng-pattern="/^(http|https):///" />
-                            <span style="color:Red" ng-show="newMoviePersonForm.imdbUrl.$error.pattern">Url doesn't start with http or https</span>
+                            <span class="text-danger" ng-show="newMoviePersonForm.imdbUrl.$error.pattern">Url mora započeti sa http ili https.</span>
                         </div>
                     </div>
                 </div>
@@ -70,7 +79,7 @@
                         <div>Picture url:</div>
                         <div>
                             <input class="form-control" name="pictureUrl" ng-model="vm.moviePerson.photourl" ng-pattern="/^(http|https):\/\/.*\.(jpg|png|gif|jpeg)$/g" />
-                            <span style="color:Red" ng-show="newMoviePersonForm.pictureUrl.$error.pattern">Url doesn't start with http or https or ends with photo extension</span>
+                            <span class="text-danger" ng-show="newMoviePersonForm.pictureUrl.$error.pattern">Url mora započeti sa http ili https i završiti sa jpg|png|gif|jpeg.</span>
                             <div class="font-italic">(*.gif, *.png, *.jpeg, *.jpg)</div>
                         </div>
                     </div>
@@ -79,14 +88,23 @@
                     <div class="panel-body">
                         <strong><div>Popularnost:</div></strong>
                         <div>
-                            #<input kendo-numeric-text-box k-min="1" k-max="100" k-ng-model="vm.moviePerson.popularity" style="width: 50%;" />
+                            #<input kendo-numeric-text-box
+                                    type="text"
+                                    name="mpPopularity"
+                                    style="width: 50%;"
+                                    k-min="1"
+                                    k-max="100"
+                                    ng-model="vm.moviePerson.popularity"
+                                    ng-pattern="/^[0-9]{1,3}$/" 
+                                    ng-required="true" />
+                            <span class="text-danger" ng-show="newMoviePersonForm.mpPopularity.$error.required">Popularnost je obavezna za unijeti! </span>
+                            <span class="text-danger" ng-show="newMoviePersonForm.mpPopularity.$dirty&&personForm.pincode.$error.pattern">Popularnost mora biti veća od 0 i manja od 100.</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </form>
 <div kendo-window="win2"
      k-modal="true"
