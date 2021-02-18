@@ -54,10 +54,10 @@
         function getDropOptions() {
             let dropOptions = {
                 dataSource:[
-                    {name:"datecreated", field: "Date created"},
-                    { name: "popularity", field: "Popularity"}
+                    {name:"datecreated", field: "Datum kreiranja"},
+                    { name: "popularity", field: "Popularnost"}
                 ],          
-                optionLabel: "Select sorting value",
+                optionLabel: "Odaberite opciju sortiranja",
                 dataTextField: "field",
                 dataValueField: "name"
             };
@@ -96,15 +96,11 @@
                 },
                 pageable: true,
                 selectable: true,                
-                columns: [
-                    {
-                        field: "datecreated",
-                        title: "datecreated"
-                    },
+                columns: [                   
                     {
                         field: "id",
                         title: "#",
-                        width: 80,
+                        width: 50,
                         headerAttributes: {                          
                             style: "text-align: center"
                         },
@@ -115,7 +111,7 @@
                     {
                         title: "Foto",
                         template: `        
-                           <img src="#=photourl#" alt="Movie person" onerror="this.src='https://media.istockphoto.com/vectors/creative-vector-illustration-of-default-avatar-profile-placeholder-vector-id1008665336?b=1&k=6&m=1008665336&s=612x612&w=0&h=RwhZJIlY7x6Yf8pRwcKhQ_YkPiVFTfNw5Zg8FPzkv2A=';" width="100%">
+                           <img src="#=photourl#" alt="Movie person" onerror="this.src='https://media.istockphoto.com/vectors/creative-vector-illustration-of-default-avatar-profile-placeholder-vector-id1008665336?b=1&k=6&m=1008665336&s=612x612&w=0&h=RwhZJIlY7x6Yf8pRwcKhQ_YkPiVFTfNw5Zg8FPzkv2A=';" width="20%">
                                 `,
                         headerAttributes: {
                             style: "text-align: center"
@@ -138,6 +134,7 @@
                     {
                         field: "lastname",
                         title: "Prezime",
+                        width: 100,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -148,6 +145,7 @@
                     {
                         field: "birthplace",
                         title: "Mjesto rođenja",
+                        width: 150,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -156,10 +154,9 @@
                         } 
                     },
                     {
-                        field: "popularity",
-                       
+                        field: "popularity",                       
                         title: "Popularnost",
-                        width: 120,
+                        width: 100,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -168,13 +165,11 @@
                         } 
                     },
                     {
-                        width: 450,
                         template: `
-                        <button class="btn btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
-                        <button class="btn btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
-                        <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
-                        `,
-                        width: "200px"
+                        <button class="btn btn-sm btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
+                        <button class="btn btn-sm btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
+                        <button class="btn btn-sm btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
+                        `
                     }
                 ]
             };
