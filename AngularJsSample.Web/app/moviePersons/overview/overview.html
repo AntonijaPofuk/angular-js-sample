@@ -4,7 +4,7 @@
     </h1>
     <div class="row" style="padding-bottom: 20px;">
         <div class="col-lg-9 col-md-9">
-            <a class="btn btn-success btn-sm" ui-sref="createMoviePerson"> + Nova osoba</a>
+            <a class="btn btn-success" ui-sref="createMoviePerson"> + Nova osoba</a>
         </div>
         <!-- Selected value is: {{dataSource.name}} -->
         <div class="col-lg-2 col-md-2 col-sm-2">
@@ -26,8 +26,8 @@
                 k-width="250">
             <div style="text-align: center; width:100%">
                 <div style="margin:10px 0 15px 0">{{ dialog.message }}</div>
-                <button class="k-button k-primary" id="yesButton" ng-click="vm.delete(selectedId)">Yes</button>
-                <button class="k-button" id="noButton" ng-click="deleteDialogWindow.close()">No</button>
+                <button class="btn btn-danger" id="yesButton" ng-click="vm.delete(selectedId)">Obriši</button>
+                <button class="k-button" id="noButton" ng-click="deleteDialogWindow.close()">Odustani</button>
             </div>
         </div>
 

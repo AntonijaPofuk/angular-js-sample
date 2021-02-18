@@ -166,9 +166,9 @@
                     },
                     {
                         template: `
-                        <button class="btn btn-sm btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profile</button>
-                        <button class="btn btn-sm btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Update</button>
-                        <button class="btn btn-sm btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected person?')">Delete</button>
+                        <button class="btn btn-sm btn-success" ui-sref="moviePersonProfile({id:dataItem.id})">Profil</button>
+                        <button class="btn btn-sm btn-success" ui-sref="manageMoviePerson({id:dataItem.id})"> Ažuriraj</button>
+                        <button class="btn btn-sm btn-danger" ng-click="showDialog(dataItem.id, 'Brisanje', 'Sigurno želite obrisati odabranu osobu?')">Obriši</button>
                         `
                     }
                 ]
