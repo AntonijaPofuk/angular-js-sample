@@ -45,7 +45,6 @@
                     $state.go("moviePersonsOverview");
                 }, function (error) {
                     Swal.fire(error.status + ': Niste uspješno ažurirali osobu!')
-                    //add error handling
                 });
 
             }

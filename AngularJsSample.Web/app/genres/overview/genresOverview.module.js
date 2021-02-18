@@ -26,7 +26,6 @@
         //#endregion
 
         //#region JS functions
-        //call for the viewModel vm
         function activate() {
             }    
 
@@ -36,7 +35,6 @@
                 $state.reload();
             }, function (error) {
                     console.log(error);
-                //add error handling
             });
         }
         
@@ -49,23 +47,33 @@
             Swal.fire({
                 title: "",
                 width: "600",
-                html: ` <div class="swal-title" style:"font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; text-align:left;">      
-                        <div style=" border-bottom: 1px solid grey;">
-                        <h1 style="text-align:left;">Uredi žanr</h1>
+                html: `<div style="text-align:left;" class="row">
+                            <div class="col-sm-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Novi žanr</div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="panel-body">
+                                            <strong><div>Naziv:</div></strong>
+                                                <input id="genreName" class="form-control" value="`+ genre.name + `"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="panel-body">
+                                            <div>Opis:</div>
+                                                 <textarea id="genreDesc" class="form-control" rows="4" style="max-width:100%; max-height:500%;">` + genre.description + `</textarea> 
+                                        </div>
+                                    </div>
+                            </div>
                         </div>
-                        <div style="text-align:left; font-size:medium;">
-                        <div>Naziv:</div>
-                        <input id="genreName" class="form-control" value="`+  genre.name + `"/>
-                        <div>Kratki opis:</div>
-                        <textarea id="genreDesc" class="form-control" rows="4" style="max-width:100%; max-height:500%;">` +genre.description + `</textarea> 
-                        </div>
-                        </div
                 `,
                 confirmButtonText: 'Spremi',
                 cancelButtonText: "Odustani",
                 showCancelButton: true,
                 allowOutsideClick: true,
                 focusConfirm: true,
+                customClass: "Custom_Cancel",
                 preConfirm: () => {
                     const genreName = Swal.getPopup().querySelector('#genreName').value
                     const genreDesc = Swal.getPopup().querySelector('#genreDesc').value

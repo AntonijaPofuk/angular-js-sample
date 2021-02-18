@@ -20,13 +20,11 @@
         vm.sortValue = getSortVariable;
 
         vm.sortBy = "";       
-        //vm.sortBy = getSortVariable;
 
         vm.mainGridOptions = getMainGridOptions();
 
         vm.delete = deleteMoviePerson;
 
-        //var sort = [{field: "firstname", dir: "asc"}];
 
         //#endregion 
 
@@ -35,7 +33,6 @@
         //#endregion
 
         //#region JS functions
-        //call for the viewModel vm
         function activate() {
             }    
 
@@ -43,7 +40,6 @@
         function deleteMoviePerson(id) {
             moviePersonsSvc.deleteMoviePerson(id).then(function () {
                 $state.reload();
-                //$state.go("moviePersonsOverview");
             }, function (error) {
                     console.log(error);
                 //add error handling
@@ -88,10 +84,7 @@
                                 });
                         },
                     },
-                    pageSize: 5
-                    //sort: {
-                    //    field: vm.sortBy , dir: "desc"
-                    //}
+                    pageSize: 5                   
                 },
                 pageable: true,
                 selectable: true,                
@@ -188,9 +181,6 @@
         }
 
         //#endregion
-
     };
-
-
 
 })();
