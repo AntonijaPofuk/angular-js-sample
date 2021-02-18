@@ -47,16 +47,24 @@
                 genre.description = "";
             }
             Swal.fire({
-                title: genre == undefined ? "Novi žanr" :"Uredi žanr" ,
-                width: "800vw",
-                html: ` <div>Ime:</div>
+                title: "",
+                width: "600",
+                html: ` <div class="swal-title" style:"font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; text-align:left;">      
+                        <div style=" border-bottom: 1px solid grey;">
+                        <h1 style="text-align:left;">Uredi žanr</h1>
+                        </div>
+                        <div style="text-align:left; font-size:medium;">
+                        <div>Naziv:</div>
                         <input id="genreName" class="form-control" value="`+  genre.name + `"/>
-                        <div>Opis:</div>
-                        <input id="genreDesc" class="form-control"  style="max-width:100%; max-height:100%;" value="`+ genre.description + `"/>                          
+                        <div>Kratki opis:</div>
+                        <textarea id="genreDesc" class="form-control" rows="4" style="max-width:100%; max-height:500%;">` +genre.description + `</textarea> 
+                        </div>
+                        </div
                 `,
                 confirmButtonText: 'Spremi',
                 cancelButtonText: "Odustani",
-                allowOutsideClick: "true",
+                showCancelButton: true,
+                allowOutsideClick: true,
                 focusConfirm: true,
                 preConfirm: () => {
                     const genreName = Swal.getPopup().querySelector('#genreName').value
@@ -144,14 +152,32 @@
                         attributes: {
                             style: "text-align: center;"
                         } 
-                    },                   
+                    },    
+                    {
+                        field: "datecreated",
+                        title: "Datum kreiranja",
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        }
+                    },
+                    {
+                        field: "description",
+                        title: "Kreirao",
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        }
+                    },    
                     {
                         width: 450,
                         template: `
-                        <button class="btn btn-success" ui-sref="genreProfile({id:dataItem.id})">Profile</button>
-                        <button class="btn btn-success" ui-sref="manageGenre({id:dataItem.id})"> Update</button>
+                        <button class="btn btn-success" ng-click="saveGenre(dataItem)">Update</button>
                         <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected genre?')">Delete</button>
-                        <button class="btn btn-danger" ng-click="saveGenre(dataItem)">Profil</button>
                         `,
                         width: "200px"
                     }
