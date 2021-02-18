@@ -70,8 +70,7 @@
 
             vm.sortBy = a;
 
-            angular.element('#grid').data("kendo-grid").dataSource.read();
-
+            $('#grid').data("kendo-grid").dataSource.sort({ field: vm.sortBy, dir: 'desc' });
             return a;
         }            
         
@@ -89,10 +88,10 @@
                                 });
                         },
                     },
-                    pageSize: 5,
-                    sort: {
-                        field: vm.sortBy , dir: "desc"
-                    }
+                    pageSize: 5
+                    //sort: {
+                    //    field: vm.sortBy , dir: "desc"
+                    //}
                 },
                 pageable: true,
                 selectable: true,                
