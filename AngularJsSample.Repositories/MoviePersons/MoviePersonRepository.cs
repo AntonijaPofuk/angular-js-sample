@@ -18,7 +18,6 @@ namespace AngularJsSample.Repositories
             {
                 return context.MoviePerson_Insert(item.FirstName, item.LastName, item.Birthday, item.BirthPlace, item.Biography, 
                     item.UserCreated?.Id, item.PhotoUrl, item.IMDBUrl, item.Popularity);
-
             }
         }
 
