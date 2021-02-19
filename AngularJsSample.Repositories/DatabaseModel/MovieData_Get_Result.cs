@@ -10,26 +10,27 @@
 namespace AngularJsSample.Repositories.DatabaseModel
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class MoviePerson
+    public partial class MovieData_Get_Result
     {
         public int Id { get; set; }
         public bool Active { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string BirthPlace { get; set; }
-        public System.DateTimeOffset Birthday { get; set; }
-        public string Biography { get; set; }
-        public string PhotoUrl { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public System.DateTimeOffset ReleaseDate { get; set; }
+        public Nullable<int> Rating { get; set; }
+        public string PosterUrl { get; set; }
         public string IMDBUrl { get; set; }
-        public int Popularity { get; set; }
         public System.DateTimeOffset DateCreated { get; set; }
         public int UserCreated { get; set; }
-        public Nullable<System.DateTimeOffset> LastModified { get; set; }
         public Nullable<int> UserLastModified { get; set; }
-    
-        public virtual UserInfo UserInfo { get; set; }
-        public virtual UserInfo UserInfo1 { get; set; }
+        public string UserCreatedFirstName { get; set; }
+        public string UserCreatedLastName { get; set; }
+        public string UserCreatedFullName { get; set; }
+        public string UserCreatedEmail { get; set; }
+        public string UserLastModifiedFirstName { get; set; }
+        public string UserLastModifiedLastName { get; set; }
+        public string UserLastModifiedFullName { get; set; }
+        public string UserLastModifiedEmail { get; set; }
     }
 }

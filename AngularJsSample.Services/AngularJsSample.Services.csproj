@@ -46,17 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMovieService.cs" />
     <Compile Include="IGenreService.cs" />
+    <Compile Include="Impl\MovieService.cs" />
     <Compile Include="Impl\GenreService.cs" />
     <Compile Include="Impl\MoviePersonService.cs" />
     <Compile Include="Impl\UserService.cs" />
     <Compile Include="IMoviePersonService .cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="Mapping\MovieMapper.cs" />
     <Compile Include="Mapping\GenresMapper.cs" />
     <Compile Include="Mapping\Profiles\CommonProfile.cs" />
     <Compile Include="Mapping\MoviePersonsMapper.cs" />
     <Compile Include="Mapping\UsersMapper.cs" />
     <Compile Include="Messaging\GenericErrorMessageFactory.cs" />
+    <Compile Include="Messaging\Movies\DeleteMovieRequest.cs" />
+    <Compile Include="Messaging\Movies\DeleteMovieResponse.cs" />
+    <Compile Include="Messaging\Movies\GetMovieRequest.cs" />
+    <Compile Include="Messaging\Movies\GetMovieResponse.cs" />
+    <Compile Include="Messaging\Movies\GetMoviesRequest.cs" />
+    <Compile Include="Messaging\Movies\GetMoviesResponse.cs" />
+    <Compile Include="Messaging\Movies\SaveMovieRequest.cs" />
+    <Compile Include="Messaging\Movies\SaveMovieResponse.cs" />
     <Compile Include="Messaging\Genres\DeleteGenreRequest.cs" />
     <Compile Include="Messaging\Genres\DeleteGenreResponse.cs" />
     <Compile Include="Messaging\Genres\GetGenreRequest.cs" />
@@ -75,6 +86,7 @@
     <Compile Include="Messaging\MoviePersons\GetMoviePersonResponse.cs" />
     <Compile Include="Messaging\RequestBase.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
+    <Compile Include="Messaging\Views\Movies\Movie.cs" />
     <Compile Include="Messaging\Views\Genres\Genre.cs" />
     <Compile Include="Messaging\Views\MoviePersons\MoviePerson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

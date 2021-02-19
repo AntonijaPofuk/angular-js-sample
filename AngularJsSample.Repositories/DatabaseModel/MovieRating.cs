@@ -12,26 +12,16 @@ namespace AngularJsSample.Repositories.DatabaseModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Genre
+    public partial class MovieRating
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Genre()
-        {
-            this.Movies = new HashSet<Movie>();
-        }
-    
-        public int Id { get; set; }
-        public bool Active { get; set; }
+        public int MovieId { get; set; }
+        public int UserRatedId { get; set; }
         public System.DateTimeOffset DateCreated { get; set; }
         public int UserCreated { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public Nullable<System.DateTimeOffset> LastModified { get; set; }
-        public Nullable<int> UserLastModified { get; set; }
+        public int Rating { get; set; }
     
+        public virtual Movie Movie { get; set; }
         public virtual UserInfo UserInfo { get; set; }
         public virtual UserInfo UserInfo1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movie> Movies { get; set; }
     }
 }

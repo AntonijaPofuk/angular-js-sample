@@ -12,26 +12,33 @@ namespace AngularJsSample.Repositories.DatabaseModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Genre
+    public partial class Movie
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Genre()
+        public Movie()
         {
-            this.Movies = new HashSet<Movie>();
+            this.MovieRatings = new HashSet<MovieRating>();
+            this.Genres = new HashSet<Genre>();
         }
     
         public int Id { get; set; }
         public bool Active { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> Rating { get; set; }
+        public string Description { get; set; }
+        public System.DateTimeOffset ReleaseDate { get; set; }
+        public string PosterUrl { get; set; }
+        public string IMDBUrl { get; set; }
         public System.DateTimeOffset DateCreated { get; set; }
         public int UserCreated { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
         public Nullable<System.DateTimeOffset> LastModified { get; set; }
         public Nullable<int> UserLastModified { get; set; }
     
         public virtual UserInfo UserInfo { get; set; }
         public virtual UserInfo UserInfo1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<MovieRating> MovieRatings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Genre> Genres { get; set; }
     }
 }

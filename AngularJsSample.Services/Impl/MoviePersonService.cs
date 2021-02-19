@@ -152,9 +152,11 @@ namespace AngularJsSample.Services.Impl
                 if (item.MoviePerson.Birthday == null) throw new ValidationException("Birthday is required!");
                 if (item.MoviePerson.BirthPlace == null || !(item.MoviePerson.BirthPlace is String) || item.MoviePerson.BirthPlace.Length > 50) throw new ValidationException("Birthplace is required!");
                 if (item.MoviePerson.Popularity < 1 || item.MoviePerson.Popularity > 100) throw new ValidationException("Popularity is required or is not inside required rang(1,100)");
-                if (item.MoviePerson.Biography is String && item.MoviePerson.Biography.Length < 2000) throw new ValidationException("Biography is not string or bigger than 2000 characters!");
-                if (item.MoviePerson.IMDBUrl is String && item.MoviePerson.IMDBUrl.Length < 2000) throw new ValidationException("IMDBUrl is not string or bigger than 2000 characters!");
-                if (item.MoviePerson.PhotoUrl is String && item.MoviePerson.PhotoUrl.Length < 2000) throw new ValidationException("PhotoUrl is not string or bigger than 2000 characters!");
+                
+                // TODO fix server-validation for not required fields
+                //if (item.MoviePerson.Biography is String && item.MoviePerson.Biography.Length < 2000) throw new ValidationException("Biography is not string or bigger than 2000 characters!");
+                //if (item.MoviePerson.IMDBUrl is String && item.MoviePerson.IMDBUrl.Length < 2000) throw new ValidationException("IMDBUrl is not string or bigger than 2000 characters!");
+                //if (item.MoviePerson.PhotoUrl is String && item.MoviePerson.PhotoUrl.Length < 2000) throw new ValidationException("PhotoUrl is not string or bigger than 2000 characters!");
                 return true;
             }
             catch (ValidationException e)
