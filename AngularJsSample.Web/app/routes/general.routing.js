@@ -94,6 +94,34 @@
             })
 
 
+            .state('moviesOverview', {
+                url: "/movies",
+                controller: "moviesOverviewCtrl",
+                controllerAs: "vm",
+                templateUrl: "app/movies/overview/overview.html",
+                resolve: {
+                    loginRequired: loginRequired,
+                    moviesServices: function ($ocLazyLoad) { // loading services
+                        return $ocLazyLoad.load({
+                            name: "moviesServices",
+                            files: [
+                                "app/movies/moviesServices.module.js"
+                            ]
+                        });
+                    },
+                    // loading controller
+                    moviesOverview: function ($ocLazyLoad, moviesServices) {
+                        return $ocLazyLoad.load({
+                            name: "moviesOverview",
+                            files: [
+                                "app/movies/overview/moviesOverview.module.js"
+                            ]
+                        });
+                    }
+
+                }
+            })
+
             .state('genresOverview', {
                 url: "/genres",
                 controller: "genresOverviewCtrl",

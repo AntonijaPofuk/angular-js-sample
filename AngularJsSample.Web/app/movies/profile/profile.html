@@ -1,0 +1,60 @@
+﻿<h1>{{vm.moviePerson.firstname}} {{vm.moviePerson.lastname}}</h1>
+<hr />
+<div class="row">
+    <div class="col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">PODACI O OSOBI</div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div class="modal-title">Ime:</div>
+                    <div><strong>{{vm.moviePerson.firstname}}</strong></div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Prezime:</div>
+                    <div><strong>{{vm.moviePerson.lastname}}</strong></div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Datum rođenja:</div>
+                    <div><strong>{{vm.moviePerson.birthday| date:'dd.MM.yyyy.'}}</strong></div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="panel-body">
+                    <div>Mjesto rođenja:</div>
+                    <div><strong>{{vm.moviePerson.birthplace}}</strong></div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>Biografija:</div>
+                    <div>{{vm.moviePerson.biography}}</div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>IMDB url:</div>
+                    <div>
+                        <a target="_blank" href={{vm.moviePerson.imdbUrl}}>{{vm.moviePerson.imdbUrl}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
+                    <div>Popularnost:</div>
+                    <div><strong>#{{vm.moviePerson.popularity}}</strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <img src={{vm.moviePerson.photourl}} alt="Movie person"  onerror="this.src='https://media.istockphoto.com/vectors/creative-vector-illustration-of-default-avatar-profile-placeholder-vector-id1008665336?b=1&k=6&m=1008665336&s=612x612&w=0&h=RwhZJIlY7x6Yf8pRwcKhQ_YkPiVFTfNw5Zg8FPzkv2A=';" width="100%">
+    </div>
+</div>
+
+

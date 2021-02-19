@@ -118,6 +118,7 @@
                                     options.success(result.data.genres);
                                 }, function (error) {
                                     //add error handling
+
                                 });
                         },
                     },

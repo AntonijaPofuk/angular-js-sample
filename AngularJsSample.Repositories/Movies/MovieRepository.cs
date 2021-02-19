@@ -23,12 +23,23 @@ namespace AngularJsSample.Repositories
 
         public List<Model.Movies.Movie> FindAll()
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                List<Model.Movies.Movie> list = new List<Model.Movies.Movie>();
+                foreach (var item in context.Movies_Get().ToList())
+                {
+                    list.Add(item.MapToModels());
+                }
+                return list;
+            }
         }
 
         public Model.Movies.Movie FindBy(int key)
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                return context.MovieData_Get(key).SingleOrDefault().MapToModel();
+            }
         }
 
         public Model.Movies.Movie Save(Model.Movies.Movie item)
