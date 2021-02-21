@@ -21,7 +21,11 @@ namespace AngularJsSample.Api.Mapping.Movies
                 Description = view.Description,               
                 Datecreated = view.DateCreated,
                 UserLastModified = view.UserLastModified.MapToViewModel(),
-                UserCreated = view.UserCreated.MapToViewModel()
+                UserCreated = view.UserCreated.MapToViewModel(),
+                Rating = view.Rating,
+                PosterUrl = view.PosterUrl,
+                IMDBUrl = view.IMDBUrl,
+                ReleaseDate = view.ReleaseDate
             };
         }
 
@@ -36,7 +40,12 @@ namespace AngularJsSample.Api.Mapping.Movies
                 Description = viewModel.Description,               
                 DateCreated = viewModel.Datecreated,
                 UserLastModified = viewModel.UserLastModified.MapToView(),
-                UserCreated = viewModel.UserCreated.MapToView()
+                UserCreated = viewModel.UserCreated.MapToView(),
+                Rating = viewModel.Rating,
+                PosterUrl = viewModel.PosterUrl,
+                IMDBUrl = viewModel.IMDBUrl,
+                ReleaseDate = viewModel.ReleaseDate
+
             };
         }
 

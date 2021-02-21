@@ -245,6 +245,37 @@
                 }
             })
 
+            .state('movieProfile', {
+                url: "/movies/:id",
+                controller: "movieProfileCtrl",
+                controllerAs: "vm",
+                templateUrl: "app/movies/profile/profile.html",
+                resolve: { //loading services
+                    loginRequired: loginRequired,
+                    moviesServices: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name: "moviesServices",
+                            files: [
+                                "app/movies/moviesServices.module.js"
+                            ]
+                        });
+                    },
+                    movie: function (moviesServices, moviesSvc, $stateParams) { //geting id from route
+                        return moviesSvc.getMovie($stateParams.id);
+                        //calling services
+                    }, //geting value from route
+                    movieProfile: function ($ocLazyLoad, moviesServices, movie) {
+                        return $ocLazyLoad.load({ //loading controller
+                            name: "movieProfile",
+                            files: [
+                                "app/movies/profile/movieProfile.module.js"
+                            ]
+                        });
+                    }
+
+                }
+            })
+
             .state('manageMoviePerson', {
                 url: "/moviepersons/update/:id",
                 controller: "manageMoviePersonCtrl",

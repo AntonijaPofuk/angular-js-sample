@@ -46,21 +46,10 @@
                 },
                 pageable: true,
                 selectable: true,                
-                columns: [                   
-                    {
-                        field: "id",
-                        title: "#",
-                        width: 50,
-                        headerAttributes: {                          
-                            style: "text-align: center"
-                        },
-                        attributes: {
-                            style: "text-align: center;"
-                        } 
-                    },
+                columns: [    
                     {
                         field: "name",
-                        title: "name",
+                        title: "Naziv",
                         width: 50,
                         headerAttributes: {
                             style: "text-align: center"
@@ -68,7 +57,49 @@
                         attributes: {
                             style: "text-align: center;"
                         }
-                    }                
+                    },
+                     {
+                        field: "description",
+                        title: "Kratki opis",
+                        width: 50,
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        }
+                    }
+                    ,
+                    {
+                        field: "releaseDate",
+                        title: "Datum izlaska",
+                        width: 50,
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        }
+                    }
+                    ,
+                    {
+                        field: "rating",
+                        title: "Ocjena",
+                        width: 50,
+                        headerAttributes: {
+                            style: "text-align: center"
+                        },
+                        attributes: {
+                            style: "text-align: center;"
+                        }
+                    },
+                    {
+                        template: `
+                        <button class="btn btn-sm btn-success" ui-sref="movieProfile({id:dataItem.id})">Profil</button>
+                        <button class="btn btn-sm btn-success" ui-sref="manageMovie({id:dataItem.id})"> Ažuriraj</button>
+                        <button class="btn btn-sm btn-danger" ng-click="showDialog(dataItem.id, 'Brisanje', 'Sigurno želite obrisati odabrani film?')">Obriši</button>
+                        `
+                    }    
                   
                 ]
             };

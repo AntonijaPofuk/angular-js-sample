@@ -3,12 +3,12 @@
     'use strict';
 
     angular
-        .module('moviePersonProfile', ['moviePersonsServices'])
-        .controller('moviePersonProfileCtrl', moviePersonProfileCtrl);
+        .module('movieProfile', ['moviesServices'])
+        .controller('movieProfileCtrl', movieProfileCtrl);
 
     //OVERVIEW
-    moviePersonProfileCtrl.$inject = ['$scope', '$http', 'moviePerson', 'moviePersonsSvc','$state' ];
-    function moviePersonProfileCtrl($scope, $http, moviePerson, moviePersonsSvc, $state) {
+    movieProfileCtrl.$inject = ['$scope', '$http', 'movie', 'moviesSvc','$state' ];
+    function movieProfileCtrl($scope, $http, movie, moviesSvc, $state) {
         
         //#region JS variables
         var vm = this;
@@ -16,8 +16,8 @@
 
 
         //#region Bindable Members
-        vm.moviePerson = moviePerson.data; // data is in general.routing.js
-        vm.delete = deleteMoviePerson;
+        vm.movie = movie.data; // data is in general.routing.js
+        vm.delete = deleteMovie;
        
         //#endregion
 
@@ -30,9 +30,9 @@
          
         }
 
-        function deleteMoviePerson(id) {
-            moviePersonsSvc.deleteMoviePerson(id).then(function () {
-                $state.go("manageMoviePerson");
+        function deleteMovie(id) {
+            moviesSvc.deleteMovie(id).then(function () {
+                $state.go("manageMovie");
             }, function (error) {
                 //add error handling
             });

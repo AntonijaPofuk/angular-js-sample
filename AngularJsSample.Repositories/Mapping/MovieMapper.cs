@@ -20,7 +20,8 @@ namespace AngularJsSample.Repositories
                 DateCreated = model.DateCreated.DateTime,
                 ReleaseDate = model.ReleaseDate.DateTime,
                 PosterUrl = model.PosterUrl,
-                IMDBUrl = model.IMDBUrl  
+                IMDBUrl = model.IMDBUrl,
+                Rating = (int)model.Rating
             };
         }
 
@@ -36,7 +37,8 @@ namespace AngularJsSample.Repositories
                 DateCreated = dbResult.DateCreated.DateTime,
                 ReleaseDate = dbResult.ReleaseDate.DateTime,
                 PosterUrl = dbResult.PosterUrl,
-                IMDBUrl = dbResult.IMDBUrl
+                IMDBUrl = dbResult.IMDBUrl,
+                Rating = (int)dbResult.Rating
             };
     }
 
@@ -53,7 +55,8 @@ namespace AngularJsSample.Repositories
                 DateCreated = dbResult.DateCreated.DateTime,
                 ReleaseDate = dbResult.ReleaseDate.DateTime,
                 PosterUrl = dbResult.PosterUrl,
-                IMDBUrl = dbResult.IMDBUrl
+                IMDBUrl = dbResult.IMDBUrl,
+                Rating = (int)dbResult.Rating
             };
         }
     }
