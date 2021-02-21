@@ -17,8 +17,7 @@ namespace AngularJsSample.Repositories
                 Id = model.Id,
                 Name = model.Name,
                 Description = model.Description,
-                DateCreated = model.DateCreated.DateTime              
-
+                DateCreated = model.DateCreated.DateTime         
             };
         }
 
@@ -32,7 +31,7 @@ namespace AngularJsSample.Repositories
                 Name = dbResult.Name,
                 Description = dbResult.Description,             
                 DateCreated = dbResult.DateCreated.DateTime
-            };
+        };
     }
 
 
@@ -45,8 +44,12 @@ namespace AngularJsSample.Repositories
                 Id = dbResult.Id,
                 Name = dbResult.Name,
                 Description = dbResult.Description,              
-                DateCreated = dbResult.DateCreated.DateTime             
-
+                DateCreated = dbResult.DateCreated.DateTime,
+                UserCreated = dbResult.UserCreated.HasValue ? new Model.Users.UserInfo()
+                 {
+                     Id = dbResult.UserCreated.Value,
+                     FullName = dbResult.UserCreatedFullName
+                 } : null,
             };
         }
     }

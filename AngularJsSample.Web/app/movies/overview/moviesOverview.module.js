@@ -55,7 +55,8 @@
                     pageSize: 5                   
                 },
                 pageable: true,
-                selectable: true,                
+                selectable: true,   
+                resizable: true,
                 columns: [    
                     {
                         field: "name",

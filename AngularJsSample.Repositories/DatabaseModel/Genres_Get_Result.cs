@@ -18,7 +18,7 @@ namespace AngularJsSample.Repositories.DatabaseModel
         public string Name { get; set; }
         public string Description { get; set; }
         public System.DateTimeOffset DateCreated { get; set; }
-        public int UserCreated { get; set; }
+        public Nullable<int> UserCreated { get; set; }
         public Nullable<int> UserLastModified { get; set; }
         public string UserCreatedFirstName { get; set; }
         public string UserCreatedLastName { get; set; }

@@ -128,6 +128,7 @@
                     }
                 },
                 pageable: true,
+                resizable: true,
                 selectable: true,                
                 columns: [                   
                     {
@@ -161,10 +162,11 @@
                         attributes: {
                             style: "text-align: center;"
                         } 
-                    },    
+                    },                      
                     {
                         field: "datecreated",
                         title: "Datum kreiranja",
+                        template: "#= kendo.toString(kendo.parseDate(datecreated, 'yyyy-MM-dd'), 'dd.MM.yyyy.') #",
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -173,7 +175,7 @@
                         }
                     },
                     {
-                        field: "description",
+                        field: "userCreated.fullName",
                         title: "Kreirao",
                         headerAttributes: {
                             style: "text-align: center"
@@ -181,7 +183,7 @@
                         attributes: {
                             style: "text-align: center;"
                         }
-                    },    
+                    },
                     {
                         width: 450,
                         template: `
