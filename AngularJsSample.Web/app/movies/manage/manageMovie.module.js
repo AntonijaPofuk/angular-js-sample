@@ -36,7 +36,7 @@
                         Swal.fire('Uspješno ste kreirali novi film!')
                         $state.go("moviesOverview");
                     }, function (error) {
-                            Swal.fire(error.status + ': Niste uspješno dodali film!')
+                        Swal.fire(error.status + ': Niste uspješno dodali film!')
                     });                 
             } else {
                 //update

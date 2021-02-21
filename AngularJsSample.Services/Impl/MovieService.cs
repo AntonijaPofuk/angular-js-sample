@@ -9,11 +9,13 @@ using System.Web.ModelBinding;
 namespace AngularJsSample.Services.Impl
 {
 
-    public class MovieService : IMovieService {
+    public class MovieService : IMovieService
+    {
 
         private IMovieRepository _repository;
 
-        public MovieService(IMovieRepository repository) {
+        public MovieService(IMovieRepository repository)
+        {
 
             _repository = repository;
 
