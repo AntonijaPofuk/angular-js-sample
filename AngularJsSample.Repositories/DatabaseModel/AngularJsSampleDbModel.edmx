@@ -237,6 +237,25 @@
           <Parameter Name="Id" Type="int" Mode="In" />
           <Parameter Name="UserLastModified" Type="int" Mode="In" />
         </Function>
+        <Function Name="Movie_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReleaseDate" Type="datetimeoffset" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserCreated" Type="int" Mode="In" />
+          <Parameter Name="PosterUrl" Type="nvarchar" Mode="In" />
+          <Parameter Name="IMDBUrl" Type="nvarchar" Mode="In" />
+          <Parameter Name="Rating" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Movie_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="ReleaseDate" Type="datetimeoffset" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="PosterUrl" Type="nvarchar" Mode="In" />
+          <Parameter Name="IMDBUrl" Type="nvarchar" Mode="In" />
+          <Parameter Name="Rating" Type="int" Mode="In" />
+          <Parameter Name="UserLastModified" Type="int" Mode="In" />
+        </Function>
         <Function Name="MovieData_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="MovieData.Get">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -432,6 +451,25 @@
           </FunctionImport>
           <FunctionImport Name="Movie_Delete">
             <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="UserLastModified" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Movie_Insert">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="ReleaseDate" Mode="In" Type="DateTimeOffset" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="UserCreated" Mode="In" Type="Int32" />
+            <Parameter Name="PosterUrl" Mode="In" Type="String" />
+            <Parameter Name="IMDBUrl" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Movie_Save">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="ReleaseDate" Mode="In" Type="DateTimeOffset" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="PosterUrl" Mode="In" Type="String" />
+            <Parameter Name="IMDBUrl" Mode="In" Type="String" />
+            <Parameter Name="Rating" Mode="In" Type="Int32" />
             <Parameter Name="UserLastModified" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
@@ -1010,6 +1048,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Movie_Delete" FunctionName="AngularJsSampleDbModel.Store.Movie_Delete" />
+          <FunctionImportMapping FunctionImportName="Movie_Insert" FunctionName="AngularJsSampleDbModel.Store.Movie_Insert" />
+          <FunctionImportMapping FunctionImportName="Movie_Save" FunctionName="AngularJsSampleDbModel.Store.Movie_Save" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -301,6 +301,36 @@
                 }
             })
 
+            .state('manageMovie', {
+                url: "/movies/update/:id",
+                controller: "manageMovieCtrl",
+                controllerAs: "vm",
+                templateUrl: "app/movies/manage/manageMovie.html",
+                resolve: {
+                    loginRequired: loginRequired,
+                    moviesServices: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name: "moviesServices",
+                            files: [
+                                "app/movies/moviesServices.module.js"
+                            ]
+                        });
+                    },
+                    movie: function (moviesServices, moviesSvc, $stateParams) {
+                        return moviesSvc.getMovie($stateParams.id);
+                    },
+                    manageMovie: function ($ocLazyLoad, moviesServices, movie) {
+                        return $ocLazyLoad.load({
+                            name: "manageMovie",
+                            files: [
+                                "app/movies/manage/manageMovie.module.js"
+                            ]
+                        });
+                    }
+
+                }
+            })
+
 
             .state('createMoviePerson', {
                 url: "/moviepersons/new",
@@ -325,6 +355,35 @@
                             name: "manageMoviePerson",
                             files: [
                                 "app/moviePersons/manage/manageMoviePerson.module.js"
+                            ]
+                        });
+                    }
+                }
+            })
+
+            .state('createMovie', {
+                url: "/movies/new",
+                controller: "manageMovieCtrl",
+                controllerAs: "vm",
+                templateUrl: "app/movies/manage/manageMovie.html",
+                resolve: {
+                    loginRequired: loginRequired,
+                    moviesServices: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name: "moviesServices",
+                            files: [
+                                "app/movies/moviesServices.module.js"
+                            ]
+                        });
+                    },
+                    movie: function () {
+                        return {};
+                    },
+                    manageMovie: function ($ocLazyLoad, moviesServices, movie) {
+                        return $ocLazyLoad.load({
+                            name: "manageMovie",
+                            files: [
+                                "app/movies/manage/manageMovie.module.js"
                             ]
                         });
                     }

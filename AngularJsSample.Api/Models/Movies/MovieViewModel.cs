@@ -13,9 +13,12 @@ namespace AngularJsSample.Api.Models
         public int Id { get; set; }
         [Required (ErrorMessage = "Please enter name")]
         public string Name { get; set; }
-        [Required]
         public string Description { get; set; }
+        [Required(ErrorMessage = "Please enter rating")]
+
         public int Rating { get; set; }
+        [Required(ErrorMessage = "Please enter release date")]
+
         public DateTimeOffset ReleaseDate { get; set; }
         public string PosterUrl { get; set; }
         public string IMDBUrl { get; set; }

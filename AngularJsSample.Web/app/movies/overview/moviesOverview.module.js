@@ -71,7 +71,7 @@
                      {
                         field: "description",
                         title: "Kratki opis",
-                        width: 100,
+                        width: 300,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -84,6 +84,7 @@
                         field: "releaseDate",
                         title: "Datum izlaska",
                         width: 100,
+                        template: "#= kendo.toString(kendo.parseDate(releaseDate, 'yyyy-MM-dd'), 'dd.MM.yyyy.') #",
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -104,6 +105,7 @@
                         }
                     },
                     {
+                        width: 200,
                         template: `
                         <button class="btn btn-sm btn-success" ui-sref="movieProfile({id:dataItem.id})">Profil</button>
                         <button class="btn btn-sm btn-success" ui-sref="manageMovie({id:dataItem.id})"> Ažuriraj</button>

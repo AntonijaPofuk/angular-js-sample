@@ -13,7 +13,10 @@ namespace AngularJsSample.Repositories
     {
         public int Add(Model.Movies.Movie item)
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                return context.Movie_Insert(item.Name, item.ReleaseDate, item.Description, item.UserCreated.Id, item.PosterUrl, item.IMDBUrl, item.Rating);
+            }
         }
 
         public bool Delete(Model.Movies.Movie item)
@@ -56,7 +59,12 @@ namespace AngularJsSample.Repositories
 
         public Model.Movies.Movie Save(Model.Movies.Movie item)
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                context.Movie_Save(item.Id, item.Name, item.ReleaseDate, item.Description, item.PosterUrl,
+                    item.IMDBUrl, item.Rating, item.UserLastModified?.Id);                
+                return item;
+            }
         }
     }
 }

@@ -242,5 +242,75 @@ namespace AngularJsSample.Repositories.DatabaseModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Movie_Delete", idParameter, userLastModifiedParameter);
         }
+    
+        public virtual int Movie_Insert(string name, Nullable<System.DateTimeOffset> releaseDate, string description, Nullable<int> userCreated, string posterUrl, string iMDBUrl, Nullable<int> rating)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var releaseDateParameter = releaseDate.HasValue ?
+                new ObjectParameter("ReleaseDate", releaseDate) :
+                new ObjectParameter("ReleaseDate", typeof(System.DateTimeOffset));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var userCreatedParameter = userCreated.HasValue ?
+                new ObjectParameter("UserCreated", userCreated) :
+                new ObjectParameter("UserCreated", typeof(int));
+    
+            var posterUrlParameter = posterUrl != null ?
+                new ObjectParameter("PosterUrl", posterUrl) :
+                new ObjectParameter("PosterUrl", typeof(string));
+    
+            var iMDBUrlParameter = iMDBUrl != null ?
+                new ObjectParameter("IMDBUrl", iMDBUrl) :
+                new ObjectParameter("IMDBUrl", typeof(string));
+    
+            var ratingParameter = rating.HasValue ?
+                new ObjectParameter("Rating", rating) :
+                new ObjectParameter("Rating", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Movie_Insert", nameParameter, releaseDateParameter, descriptionParameter, userCreatedParameter, posterUrlParameter, iMDBUrlParameter, ratingParameter);
+        }
+    
+        public virtual int Movie_Save(Nullable<int> id, string name, Nullable<System.DateTimeOffset> releaseDate, string description, string posterUrl, string iMDBUrl, Nullable<int> rating, Nullable<int> userLastModified)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("Name", name) :
+                new ObjectParameter("Name", typeof(string));
+    
+            var releaseDateParameter = releaseDate.HasValue ?
+                new ObjectParameter("ReleaseDate", releaseDate) :
+                new ObjectParameter("ReleaseDate", typeof(System.DateTimeOffset));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("Description", description) :
+                new ObjectParameter("Description", typeof(string));
+    
+            var posterUrlParameter = posterUrl != null ?
+                new ObjectParameter("PosterUrl", posterUrl) :
+                new ObjectParameter("PosterUrl", typeof(string));
+    
+            var iMDBUrlParameter = iMDBUrl != null ?
+                new ObjectParameter("IMDBUrl", iMDBUrl) :
+                new ObjectParameter("IMDBUrl", typeof(string));
+    
+            var ratingParameter = rating.HasValue ?
+                new ObjectParameter("Rating", rating) :
+                new ObjectParameter("Rating", typeof(int));
+    
+            var userLastModifiedParameter = userLastModified.HasValue ?
+                new ObjectParameter("UserLastModified", userLastModified) :
+                new ObjectParameter("UserLastModified", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Movie_Save", idParameter, nameParameter, releaseDateParameter, descriptionParameter, posterUrlParameter, iMDBUrlParameter, ratingParameter, userLastModifiedParameter);
+        }
     }
 }
