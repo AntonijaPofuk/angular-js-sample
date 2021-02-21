@@ -229,5 +229,18 @@ namespace AngularJsSample.Repositories.DatabaseModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MovieData_Get_Result>("MovieData_Get", idParameter);
         }
+    
+        public virtual int Movie_Delete(Nullable<int> id, Nullable<int> userLastModified)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("Id", id) :
+                new ObjectParameter("Id", typeof(int));
+    
+            var userLastModifiedParameter = userLastModified.HasValue ?
+                new ObjectParameter("UserLastModified", userLastModified) :
+                new ObjectParameter("UserLastModified", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Movie_Delete", idParameter, userLastModifiedParameter);
+        }
     }
 }

@@ -18,7 +18,19 @@ namespace AngularJsSample.Repositories
 
         public bool Delete(Model.Movies.Movie item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var context = new AngularJsSampleDbEntities())
+                {
+                    context.Movie_Delete(item.Id, item.UserLastModified?.Id);
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"The exception is: '{e}'");
+                return false;
+            }
         }
 
         public List<Model.Movies.Movie> FindAll()

@@ -72,7 +72,7 @@
                 templateUrl: "app/moviePersons/overview/overview.html",
                 resolve: {
                     loginRequired: loginRequired,
-                    moviePersonsServices: function ($ocLazyLoad) { // loading services
+                    moviePersonsServices: function ($ocLazyLoad) { 
                         return $ocLazyLoad.load({
                             name: "moviePersonsServices",
                             files: [
@@ -80,7 +80,6 @@
                             ]
                         });
                     },
-                    // loading controller
                     moviePersonsOverview: function ($ocLazyLoad, moviePersonsServices) {
                         return $ocLazyLoad.load({
                             name: "moviePersonsOverview",
@@ -101,7 +100,7 @@
                 templateUrl: "app/movies/overview/overview.html",
                 resolve: {
                     loginRequired: loginRequired,
-                    moviesServices: function ($ocLazyLoad) { // loading services
+                    moviesServices: function ($ocLazyLoad) { 
                         return $ocLazyLoad.load({
                             name: "moviesServices",
                             files: [
@@ -109,7 +108,6 @@
                             ]
                         });
                     },
-                    // loading controller
                     moviesOverview: function ($ocLazyLoad, moviesServices) {
                         return $ocLazyLoad.load({
                             name: "moviesOverview",
@@ -129,7 +127,7 @@
                 templateUrl: "app/genres/overview/overview.html",
                 resolve: {
                     loginRequired: loginRequired,
-                    genresServices: function ($ocLazyLoad) { // loading services
+                    genresServices: function ($ocLazyLoad) { 
                         return $ocLazyLoad.load({
                             name: "genresServices",
                             files: [
@@ -137,7 +135,6 @@
                             ]
                         });
                     },
-                    // loading controller
                     genresOverview: function ($ocLazyLoad, genresServices) {
                         return $ocLazyLoad.load({
                             name: "genresOverview",
@@ -182,7 +179,7 @@
                 controller: "moviePersonProfileCtrl",
                 controllerAs: "vm",
                 templateUrl: "app/moviePersons/profile/profile.html",
-                resolve: { //loading services
+                resolve: { 
                     loginRequired: loginRequired,
                     moviePersonsServices: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
@@ -193,14 +190,13 @@
                         });
                     },
 
-                    moviePerson: function (moviePersonsServices, moviePersonsSvc, $stateParams) { //geting id from route
-                        return moviePersonsSvc.getMoviePerson($stateParams.id);
-                        //calling services
-                    }, //geting value from route
+                    moviePerson: function (moviePersonsServices, moviePersonsSvc, $stateParams) {
+                        return moviePersonsSvc.getMoviePerson($stateParams.id);                        
+                    }, 
 
                   
                     moviePersonProfile: function ($ocLazyLoad, moviePersonsServices, moviePerson ) {
-                        return $ocLazyLoad.load({ //loading controller
+                        return $ocLazyLoad.load({
                             name: "moviePersonProfile",
                             files: [
                                 "app/moviePersons/profile/moviePersonProfile.module.js"
@@ -216,7 +212,7 @@
                 controller: "genreProfileCtrl",
                 controllerAs: "vm",
                 templateUrl: "app/genres/profile/profile.html",
-                resolve: { //loading services
+                resolve: { 
                     loginRequired: loginRequired,
                     genresServices: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
@@ -227,14 +223,13 @@
                         });
                     },
 
-                    genre: function (genresServices, genresSvc, $stateParams) { //geting id from route
+                    genre: function (genresServices, genresSvc, $stateParams) { 
                         return genresSvc.getGenre($stateParams.id);
-                        //calling services
-                    }, //geting value from route
+                    }, 
 
 
                     genreProfile: function ($ocLazyLoad, genresServices, genre) {
-                        return $ocLazyLoad.load({ //loading controller
+                        return $ocLazyLoad.load({ 
                             name: "genreProfile",
                             files: [
                                 "app/genres/profile/genreProfile.module.js"
@@ -250,7 +245,7 @@
                 controller: "movieProfileCtrl",
                 controllerAs: "vm",
                 templateUrl: "app/movies/profile/profile.html",
-                resolve: { //loading services
+                resolve: { 
                     loginRequired: loginRequired,
                     moviesServices: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({
@@ -260,12 +255,12 @@
                             ]
                         });
                     },
-                    movie: function (moviesServices, moviesSvc, $stateParams) { //geting id from route
+                    movie: function (moviesServices, moviesSvc, $stateParams) { 
                         return moviesSvc.getMovie($stateParams.id);
-                        //calling services
-                    }, //geting value from route
+                       
+                    }, 
                     movieProfile: function ($ocLazyLoad, moviesServices, movie) {
-                        return $ocLazyLoad.load({ //loading controller
+                        return $ocLazyLoad.load({
                             name: "movieProfile",
                             files: [
                                 "app/movies/profile/movieProfile.module.js"
@@ -291,11 +286,9 @@
                             ]
                         });
                     },
-
                     moviePerson: function (moviePersonsServices, moviePersonsSvc, $stateParams) { 
                         return moviePersonsSvc.getMoviePerson($stateParams.id);
                     }, 
-
                     manageMoviePerson: function ($ocLazyLoad, moviePersonsServices, moviePerson) {
                         return $ocLazyLoad.load({ 
                             name: "manageMoviePerson",
@@ -375,7 +368,7 @@
                 controller: "updateMoviePersonCtrl",
                 controllerAs: "vm",
                 templateUrl: "app/moviePersons/manage/updateMoviePerson.html",
-                resolve: { //loading services
+                resolve: { 
                     loginRequired: loginRequired,
                     moviePersonsServices: function ($ocLazyLoad) {
                         return $ocLazyLoad.load({

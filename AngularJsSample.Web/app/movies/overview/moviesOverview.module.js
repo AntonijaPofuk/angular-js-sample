@@ -16,6 +16,7 @@
         //#region Bindable Members  
 
         vm.mainGridOptions = getMainGridOptions();
+        vm.delete = deleteMovie;
 
         //#endregion 
 
@@ -27,6 +28,15 @@
         function activate() {
             }    
               
+        //DELETE
+        function deleteMovie(id) {
+            moviesSvc.deleteMovie(id).then(function () {
+                $state.reload();
+            }, function (error) {
+                console.log(error);
+                //add error handling
+            });
+        }
 
         function getMainGridOptions() {
 
@@ -50,7 +60,7 @@
                     {
                         field: "name",
                         title: "Naziv",
-                        width: 50,
+                        width: 100,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -61,7 +71,7 @@
                      {
                         field: "description",
                         title: "Kratki opis",
-                        width: 50,
+                        width: 100,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -73,7 +83,7 @@
                     {
                         field: "releaseDate",
                         title: "Datum izlaska",
-                        width: 50,
+                        width: 100,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -85,7 +95,7 @@
                     {
                         field: "rating",
                         title: "Ocjena",
-                        width: 50,
+                        width: 100,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -106,6 +116,16 @@
             return options;
         }
 
+        $scope.dialog = {
+            message: ""
+        }
+        $scope.showDialog = function (id, title, message) {
+            $scope.selectedId = id;
+            $scope.dialog.message = message;
+            $scope.deleteDialogWindow.title(title);
+            $scope.deleteDialogWindow.center();
+            $scope.deleteDialogWindow.open();
+        }
 
 
         //#endregion

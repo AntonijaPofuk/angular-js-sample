@@ -233,6 +233,10 @@
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="Genres_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="Genres.Get" />
+        <Function Name="Movie_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="UserLastModified" Type="int" Mode="In" />
+        </Function>
         <Function Name="MovieData_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="MovieData.Get">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
@@ -424,7 +428,11 @@
           </AssociationSet>
           <FunctionImport Name="Movies_Get" ReturnType="Collection(AngularJsSampleDbModel.Movies_Get_Result)" />
           <FunctionImport Name="MovieData_Get" ReturnType="Collection(AngularJsSampleDbModel.MovieData_Get_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Movie_Delete">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="UserLastModified" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="MoviePerson_Get_Result">
@@ -1001,6 +1009,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Movie_Delete" FunctionName="AngularJsSampleDbModel.Store.Movie_Delete" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
