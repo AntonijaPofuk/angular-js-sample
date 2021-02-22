@@ -53,7 +53,7 @@ namespace AngularJsSample.Repositories
         {
             using (var context = new AngularJsSampleDbEntities())
             {
-                return context.MovieData_Get(key).SingleOrDefault().MapToModel();
+                return context.MovieData_Get(key).FirstOrDefault().MapToModel();
             }
         }
 

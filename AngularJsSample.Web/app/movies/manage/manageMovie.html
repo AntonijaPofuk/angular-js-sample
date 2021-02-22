@@ -56,6 +56,17 @@
             <div class="row">
                 <div class="col-sm-10">
                     <div class="panel-body">
+                        <strong><div>Žanrovi:</div></strong>
+                        <select kendo-multi-select
+                                k-options="selectOptions" 
+                                k-ng-model="selectedIds"></select>
+                        <p ng-show="selectedIds.length" style="padding-top: 1em;">Selected: {{ selectedIds }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="panel-body">
                         <div>IMDB url:</div>
                         <div>
                             <input class="form-control" name="imdbUrl" ng-model="vm.movie.imdbUrl" ng-pattern="/^(http|https):///" />
@@ -72,20 +83,19 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-10">
-                <div class="panel-body">
-                    <div>Poster url:</div>
-                    <div>
-                        <input class="form-control" name="posterUrl" ng-model="vm.movie.posterUrl" ng-pattern="/^(http|https):\/\/.*\.(jpg|png|gif|jpeg)$/g" />
-                        <span class="text-danger" ng-show="newMovieForm.posterUrl.$error.pattern">Url mora započeti sa http ili https i završiti sa jpg|png|gif|jpeg.</span>
-                        <div class="font-italic">(*.gif, *.png, *.jpeg, *.jpg)</div>
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="panel-body">
+                        <div>Poster url:</div>
+                        <div>
+                            <input class="form-control" name="posterUrl" ng-model="vm.movie.posterUrl" ng-pattern="/^(http|https):\/\/.*\.(jpg|png|gif|jpeg)$/g" />
+                            <span class="text-danger" ng-show="newMovieForm.posterUrl.$error.pattern">Url mora započeti sa http ili https i završiti sa jpg|png|gif|jpeg.</span>
+                            <div class="font-italic">(*.gif, *.png, *.jpeg, *.jpg)</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </form>
 
 
