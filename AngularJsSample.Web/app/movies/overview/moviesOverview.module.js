@@ -48,7 +48,7 @@
                                 .then(function (result) {
                                     options.success(result.data.movies);
                                 }, function (error) {
-                                        console.log("Error for " + serviceBase + "api/movies" + " is:" + error);
+                                        console.log("Error for " + serviceBase + "api/movies" + " is:" +error.status +  error.message);
                                 });
                         },
                     },
