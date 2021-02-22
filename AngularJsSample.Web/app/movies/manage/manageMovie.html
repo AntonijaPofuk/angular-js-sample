@@ -43,7 +43,7 @@
                                k-parse-formats="['yyyy-MM-ddTHH:mm:sszzz']" />
                         <p class="text-danger" ng-if="!newMovieForm.mprelease.$valid">Datum izlaska je obavezno za unijeti.</p>
                     </div>
-                </div>              
+                </div>
                 <div class="col-sm-10">
                     <div class="panel-body">
                         <div>Kratki opis:</div>
@@ -58,6 +58,22 @@
                             <span class="text-danger" ng-show="newMovieForm.imdbUrl.$error.pattern">Url mora započeti sa http ili https.</span>
                         </div>
                     </div>
+                </div>               
+                <div class="col-sm-10">
+                    <div class="panel-body">
+                        <div>Rating:</div>
+                        <div>
+                            <input kendo-numeric-text-box
+                                    type="text"
+                                    name="mpRating"
+                                    style="width: 50%;"
+                                    k-min="1"
+                                    k-max="100"
+                                    ng-model="vm.movie.rating"
+                                    ng-pattern="/^[0-9]{1,3}$/"
+                                    />
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-10">
                     <div class="panel-body">
@@ -68,7 +84,7 @@
                             <div class="font-italic">(*.gif, *.png, *.jpeg, *.jpg)</div>
                         </div>
                     </div>
-                </div>              
+                </div>
             </div>
         </div>
     </div>

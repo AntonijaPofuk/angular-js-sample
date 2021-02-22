@@ -1,6 +1,7 @@
 ﻿using AngularJsSample.Services.Messaging.Views;
 using AngularJsSample.Services.Messaging.Views.Genres;
 using AngularJsSample.Services.Messaging.Views.MoviePersons;
+using AngularJsSample.Services.Messaging.Views.MovieRatings;
 using AngularJsSample.Services.Messaging.Views.Movies;
 using AngularJsSample.Services.Messaging.Views.Users;
 using AutoMapper;
@@ -16,6 +17,8 @@ namespace AngularJsSample.Services.Services.Mapping.Profiles
             CreateMap<Model.MoviePersons.MoviePerson, MoviePerson>();
             CreateMap<Model.Genres.Genre, Genre>();
             CreateMap<Model.Movies.Movie, Movie>();
+            CreateMap<Model.MovieRatings.MovieRating, MovieRating>();
+
 
 
 
@@ -24,6 +27,8 @@ namespace AngularJsSample.Services.Services.Mapping.Profiles
             CreateMap<MoviePerson, Model.MoviePersons.MoviePerson>();
             CreateMap<Genre, Model.Genres.Genre>();
             CreateMap<Movie, Model.Movies.Movie>();
+            CreateMap<MovieRating, Model.MovieRatings.MovieRating>();
+
 
 
         }

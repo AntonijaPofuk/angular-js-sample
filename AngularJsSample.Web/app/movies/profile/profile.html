@@ -35,6 +35,12 @@
             </div>
             <div class="col-sm-12">
                 <div class="panel-body">
+                    <div>Ocjena {{vm.movie.rating}}:</div>
+                    <input kendo-rating k-min="1" k-max="6" k-ng-model="vm.movie.rating" style="width: 100%;" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="panel-body">
                     <div>IMDB url:</div>
                     <div>
                         <a target="_blank" href={{vm.movie.imdbUrl}}>{{vm.movie.imdbUrl}}</a>

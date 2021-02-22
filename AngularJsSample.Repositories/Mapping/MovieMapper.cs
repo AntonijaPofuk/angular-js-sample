@@ -39,8 +39,9 @@ namespace AngularJsSample.Repositories
                 PosterUrl = dbResult.PosterUrl,
                 IMDBUrl = dbResult.IMDBUrl,
                 Rating = (int)dbResult.Rating
-            };
-    }
+        };
+}
+
 
 
         public static Model.Movies.Movie MapToModels(this Movies_Get_Result dbResult)

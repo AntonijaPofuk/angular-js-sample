@@ -1,4 +1,5 @@
 ﻿using AngularJsSample.Model.MoviePersons;
+using AngularJsSample.Model.MovieRatings;
 using AngularJsSample.Model.Movies;
 using AngularJsSample.Model.Users;
 using AngularJsSample.Model.Genres;
@@ -18,6 +19,8 @@ namespace AngularJsSample.Api.IoC
             builder.RegisterType<MoviePersonRepository>().As<IMoviePersonRepository>();
             builder.RegisterType<GenreRepository>().As<IGenreRepository>();
             builder.RegisterType<MovieRepository>().As<IMovieRepository>();
+            builder.RegisterType<MovieRatingRepository>().As<IMovieRatingRepository>();
+
 
 
             //services
@@ -25,6 +28,8 @@ namespace AngularJsSample.Api.IoC
             builder.RegisterType<MoviePersonService>().As<IMoviePersonService>();
             builder.RegisterType<GenreService>().As<IGenreService>();
             builder.RegisterType<MovieService>().As<IMovieService>();
+            builder.RegisterType<MovieRatingService>().As<IMovieRatingService>();
+
 
 
 
