@@ -13,7 +13,7 @@ namespace AngularJsSample.Model.MovieRatings
 
 
         public int MovieId { get; set; }
-        public string UserRatedId { get; set; }
+        public int UserRatedId { get; set; }
         public DateTimeOffset? DateCreated { get; set; }
         public UserInfo UserCreated { get; set; }
         public int Rating { get; set; }

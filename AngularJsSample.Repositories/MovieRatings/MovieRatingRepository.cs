@@ -15,8 +15,9 @@ namespace AngularJsSample.Repositories
         {
             using (var context = new AngularJsSampleDbEntities())
             {
-                return context.Rating_Insert(item.MovieId, item.UserRatedId,item.Rating, item.UserCreated?.Id);
-
+               
+                    return context.Rating_Insert(item.MovieId, item.UserRatedId, item.UserCreated?.Id, item.Rating);
+                
             }
         }
 
@@ -40,8 +41,7 @@ namespace AngularJsSample.Repositories
         {
             using (var context = new AngularJsSampleDbEntities())
             {
-                context.Rating_Save(item.Id, item.Name, item.Description,
-                     item.UserLastModified?.Id);
+                context.Rating_Save(item.MovieId, item.UserRatedId, item.Rating);
                 return item;
             }
         }

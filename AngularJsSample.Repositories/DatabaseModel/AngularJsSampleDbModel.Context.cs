@@ -312,5 +312,43 @@ namespace AngularJsSample.Repositories.DatabaseModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Movie_Save", idParameter, nameParameter, releaseDateParameter, descriptionParameter, posterUrlParameter, iMDBUrlParameter, ratingParameter, userLastModifiedParameter);
         }
+    
+        public virtual int Rating_Insert(Nullable<int> movieId, Nullable<int> userRatedId, Nullable<int> userCreated, Nullable<int> rating)
+        {
+            var movieIdParameter = movieId.HasValue ?
+                new ObjectParameter("MovieId", movieId) :
+                new ObjectParameter("MovieId", typeof(int));
+    
+            var userRatedIdParameter = userRatedId.HasValue ?
+                new ObjectParameter("userRatedId", userRatedId) :
+                new ObjectParameter("userRatedId", typeof(int));
+    
+            var userCreatedParameter = userCreated.HasValue ?
+                new ObjectParameter("UserCreated", userCreated) :
+                new ObjectParameter("UserCreated", typeof(int));
+    
+            var ratingParameter = rating.HasValue ?
+                new ObjectParameter("Rating", rating) :
+                new ObjectParameter("Rating", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Rating_Insert", movieIdParameter, userRatedIdParameter, userCreatedParameter, ratingParameter);
+        }
+    
+        public virtual int Rating_Save(Nullable<int> movieId, Nullable<int> userRatedId, Nullable<int> rating)
+        {
+            var movieIdParameter = movieId.HasValue ?
+                new ObjectParameter("MovieId", movieId) :
+                new ObjectParameter("MovieId", typeof(int));
+    
+            var userRatedIdParameter = userRatedId.HasValue ?
+                new ObjectParameter("UserRatedId", userRatedId) :
+                new ObjectParameter("UserRatedId", typeof(int));
+    
+            var ratingParameter = rating.HasValue ?
+                new ObjectParameter("Rating", rating) :
+                new ObjectParameter("Rating", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Rating_Save", movieIdParameter, userRatedIdParameter, ratingParameter);
+        }
     }
 }
