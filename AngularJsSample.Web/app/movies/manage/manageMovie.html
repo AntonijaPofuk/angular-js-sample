@@ -29,7 +29,7 @@
                         <div><input ng-required=true class="form-control" name="mpName" ng-model="vm.movie.name" /></div>
                         <p class="text-danger" ng-if="!newMovieForm.mpName.$valid">Ime je obavezno za unijeti.</p>
                     </div>
-                </div>              
+                </div>
             </div>
             <div class="row">
                 <div class="col-sm-5">
@@ -44,12 +44,16 @@
                         <p class="text-danger" ng-if="!newMovieForm.mprelease.$valid">Datum izlaska je obavezno za unijeti.</p>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-10">
                     <div class="panel-body">
                         <div>Kratki opis:</div>
                         <textarea class="form-control" rows="4" ng-model="vm.movie.description" style="max-width:100%; max-height:500%;"></textarea>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-10">
                     <div class="panel-body">
                         <div>IMDB url:</div>
@@ -59,20 +63,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-sm-12">
                     <div class="panel-body">
                         <div>Ocjena {{vm.movie.rating}}:</div>
                         <input kendo-rating k-min="1" k-max="6" k-ng-model="vm.movie.rating" style="width: 100%;" />
                     </div>
                 </div>
-                <div class="col-sm-10">
-                    <div class="panel-body">
-                        <div>Poster url:</div>
-                        <div>
-                            <input class="form-control" name="posterUrl" ng-model="vm.movie.posterUrl" ng-pattern="/^(http|https):\/\/.*\.(jpg|png|gif|jpeg)$/g" />
-                            <span class="text-danger" ng-show="newMovieForm.posterUrl.$error.pattern">Url mora započeti sa http ili https i završiti sa jpg|png|gif|jpeg.</span>
-                            <div class="font-italic">(*.gif, *.png, *.jpeg, *.jpg)</div>
-                        </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="panel-body">
+                    <div>Poster url:</div>
+                    <div>
+                        <input class="form-control" name="posterUrl" ng-model="vm.movie.posterUrl" ng-pattern="/^(http|https):\/\/.*\.(jpg|png|gif|jpeg)$/g" />
+                        <span class="text-danger" ng-show="newMovieForm.posterUrl.$error.pattern">Url mora započeti sa http ili https i završiti sa jpg|png|gif|jpeg.</span>
+                        <div class="font-italic">(*.gif, *.png, *.jpeg, *.jpg)</div>
                     </div>
                 </div>
             </div>
