@@ -13,7 +13,11 @@ namespace AngularJsSample.Repositories
     {
         public int Add(Model.MovieRatings.MovieRating item)
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                return context.Rating_Insert(item.MovieId, item.UserRatedId,item.Rating, item.UserCreated?.Id);
+
+            }
         }
 
         public bool Delete(Model.MovieRatings.MovieRating item)
@@ -29,11 +33,17 @@ namespace AngularJsSample.Repositories
         public Model.MovieRatings.MovieRating FindBy(int key)
         {
             throw new NotImplementedException();
+
         }
 
         public Model.MovieRatings.MovieRating Save(Model.MovieRatings.MovieRating item)
         {
-            throw new NotImplementedException();
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                context.Rating_Save(item.Id, item.Name, item.Description,
+                     item.UserLastModified?.Id);
+                return item;
+            }
         }
     }
 }
