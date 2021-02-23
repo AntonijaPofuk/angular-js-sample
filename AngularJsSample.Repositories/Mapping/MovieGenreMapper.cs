@@ -29,7 +29,8 @@ namespace AngularJsSample.Repositories
             {
                 GenreId = dbResult.GenreId.HasValue ? new Model.Genres.Genre()
                 {
-                    Id = dbResult.MovieId.Value
+                    Id = dbResult.GenreId.Value,
+                    Name = dbResult.GenreName
                 } : null,
                 MovieId = dbResult.MovieId.HasValue ? new Model.Movies.Movie()
                  {

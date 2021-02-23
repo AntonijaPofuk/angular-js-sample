@@ -20,8 +20,7 @@ namespace AngularJsSample.Api.Mapping.MovieGenres
             return new MovieGenreViewModel()
             {
                 GenreId = view.GenreId.MapToViewModelFK(),
-                MovieId = view.MovieId.MapToViewModelFK()                             
-
+                MovieId = view.MovieId.MapToViewModelFK()                         
             };
         }
 
@@ -33,7 +32,6 @@ namespace AngularJsSample.Api.Mapping.MovieGenres
             {
                 MovieId = viewModel.MovieId.MapToView(),
                 GenreId = viewModel.GenreId.MapToView()
-
 
             };
         }
