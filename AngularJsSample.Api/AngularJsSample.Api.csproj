@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\MovieGenreController.cs" />
     <Compile Include="Controllers\MovieRatingController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Mapping\Genres\GenreMapper.cs" />
     <Compile Include="Mapping\MoviePersons\MoviePersonMapper.cs" />
     <Compile Include="Mapping\Users\UsersMapper.cs" />
+    <Compile Include="Models\MovieGenres\MovieGenreViewModel.cs" />
     <Compile Include="Models\MovieRatings\MovieRatingViewModel.cs" />
     <Compile Include="Models\Movies\MovieViewModel.cs" />
     <Compile Include="Models\Genres\GenreViewModel.cs" />

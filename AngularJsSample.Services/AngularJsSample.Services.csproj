@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMovieGenreService.cs" />
     <Compile Include="IMovieRatingService.cs" />
     <Compile Include="IMovieService.cs" />
     <Compile Include="IGenreService.cs" />
+    <Compile Include="Impl\MovieGenreService.cs" />
     <Compile Include="Impl\MovieRatingService.cs" />
     <Compile Include="Impl\MovieService.cs" />
     <Compile Include="Impl\GenreService.cs" />
@@ -56,6 +58,7 @@
     <Compile Include="Impl\UserService.cs" />
     <Compile Include="IMoviePersonService .cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="Mapping\MovieGenresMapper.cs" />
     <Compile Include="Mapping\MovieRatingsMapper.cs" />
     <Compile Include="Mapping\MovieMapper.cs" />
     <Compile Include="Mapping\GenresMapper.cs" />
@@ -63,6 +66,10 @@
     <Compile Include="Mapping\MoviePersonsMapper.cs" />
     <Compile Include="Mapping\UsersMapper.cs" />
     <Compile Include="Messaging\GenericErrorMessageFactory.cs" />
+    <Compile Include="Messaging\MovieGenres\GetMovieGenreRequest.cs" />
+    <Compile Include="Messaging\MovieGenres\GetMovieGenreResponse.cs" />
+    <Compile Include="Messaging\MovieGenres\SaveMovieGenreRequest.cs" />
+    <Compile Include="Messaging\MovieGenres\SaveMovieGenreResponse.cs" />
     <Compile Include="Messaging\MovieRatings\GetMovieRatingRequest.cs" />
     <Compile Include="Messaging\MovieRatings\GetMovieRatingResponse.cs" />
     <Compile Include="Messaging\MovieRatings\SaveMovieRatingRequest.cs" />
@@ -93,6 +100,7 @@
     <Compile Include="Messaging\MoviePersons\GetMoviePersonResponse.cs" />
     <Compile Include="Messaging\RequestBase.cs" />
     <Compile Include="Messaging\ResponseBase.cs" />
+    <Compile Include="Messaging\Views\MovieGenres\MovieGenre.cs" />
     <Compile Include="Messaging\Views\MovieRatings\MovieRating.cs" />
     <Compile Include="Messaging\Views\Movies\Movie.cs" />
     <Compile Include="Messaging\Views\Genres\Genre.cs" />

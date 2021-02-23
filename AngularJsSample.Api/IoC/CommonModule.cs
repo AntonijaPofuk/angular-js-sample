@@ -7,6 +7,7 @@ using AngularJsSample.Repositories;
 using AngularJsSample.Services;
 using AngularJsSample.Services.Impl;
 using Autofac;
+using AngularJsSample.Model.MovieGenres;
 
 namespace AngularJsSample.Api.IoC
 {
@@ -20,6 +21,7 @@ namespace AngularJsSample.Api.IoC
             builder.RegisterType<GenreRepository>().As<IGenreRepository>();
             builder.RegisterType<MovieRepository>().As<IMovieRepository>();
             builder.RegisterType<MovieRatingRepository>().As<IMovieRatingRepository>();
+            builder.RegisterType<MovieGenreRepository>().As<IMovieGenreRepository>();
 
 
 
@@ -29,9 +31,7 @@ namespace AngularJsSample.Api.IoC
             builder.RegisterType<GenreService>().As<IGenreService>();
             builder.RegisterType<MovieService>().As<IMovieService>();
             builder.RegisterType<MovieRatingService>().As<IMovieRatingService>();
-
-
-
+            builder.RegisterType<MovieGenreService>().As<IMovieGenreService>();
 
         }
     }

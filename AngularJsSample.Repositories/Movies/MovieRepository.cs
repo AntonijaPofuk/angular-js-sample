@@ -57,6 +57,16 @@ namespace AngularJsSample.Repositories
             }
         }
 
+        public List<Model.Genres.Genre> FindGenres(int key)
+        {
+            List<Model.MovieGenres.MovieGenre> list = new List<Model.MovieGenres.MovieGenre>();
+            //foreach (var item in context.Movies_Get().ToList())
+            //{
+            //    list.Add(item.MapToModels());
+            //}
+            return null;
+        }
+
         public Model.Movies.Movie Save(Model.Movies.Movie item)
         {
             using (var context = new AngularJsSampleDbEntities())

@@ -1,5 +1,6 @@
 ﻿using AngularJsSample.Services.Messaging.Views;
 using AngularJsSample.Services.Messaging.Views.Genres;
+using AngularJsSample.Services.Messaging.Views.MovieGenres;
 using AngularJsSample.Services.Messaging.Views.MoviePersons;
 using AngularJsSample.Services.Messaging.Views.MovieRatings;
 using AngularJsSample.Services.Messaging.Views.Movies;
@@ -18,9 +19,7 @@ namespace AngularJsSample.Services.Services.Mapping.Profiles
             CreateMap<Model.Genres.Genre, Genre>();
             CreateMap<Model.Movies.Movie, Movie>();
             CreateMap<Model.MovieRatings.MovieRating, MovieRating>();
-
-
-
+            CreateMap<Model.MovieGenres.MovieGenre, MovieGenre>();
 
             //map from views to domain classes
             CreateMap<UserInfo, Model.Users.UserInfo>();
@@ -28,8 +27,7 @@ namespace AngularJsSample.Services.Services.Mapping.Profiles
             CreateMap<Genre, Model.Genres.Genre>();
             CreateMap<Movie, Model.Movies.Movie>();
             CreateMap<MovieRating, Model.MovieRatings.MovieRating>();
-
-
+            CreateMap<MovieGenre, Model.MovieGenres.MovieGenre>();
 
         }
     }

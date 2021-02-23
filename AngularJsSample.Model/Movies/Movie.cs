@@ -1,4 +1,5 @@
-﻿using AngularJsSample.Model.Movies;
+﻿using AngularJsSample.Model.Genres;
+using AngularJsSample.Model.Movies;
 using AngularJsSample.Model.Users;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ namespace AngularJsSample.Model.Movies
         public UserInfo UserLastModified { get; set; }
         public DateTimeOffset? LastModified { get; set; }
         public UserInfo UserCreated { get; set; }
+        public List<Genre> Genres { get; set; }
+
     }
 
 

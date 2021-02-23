@@ -1,4 +1,5 @@
-﻿using AngularJsSample.Services.Messaging.Views.Users;
+﻿using AngularJsSample.Services.Messaging.Views.Genres;
+using AngularJsSample.Services.Messaging.Views.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,6 +21,8 @@ namespace AngularJsSample.Services.Messaging.Views.Movies
         public DateTimeOffset? DateCreated { get; set; }
         public UserInfo UserLastModified { get; set; }
         public DateTimeOffset? LastModified { get; set; }
-        public UserInfo UserCreated { get; set; }    
+        public UserInfo UserCreated { get; set; }
+        public List<Genre> Genres { get; set; }
+
     }
 }

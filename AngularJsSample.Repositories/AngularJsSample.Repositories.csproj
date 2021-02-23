@@ -102,6 +102,7 @@
       <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Mapping\MovieMapper.cs" />
+    <Compile Include="MovieGenres\MovieGenreRepository.cs" />
     <Compile Include="MovieRatings\MovieRatingRepository.cs" />
     <Compile Include="Movies\MovieRepository.cs" />
     <Compile Include="Mapping\GenreMapper.cs" />

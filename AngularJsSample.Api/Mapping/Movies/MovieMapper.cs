@@ -25,7 +25,8 @@ namespace AngularJsSample.Api.Mapping.Movies
                 Rating = view.Rating,
                 PosterUrl = view.PosterUrl,
                 IMDBUrl = view.IMDBUrl,
-                ReleaseDate = view.ReleaseDate
+                ReleaseDate = view.ReleaseDate,
+                Genres = null
             };
         }
 
@@ -44,7 +45,8 @@ namespace AngularJsSample.Api.Mapping.Movies
                 Rating = viewModel.Rating,
                 PosterUrl = viewModel.PosterUrl,
                 IMDBUrl = viewModel.IMDBUrl,
-                ReleaseDate = viewModel.ReleaseDate
+                ReleaseDate = viewModel.ReleaseDate,
+                Genres = null
 
             };
         }
