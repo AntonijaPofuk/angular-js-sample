@@ -49,12 +49,17 @@ namespace AngularJsSample.Repositories
             }
         }
 
-        public Model.Movies.Movie FindBy(int key)
+        public Model.Movies.Movie FindAll(int key)
         {
             using (var context = new AngularJsSampleDbEntities())
             {
                 return context.MovieData_Get(key).FirstOrDefault().MapToModel();
             }
+        }
+
+        public List<Model.Movies.Movie> FindAllBy(int key)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Model.Genres.Genre> FindGenres(int key)

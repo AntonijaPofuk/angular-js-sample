@@ -29,7 +29,7 @@ namespace AngularJsSample.Services.Impl
 
             try
             {
-                response.User = _repository.FindBy(request.UserId).MapToView();
+                response.User = _repository.FindAll(request.UserId).MapToView();
                 response.Success = true;
             }
             catch(Exception)

@@ -17,14 +17,14 @@ namespace AngularJsSample.Repositories.DatabaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserInfo()
         {
-            this.Genres = new HashSet<Genre>();
-            this.Genres1 = new HashSet<Genre>();
             this.Movies = new HashSet<Movie>();
             this.Movies1 = new HashSet<Movie>();
             this.MoviePersons = new HashSet<MoviePerson>();
             this.MoviePersons1 = new HashSet<MoviePerson>();
             this.MovieRatings = new HashSet<MovieRating>();
             this.MovieRatings1 = new HashSet<MovieRating>();
+            this.Genres = new HashSet<Genre>();
+            this.Genres1 = new HashSet<Genre>();
         }
     
         public int Id { get; set; }
@@ -32,10 +32,6 @@ namespace AngularJsSample.Repositories.DatabaseModel
         public string LastName { get; set; }
         public string Email { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Genre> Genres { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Genre> Genres1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Movie> Movies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -48,5 +44,9 @@ namespace AngularJsSample.Repositories.DatabaseModel
         public virtual ICollection<MovieRating> MovieRatings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MovieRating> MovieRatings1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Genre> Genres { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Genre> Genres1 { get; set; }
     }
 }

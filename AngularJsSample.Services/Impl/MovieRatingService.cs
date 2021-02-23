@@ -30,7 +30,7 @@ namespace AngularJsSample.Services.Impl
 
             try
             {
-                response.MovieRating = _repository.FindBy(request.Id).MapToView();
+                response.MovieRating = _repository.FindAll(request.Id).MapToView();
                 response.Success = true;
             }
             catch (Exception ex)

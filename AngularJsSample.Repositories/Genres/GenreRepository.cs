@@ -50,12 +50,17 @@ namespace AngularJsSample.Repositories
             }
         }
 
-        public Model.Genres.Genre FindBy(int key)
+        public Model.Genres.Genre FindAll(int key)
         {
             using (var context = new AngularJsSampleDbEntities())
             {
                 return context.GenreData_Get(key).SingleOrDefault().MapToModel();
             }
+        }
+
+        public List<Model.Genres.Genre> FindAllBy(int key)
+        {
+            throw new NotImplementedException();
         }
 
         public Model.Genres.Genre Save(Model.Genres.Genre item)

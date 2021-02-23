@@ -16,7 +16,7 @@ namespace AngularJsSample.Repositories
             }
         }
 
-        public Model.Users.UserInfo FindBy(int key)
+        public Model.Users.UserInfo FindAll(int key)
         {
             using (var context = new Context.AngularJsSampleDbEntities())
             {
@@ -35,6 +35,11 @@ namespace AngularJsSample.Repositories
         }
 
         public UserInfo Save(UserInfo item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UserInfo> FindAllBy(int key)
         {
             throw new NotImplementedException();
         }

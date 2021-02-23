@@ -30,7 +30,7 @@ namespace AngularJsSample.Services.Impl
 
             try
             {
-                response.Genre = _repository.FindBy(request.Id).MapToView();
+                response.Genre = _repository.FindAll(request.Id).MapToView();
                 response.Success = true;
             }
             catch (Exception ex)

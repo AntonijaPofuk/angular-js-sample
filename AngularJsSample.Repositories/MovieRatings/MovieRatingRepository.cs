@@ -31,10 +31,15 @@ namespace AngularJsSample.Repositories
             throw new NotImplementedException();
         }
 
-        public Model.MovieRatings.MovieRating FindBy(int key)
+        public Model.MovieRatings.MovieRating FindAll(int key)
         {
             throw new NotImplementedException();
 
+        }
+
+        public List<Model.MovieRatings.MovieRating> FindAllBy(int key)
+        {
+            throw new NotImplementedException();
         }
 
         public Model.MovieRatings.MovieRating Save(Model.MovieRatings.MovieRating item)

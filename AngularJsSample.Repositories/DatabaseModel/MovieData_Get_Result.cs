@@ -18,12 +18,12 @@ namespace AngularJsSample.Repositories.DatabaseModel
         public string Name { get; set; }
         public string Description { get; set; }
         public System.DateTimeOffset ReleaseDate { get; set; }
-        public Nullable<int> Rating { get; set; }
         public string PosterUrl { get; set; }
         public string IMDBUrl { get; set; }
         public System.DateTimeOffset DateCreated { get; set; }
         public int UserCreated { get; set; }
         public Nullable<int> UserLastModified { get; set; }
+        public Nullable<int> Rating { get; set; }
         public string UserCreatedFirstName { get; set; }
         public string UserCreatedLastName { get; set; }
         public string UserCreatedFullName { get; set; }
@@ -32,5 +32,6 @@ namespace AngularJsSample.Repositories.DatabaseModel
         public string UserLastModifiedLastName { get; set; }
         public string UserLastModifiedFullName { get; set; }
         public string UserLastModifiedEmail { get; set; }
+        public Nullable<int> GenreId { get; set; }
     }
 }

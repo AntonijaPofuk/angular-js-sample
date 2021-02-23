@@ -5,13 +5,10 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="00d3d4ddd919448ea8664278164c0189" Name="Diagram1">
-        <EntityTypeShape EntityType="AngularJsSampleDbModel.Genre" Width="1.5" PointX="3.625" PointY="0.5" />
-        <EntityTypeShape EntityType="AngularJsSampleDbModel.Movie" Width="1.5" PointX="5.875" PointY="1.25" />
+        <EntityTypeShape EntityType="AngularJsSampleDbModel.Movie" Width="1.5" PointX="6.375" PointY="1" />
         <EntityTypeShape EntityType="AngularJsSampleDbModel.MoviePerson" Width="1.5" PointX="0.5" PointY="2.5" />
-        <EntityTypeShape EntityType="AngularJsSampleDbModel.MovieRating" Width="1.5" PointX="8.125" PointY="2.5" />
+        <EntityTypeShape EntityType="AngularJsSampleDbModel.MovieRating" Width="1.5" PointX="10.5" PointY="2.25" />
         <EntityTypeShape EntityType="AngularJsSampleDbModel.UserInfo" Width="1.5" PointX="5.875" PointY="6.375" />
-        <AssociationConnector Association="AngularJsSampleDbModel.FK_Genre_UserInfo" />
-        <AssociationConnector Association="AngularJsSampleDbModel.FK_Genre_UserInfo1" />
         <AssociationConnector Association="AngularJsSampleDbModel.FK_Movie_UserInfo" />
         <AssociationConnector Association="AngularJsSampleDbModel.FK_Movie_UserInfo1" />
         <AssociationConnector Association="AngularJsSampleDbModel.FK_MovieRating_Movie" />
@@ -19,6 +16,9 @@
         <AssociationConnector Association="AngularJsSampleDbModel.FK_MoviePerson_UserInfo1" />
         <AssociationConnector Association="AngularJsSampleDbModel.FK_MovieRating_UserInfo" />
         <AssociationConnector Association="AngularJsSampleDbModel.FK_MovieRating_UserInfo1" />
+        <EntityTypeShape EntityType="AngularJsSampleDbModel.Genre" Width="1.5" PointX="3.25" PointY="1.375" />
+        <AssociationConnector Association="AngularJsSampleDbModel.FK_Genre_UserInfo" />
+        <AssociationConnector Association="AngularJsSampleDbModel.FK_Genre_UserInfo1" />
         <AssociationConnector Association="AngularJsSampleDbModel.MovieIdGenreId" />
       </Diagram>
     </edmx:Diagrams>

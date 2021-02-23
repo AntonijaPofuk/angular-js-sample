@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="Helpers\IdentityHelper.cs" />
     <Compile Include="IoC\CommonModule.cs" />
+    <Compile Include="Mapping\MovieGenres\MovieGenreMapper.cs" />
     <Compile Include="Mapping\MovieRatings\MovieRatingMapper.cs" />
     <Compile Include="Mapping\Movies\MovieMapper.cs" />
     <Compile Include="Mapping\Genres\GenreMapper.cs" />

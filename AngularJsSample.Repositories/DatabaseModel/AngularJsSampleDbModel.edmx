@@ -12,7 +12,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="DateCreated" Type="datetimeoffset" Precision="0" Nullable="false" />
-          <Property Name="UserCreated" Type="int" Nullable="false" />
+          <Property Name="UserCreated" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="2000" />
           <Property Name="LastModified" Type="datetimeoffset" Precision="0" />
@@ -83,7 +83,7 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <Association Name="FK_Genre_UserInfo">
-          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="0..1" />
           <End Role="Genre" Type="Self.Genre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserInfo">
@@ -233,6 +233,9 @@
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <Function Name="Genres_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="Genres.Get" />
+        <Function Name="GenresFromMovie_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="GenresFromMovie.Get">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
         <Function Name="Movie_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id" Type="int" Mode="In" />
           <Parameter Name="UserLastModified" Type="int" Mode="In" />
@@ -411,19 +414,10 @@
             <Parameter Name="Description" Mode="In" Type="String" />
             <Parameter Name="UserCreated" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Genres" EntityType="AngularJsSampleDbModel.Genre" />
           <EntitySet Name="Movies" EntityType="AngularJsSampleDbModel.Movie" />
           <EntitySet Name="MoviePersons" EntityType="AngularJsSampleDbModel.MoviePerson" />
           <EntitySet Name="MovieRatings" EntityType="AngularJsSampleDbModel.MovieRating" />
           <EntitySet Name="UserInfoes" EntityType="AngularJsSampleDbModel.UserInfo" />
-          <AssociationSet Name="FK_Genre_UserInfo" Association="AngularJsSampleDbModel.FK_Genre_UserInfo">
-            <End Role="UserInfo" EntitySet="UserInfoes" />
-            <End Role="Genre" EntitySet="Genres" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Genre_UserInfo1" Association="AngularJsSampleDbModel.FK_Genre_UserInfo1">
-            <End Role="UserInfo" EntitySet="UserInfoes" />
-            <End Role="Genre" EntitySet="Genres" />
-          </AssociationSet>
           <AssociationSet Name="FK_Movie_UserInfo" Association="AngularJsSampleDbModel.FK_Movie_UserInfo">
             <End Role="UserInfo" EntitySet="UserInfoes" />
             <End Role="Movie" EntitySet="Movies" />
@@ -452,14 +446,7 @@
             <End Role="UserInfo" EntitySet="UserInfoes" />
             <End Role="MovieRating" EntitySet="MovieRatings" />
           </AssociationSet>
-          <AssociationSet Name="MovieIdGenreId" Association="AngularJsSampleDbModel.MovieIdGenreId">
-            <End Role="Genre" EntitySet="Genres" />
-            <End Role="Movie" EntitySet="Movies" />
-          </AssociationSet>
           <FunctionImport Name="Movies_Get" ReturnType="Collection(AngularJsSampleDbModel.Movies_Get_Result)" />
-          <FunctionImport Name="MovieData_Get" ReturnType="Collection(AngularJsSampleDbModel.MovieData_Get_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="Movie_Delete">
             <Parameter Name="Id" Mode="In" Type="Int32" />
             <Parameter Name="UserLastModified" Mode="In" Type="Int32" />
@@ -493,6 +480,25 @@
             <Parameter Name="MovieId" Mode="In" Type="Int32" />
             <Parameter Name="UserRatedId" Mode="In" Type="Int32" />
             <Parameter Name="Rating" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Genres" EntityType="AngularJsSampleDbModel.Genre" />
+          <AssociationSet Name="FK_Genre_UserInfo" Association="AngularJsSampleDbModel.FK_Genre_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="Genre" EntitySet="Genres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Genre_UserInfo1" Association="AngularJsSampleDbModel.FK_Genre_UserInfo1">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="Genre" EntitySet="Genres" />
+          </AssociationSet>
+          <AssociationSet Name="MovieIdGenreId" Association="AngularJsSampleDbModel.MovieIdGenreId">
+            <End Role="Genre" EntitySet="Genres" />
+            <End Role="Movie" EntitySet="Movies" />
+          </AssociationSet>
+          <FunctionImport Name="MovieData_Get" ReturnType="Collection(AngularJsSampleDbModel.MovieData_Get_Result)">
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GenresFromMovie_Get" ReturnType="Collection(AngularJsSampleDbModel.GenresFromMovie_Get_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="MoviePerson_Get_Result">
@@ -579,22 +585,6 @@
           <Property Type="String" Name="UserLastModifiedFullName" Nullable="true" MaxLength="101" />
           <Property Type="String" Name="UserLastModifiedEmail" Nullable="true" MaxLength="100" />
         </ComplexType>
-        <EntityType Name="Genre">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTimeOffset" Nullable="false" Precision="0" />
-          <Property Name="UserCreated" Type="Int32"  Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="LastModified" Type="DateTimeOffset" Precision="0" />
-          <Property Name="UserLastModified" Type="Int32" />
-          <NavigationProperty Name="UserInfo" Relationship="AngularJsSampleDbModel.FK_Genre_UserInfo" FromRole="Genre" ToRole="UserInfo" />
-          <NavigationProperty Name="UserInfo1" Relationship="AngularJsSampleDbModel.FK_Genre_UserInfo1" FromRole="Genre" ToRole="UserInfo" />
-          <NavigationProperty Name="Movies" Relationship="AngularJsSampleDbModel.MovieIdGenreId" FromRole="Genre" ToRole="Movie" />
-        </EntityType>
         <EntityType Name="Movie">
           <Key>
             <PropertyRef Name="Id" />
@@ -659,39 +649,15 @@
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Genres" Relationship="AngularJsSampleDbModel.FK_Genre_UserInfo" FromRole="UserInfo" ToRole="Genre" />
-          <NavigationProperty Name="Genres1" Relationship="AngularJsSampleDbModel.FK_Genre_UserInfo1" FromRole="UserInfo" ToRole="Genre" />
           <NavigationProperty Name="Movies" Relationship="AngularJsSampleDbModel.FK_Movie_UserInfo" FromRole="UserInfo" ToRole="Movie" />
           <NavigationProperty Name="Movies1" Relationship="AngularJsSampleDbModel.FK_Movie_UserInfo1" FromRole="UserInfo" ToRole="Movie" />
           <NavigationProperty Name="MoviePersons" Relationship="AngularJsSampleDbModel.FK_MoviePerson_UserInfo" FromRole="UserInfo" ToRole="MoviePerson" />
           <NavigationProperty Name="MoviePersons1" Relationship="AngularJsSampleDbModel.FK_MoviePerson_UserInfo1" FromRole="UserInfo" ToRole="MoviePerson" />
           <NavigationProperty Name="MovieRatings" Relationship="AngularJsSampleDbModel.FK_MovieRating_UserInfo" FromRole="UserInfo" ToRole="MovieRating" />
           <NavigationProperty Name="MovieRatings1" Relationship="AngularJsSampleDbModel.FK_MovieRating_UserInfo1" FromRole="UserInfo" ToRole="MovieRating" />
+          <NavigationProperty Name="Genres" Relationship="AngularJsSampleDbModel.FK_Genre_UserInfo" FromRole="UserInfo" ToRole="Genre" />
+          <NavigationProperty Name="Genres1" Relationship="AngularJsSampleDbModel.FK_Genre_UserInfo1" FromRole="UserInfo" ToRole="Genre" />
         </EntityType>
-        <Association Name="FK_Genre_UserInfo">
-          <End Type="AngularJsSampleDbModel.UserInfo" Role="UserInfo" Multiplicity="1" />
-          <End Type="AngularJsSampleDbModel.Genre" Role="Genre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Genre">
-              <PropertyRef Name="UserCreated" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Genre_UserInfo1">
-          <End Type="AngularJsSampleDbModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
-          <End Type="AngularJsSampleDbModel.Genre" Role="Genre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserInfo">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Genre">
-              <PropertyRef Name="UserLastModified" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Movie_UserInfo">
           <End Type="AngularJsSampleDbModel.UserInfo" Role="UserInfo" Multiplicity="1" />
           <End Type="AngularJsSampleDbModel.Movie" Role="Movie" Multiplicity="*" />
@@ -776,10 +742,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="MovieIdGenreId">
-          <End Type="AngularJsSampleDbModel.Genre" Role="Genre" Multiplicity="*" />
-          <End Type="AngularJsSampleDbModel.Movie" Role="Movie" Multiplicity="*" />
-        </Association>
         <ComplexType Name="Movies_Get_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Boolean" Name="Active" Nullable="false" />
@@ -801,18 +763,62 @@
           <Property Type="String" Name="UserLastModifiedFullName" Nullable="true" MaxLength="101" />
           <Property Type="String" Name="UserLastModifiedEmail" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="Genre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTimeOffset" Nullable="false" Precision="0" />
+          <Property Name="UserCreated" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="LastModified" Type="DateTimeOffset" Precision="0" />
+          <Property Name="UserLastModified" Type="Int32" />
+          <NavigationProperty Name="UserInfo" Relationship="AngularJsSampleDbModel.FK_Genre_UserInfo" FromRole="Genre" ToRole="UserInfo" />
+          <NavigationProperty Name="UserInfo1" Relationship="AngularJsSampleDbModel.FK_Genre_UserInfo1" FromRole="Genre" ToRole="UserInfo" />
+          <NavigationProperty Name="Movies" Relationship="AngularJsSampleDbModel.MovieIdGenreId" FromRole="Genre" ToRole="Movie" />
+        </EntityType>
+        <Association Name="FK_Genre_UserInfo">
+          <End Type="AngularJsSampleDbModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+          <End Type="AngularJsSampleDbModel.Genre" Role="Genre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Genre">
+              <PropertyRef Name="UserCreated" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Genre_UserInfo1">
+          <End Type="AngularJsSampleDbModel.UserInfo" Role="UserInfo" Multiplicity="0..1" />
+          <End Type="AngularJsSampleDbModel.Genre" Role="Genre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Genre">
+              <PropertyRef Name="UserLastModified" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MovieIdGenreId">
+          <End Type="AngularJsSampleDbModel.Genre" Role="Genre" Multiplicity="*" />
+          <End Type="AngularJsSampleDbModel.Movie" Role="Movie" Multiplicity="*" />
+        </Association>
         <ComplexType Name="MovieData_Get_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="Boolean" Name="Active" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Description" Nullable="true" MaxLength="2000" />
           <Property Type="DateTimeOffset" Name="ReleaseDate" Nullable="false" />
-          <Property Type="Int32" Name="Rating" Nullable="true" />
           <Property Type="String" Name="PosterUrl" Nullable="true" MaxLength="2000" />
           <Property Type="String" Name="IMDBUrl" Nullable="true" MaxLength="2000" />
           <Property Type="DateTimeOffset" Name="DateCreated" Nullable="false" />
           <Property Type="Int32" Name="UserCreated" Nullable="false" />
           <Property Type="Int32" Name="UserLastModified" Nullable="true" />
+          <Property Type="Int32" Name="Rating" Nullable="true" />
           <Property Type="String" Name="UserCreatedFirstName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="UserCreatedLastName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="UserCreatedFullName" Nullable="true" MaxLength="101" />
@@ -821,6 +827,13 @@
           <Property Type="String" Name="UserLastModifiedLastName" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="UserLastModifiedFullName" Nullable="true" MaxLength="101" />
           <Property Type="String" Name="UserLastModifiedEmail" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="GenreId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GenresFromMovie_Get_Result">
+          <Property Type="Int32" Name="MovieId" Nullable="false" />
+          <Property Type="Int32" Name="GenreId" Nullable="false" />
+          <Property Type="String" Name="MovieName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="GenreName" Nullable="true" MaxLength="50" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -938,20 +951,6 @@
           <FunctionImportMapping FunctionImportName="Genre_Delete" FunctionName="AngularJsSampleDbModel.Store.Genre_Delete" />
           <FunctionImportMapping FunctionImportName="Genre_Save" FunctionName="AngularJsSampleDbModel.Store.Genre_Save" />
           <FunctionImportMapping FunctionImportName="Genre_Insert" FunctionName="AngularJsSampleDbModel.Store.Genre_Insert" />
-          <EntitySetMapping Name="Genres">
-            <EntityTypeMapping TypeName="AngularJsSampleDbModel.Genre">
-              <MappingFragment StoreEntitySet="Genre">
-                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
-                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UserCreated" ColumnName="UserCreated" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Movies">
             <EntityTypeMapping TypeName="AngularJsSampleDbModel.Movie">
               <MappingFragment StoreEntitySet="Movie">
@@ -1011,14 +1010,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="MovieIdGenreId" TypeName="AngularJsSampleDbModel.MovieIdGenreId" StoreEntitySet="MovieIdGenreId">
-            <EndProperty Name="Movie">
-              <ScalarProperty Name="Id" ColumnName="MovieId" />
-            </EndProperty>
-            <EndProperty Name="Genre">
-              <ScalarProperty Name="Id" ColumnName="GenreId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="Movies_Get" FunctionName="AngularJsSampleDbModel.Store.Movies_Get">
             <ResultMapping>
               <ComplexTypeMapping TypeName="AngularJsSampleDbModel.Movies_Get_Result">
@@ -1044,6 +1035,33 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Movie_Delete" FunctionName="AngularJsSampleDbModel.Store.Movie_Delete" />
+          <FunctionImportMapping FunctionImportName="Movie_Insert" FunctionName="AngularJsSampleDbModel.Store.Movie_Insert" />
+          <FunctionImportMapping FunctionImportName="Movie_Save" FunctionName="AngularJsSampleDbModel.Store.Movie_Save" />
+          <FunctionImportMapping FunctionImportName="Rating_Insert" FunctionName="AngularJsSampleDbModel.Store.Rating_Insert" />
+          <FunctionImportMapping FunctionImportName="Rating_Save" FunctionName="AngularJsSampleDbModel.Store.Rating_Save" />
+          <EntitySetMapping Name="Genres">
+            <EntityTypeMapping TypeName="AngularJsSampleDbModel.Genre">
+              <MappingFragment StoreEntitySet="Genre">
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserCreated" ColumnName="UserCreated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="MovieIdGenreId" TypeName="AngularJsSampleDbModel.MovieIdGenreId" StoreEntitySet="MovieIdGenreId">
+            <EndProperty Name="Movie">
+              <ScalarProperty Name="Id" ColumnName="MovieId" />
+            </EndProperty>
+            <EndProperty Name="Genre">
+              <ScalarProperty Name="Id" ColumnName="GenreId" />
+            </EndProperty>
+          </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="MovieData_Get" FunctionName="AngularJsSampleDbModel.Store.MovieData_Get">
             <ResultMapping>
               <ComplexTypeMapping TypeName="AngularJsSampleDbModel.MovieData_Get_Result">
@@ -1052,12 +1070,12 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="PosterUrl" ColumnName="PosterUrl" />
                 <ScalarProperty Name="IMDBUrl" ColumnName="IMDBUrl" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="UserCreated" ColumnName="UserCreated" />
                 <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="UserCreatedFirstName" ColumnName="UserCreatedFirstName" />
                 <ScalarProperty Name="UserCreatedLastName" ColumnName="UserCreatedLastName" />
                 <ScalarProperty Name="UserCreatedFullName" ColumnName="UserCreatedFullName" />
@@ -1066,14 +1084,20 @@
                 <ScalarProperty Name="UserLastModifiedLastName" ColumnName="UserLastModifiedLastName" />
                 <ScalarProperty Name="UserLastModifiedFullName" ColumnName="UserLastModifiedFullName" />
                 <ScalarProperty Name="UserLastModifiedEmail" ColumnName="UserLastModifiedEmail" />
+                <ScalarProperty Name="GenreId" ColumnName="GenreId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Movie_Delete" FunctionName="AngularJsSampleDbModel.Store.Movie_Delete" />
-          <FunctionImportMapping FunctionImportName="Movie_Insert" FunctionName="AngularJsSampleDbModel.Store.Movie_Insert" />
-          <FunctionImportMapping FunctionImportName="Movie_Save" FunctionName="AngularJsSampleDbModel.Store.Movie_Save" />
-          <FunctionImportMapping FunctionImportName="Rating_Insert" FunctionName="AngularJsSampleDbModel.Store.Rating_Insert" />
-          <FunctionImportMapping FunctionImportName="Rating_Save" FunctionName="AngularJsSampleDbModel.Store.Rating_Save" />
+          <FunctionImportMapping FunctionImportName="GenresFromMovie_Get" FunctionName="AngularJsSampleDbModel.Store.GenresFromMovie_Get">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AngularJsSampleDbModel.GenresFromMovie_Get_Result">
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+                <ScalarProperty Name="GenreId" ColumnName="GenreId" />
+                <ScalarProperty Name="MovieName" ColumnName="MovieName" />
+                <ScalarProperty Name="GenreName" ColumnName="GenreName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

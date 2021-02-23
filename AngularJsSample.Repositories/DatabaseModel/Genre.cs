@@ -23,7 +23,7 @@ namespace AngularJsSample.Repositories.DatabaseModel
         public int Id { get; set; }
         public bool Active { get; set; }
         public System.DateTimeOffset DateCreated { get; set; }
-        public int UserCreated { get; set; }
+        public Nullable<int> UserCreated { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<System.DateTimeOffset> LastModified { get; set; }

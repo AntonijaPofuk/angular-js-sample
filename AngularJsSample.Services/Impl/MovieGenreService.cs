@@ -31,7 +31,7 @@ namespace AngularJsSample.Services.Impl
 
             try
             {
-                response.MovieGenre = _repository.FindBy(request.Id).MapToView();
+                response.MovieGenres = _repository.FindAllBy(request.Id).MapToViews();
                 response.Success = true;
             }
             catch (Exception ex)

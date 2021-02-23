@@ -11,10 +11,10 @@ namespace AngularJsSample.Api.Models
     public class GenreViewModel
     {
         public int Id { get; set; }
-        [Required (ErrorMessage = "Please enter name")]
+        [Required(ErrorMessage = "Please enter name")]
         public string Name { get; set; }
         [Required]
-        public string Description { get; set; }       
+        public string Description { get; set; }
         public DateTimeOffset? Datecreated { get; set; }
         public DateTimeOffset? Lastmodified { get; set; }
         public UserViewModel UserLastModified { get; set; }

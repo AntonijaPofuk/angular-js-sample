@@ -10,6 +10,17 @@ namespace AngularJsSample.Api.Mapping.Movies
 {
     public static class MoviesMapper
     {
+
+        public static MovieViewModel MapToViewModelFK(this Movie view)
+        {
+            if (view == null)
+                return null;
+            return new MovieViewModel()
+            {
+                Id = view.Id,
+                Name = view.Name
+            };
+        }
         public static MovieViewModel MapToViewModel(this Movie view)
         {
             if (view == null)

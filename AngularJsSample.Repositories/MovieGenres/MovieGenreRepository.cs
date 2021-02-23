@@ -27,9 +27,22 @@ namespace AngularJsSample.Repositories
             throw new NotImplementedException();
         }
 
-        public MovieGenre FindBy(int key)
+        public MovieGenre FindAll(int key)
         {
             throw new NotImplementedException();
+        }
+
+        public List<MovieGenre> FindAllBy(int key)
+        {
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                List<Model.MovieGenres.MovieGenre> list = new List<Model.MovieGenres.MovieGenre>();
+                foreach (var item in context.GenresFromMovie_Get(key).ToList())
+                {
+                    list.Add(item.MapToModels());
+                }
+                return list;
+            }
         }
 
         public MovieGenre Save(MovieGenre item)

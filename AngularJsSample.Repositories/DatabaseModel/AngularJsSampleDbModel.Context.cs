@@ -27,11 +27,11 @@ namespace AngularJsSample.Repositories.DatabaseModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<MoviePerson> MoviePersons { get; set; }
         public virtual DbSet<MovieRating> MovieRatings { get; set; }
         public virtual DbSet<UserInfo> UserInfoes { get; set; }
+        public virtual DbSet<Genre> Genres { get; set; }
     
         public virtual int MoviePerson_Delete(Nullable<int> id, Nullable<int> userLastModified)
         {
@@ -221,15 +221,6 @@ namespace AngularJsSample.Repositories.DatabaseModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Movies_Get_Result>("Movies_Get");
         }
     
-        public virtual ObjectResult<MovieData_Get_Result> MovieData_Get(Nullable<int> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MovieData_Get_Result>("MovieData_Get", idParameter);
-        }
-    
         public virtual int Movie_Delete(Nullable<int> id, Nullable<int> userLastModified)
         {
             var idParameter = id.HasValue ?
@@ -349,6 +340,24 @@ namespace AngularJsSample.Repositories.DatabaseModel
                 new ObjectParameter("Rating", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Rating_Save", movieIdParameter, userRatedIdParameter, ratingParameter);
+        }
+    
+        public virtual ObjectResult<MovieData_Get_Result> MovieData_Get(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MovieData_Get_Result>("MovieData_Get", idParameter);
+        }
+    
+        public virtual ObjectResult<GenresFromMovie_Get_Result> GenresFromMovie_Get(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GenresFromMovie_Get_Result>("GenresFromMovie_Get", idParameter);
         }
     }
 }

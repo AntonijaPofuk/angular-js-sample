@@ -10,6 +10,17 @@ namespace AngularJsSample.Api.Mapping.Genres
 {
     public static class GenresMapper
     {
+
+        public static GenreViewModel MapToViewModelFK(this Genre view)
+        {
+            if (view == null)
+                return null;
+            return new GenreViewModel()
+            {
+                Id = view.Id,
+                Name = view.Name
+            };
+        }
         public static GenreViewModel MapToViewModel(this Genre view)
         {
             if (view == null)

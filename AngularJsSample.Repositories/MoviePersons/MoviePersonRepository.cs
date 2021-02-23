@@ -50,11 +50,16 @@ namespace AngularJsSample.Repositories
             }
         }
 
-        public Model.MoviePersons.MoviePerson FindBy(int key)
+        public Model.MoviePersons.MoviePerson FindAll(int key)
         {
             using (var context = new AngularJsSampleDbEntities()) {
                 return context.MoviePersonData_Get(key).SingleOrDefault().MapToModel();
             }
+        }
+
+        public List<Model.MoviePersons.MoviePerson> FindAllBy(int key)
+        {
+            throw new NotImplementedException();
         }
 
         public Model.MoviePersons.MoviePerson Save(Model.MoviePersons.MoviePerson item)

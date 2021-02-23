@@ -71,6 +71,9 @@
     <Compile Include="DatabaseModel\GenreData_Get_Result.cs">
       <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseModel\GenresFromMovie_Get_Result.cs">
+      <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseModel\Genres_Get_Result.cs">
       <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
     </Compile>
@@ -101,6 +104,7 @@
     <Compile Include="DatabaseModel\UserInfo.cs">
       <DependentUpon>AngularJsSampleDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Mapping\MovieGenreMapper.cs" />
     <Compile Include="Mapping\MovieMapper.cs" />
     <Compile Include="MovieGenres\MovieGenreRepository.cs" />
     <Compile Include="MovieRatings\MovieRatingRepository.cs" />

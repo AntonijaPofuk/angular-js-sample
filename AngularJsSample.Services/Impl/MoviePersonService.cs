@@ -61,7 +61,7 @@ namespace AngularJsSample.Services.Impl
 
             try
             {
-                response.MoviePerson = _repository.FindBy(request.Id).MapToView();
+                response.MoviePerson = _repository.FindAll(request.Id).MapToView();
                 response.Success = true;
             }
             catch (Exception ex)
