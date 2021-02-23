@@ -18,6 +18,7 @@
         vm.movie = movie.data; // data is in general.routing.js
         vm.save = saveMovie;
         vm.datepicker = datePicker;
+        vm.genres = getGenres;
 
         //#endregion
 
@@ -55,6 +56,25 @@
                 start: "year",
                 format: "dd.MM.yyyy"
             };
+        }
+
+        function getGenres() {
+            let options = {
+                dataSource: {
+                    transport: {
+                        read: function (options) {
+                            $http.get(serviceBase + "api/movies")
+                                .then(function (result) {
+                                    options.success(result.data.movies);
+                                }, function (error) {
+                                    console.log("Error for " + serviceBase + "api/movies" + " is:" + error.status + error.message);
+                                });
+                        },
+                    },
+                },               
+            };
+
+            return options;
         }
 
         $scope.selectOptions = {

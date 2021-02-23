@@ -7,8 +7,8 @@
         .controller('movieProfileCtrl', movieProfileCtrl);
 
     //OVERVIEW
-    movieProfileCtrl.$inject = ['$scope', '$http', 'movie', 'moviesSvc','$state' ];
-    function movieProfileCtrl($scope, $http, movie, moviesSvc, $state) {
+    movieProfileCtrl.$inject = ['$scope', '$http', 'movie', 'moviesSvc', '$state', 'moviegenres' ];
+    function movieProfileCtrl($scope, $http, movie, moviesSvc, $state, moviegenres) {
         
         //#region JS variables
         var vm = this;
@@ -18,7 +18,7 @@
         //#region Bindable Members
         vm.movie = movie.data; // data is in general.routing.js
         vm.delete = deleteMovie;
-        vm.genres = getGenres;
+        vm.moviegenres = moviegenres.data;
 
         //#endregion
 
@@ -28,9 +28,8 @@
 
         //#region JS functions
         function activate() {
-         
-        }
-              
+           
+        }             
 
 
         function deleteMovie(id) {
@@ -44,13 +43,12 @@
         //#endregion
 
     
-
-
     $scope.selectOptions = {
         placeholder: "Odaberi žanr...",
         dataTextField: "genreId.id",
         dataValueField: "genreId.id",
         valuePrimitive: true,
+        value: $scope.selectedIds,
         autoBind: false,
         dataSource: {
             transport: {
@@ -64,10 +62,13 @@
                 },
             },
         }
-        };
+        };    
 
-        
-    $scope.selectedIds = [];
+        $scope.selectedIds = [];      
+        angular.forEach(vm.moviegenres.moviegenres, function (value, key) {
+            $scope.selectedIds.push(value.genreId.id);
+
+        }); 
 
     };
 
