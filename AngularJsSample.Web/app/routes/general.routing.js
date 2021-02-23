@@ -193,7 +193,7 @@
                     moviePerson: function (moviePersonsServices, moviePersonsSvc, $stateParams) {
                         return moviePersonsSvc.getMoviePerson($stateParams.id);                        
                     }, 
-
+                 
                   
                     moviePersonProfile: function ($ocLazyLoad, moviePersonsServices, moviePerson ) {
                         return $ocLazyLoad.load({
@@ -255,10 +255,15 @@
                             ]
                         });
                     },
-                    movie: function (moviesServices, moviesSvc, $stateParams) { 
-                        return moviesSvc.getMovie($stateParams.id);
-                       
+
+                    moviegenres: function (moviesServices, moviesSvc, $stateParams) {
+                        return moviesSvc.getMovieGenres($stateParams.id);
                     }, 
+
+                    movie: function (moviesServices, moviesSvc, $stateParams) { 
+                        return moviesSvc.getMovie($stateParams.id);                       
+                    }, 
+                   
                     movieProfile: function ($ocLazyLoad, moviesServices, movie) {
                         return $ocLazyLoad.load({
                             name: "movieProfile",

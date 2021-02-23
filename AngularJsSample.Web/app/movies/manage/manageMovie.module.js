@@ -76,7 +76,7 @@
                 },
             }
         };
-        $scope.selectedIds = [];
+        $scope.selectedIds = [1];
     }
     //#endregion
 

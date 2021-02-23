@@ -24,6 +24,9 @@
         this.updateMovie = function (id, movie) {
             return $http.put(`${serviceBase}/api/movies/${id}`, movie);
         }
+        this.getMovieGenres = function (id) {
+            return $http.get(`${serviceBase}/api/moviegenres/${id}`);
+        }
     };
 
 })();
