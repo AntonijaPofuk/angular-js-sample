@@ -20,6 +20,8 @@
         vm.datepicker = datePicker;
         vm.moviegenres = moviegenres.data;
 
+        $scope.selectedIds = [];
+        $scope.oldIds = [];
 
         //#endregion
 
@@ -28,13 +30,45 @@
         //#endregion
 
         //#region JS functions
-        function activate() { }
-
+        function activate() {
+            if (vm.movie === undefined) {
+            } else {
+                angular.forEach(vm.moviegenres.moviegenres, function (value, key) {
+                    $scope.selectedIds.push(value.genreId.id);
+                });
+                angular.forEach(vm.moviegenres.moviegenres, function (value, key) {
+                    $scope.oldIds.push(value.genreId.id);
+                });
+            }
+        }
 
         function saveMovie(dataItem) {
             if (vm.movie.id === undefined) {
                 //create               
                 moviesSvc.createMovie(vm.movie).then(function () {
+                    $scope.isSame = angular.equals($scope.selectedIds, $scope.oldIds);
+                    if (!$scope.isSame) {
+                        $scope.toDelete = $scope.oldIds.filter(item => !$scope.selectedIds.some(other => item === other));
+                        angular.forEach($scope.toDelete, function (value, key) {
+                            moviesSvc.deleteMovieGenre(vm.movie.id, value).then(function (result) { }
+                                , function (error) {
+                                    console.log(error);
+                                    //add error handling
+                                }
+                            );
+                        });
+                        $scope.toAdd = $scope.selectedIds.filter(item => !$scope.oldIds.some(other => item === other));
+                        angular.forEach($scope.toAdd, function (value, key) {
+                            moviesSvc.addMovieGenre({ "movieId": { "Id": vm.movie.id }, "genreId": { "Id": value } })
+                                .then(function (result) { }
+                                    , function (error) {
+                                        console.log(error);
+                                        //add error handling
+                                    }
+                                );
+                        });
+
+                    }
                     Swal.fire('Uspješno ste kreirali novi film!')
                     $state.go("moviesOverview");
                 }, function (error) {
@@ -65,14 +99,12 @@
                                 }
                             );
                         });
-
                     }
                     Swal.fire('Uspješno ste ažurirali film!')
                     $state.go("moviesOverview");
                 }, function (error) {
                     Swal.fire(error.status + ': Niste uspješno ažurirali film!')
                 });
-
             }
         }
 
@@ -102,18 +134,7 @@
                     },
                 },
             }
-        };
-
-        $scope.selectedIds = [];
-        angular.forEach(vm.moviegenres.moviegenres, function (value, key) {
-            $scope.selectedIds.push(value.genreId.id);
-        });
-
-        $scope.oldIds = [];
-        angular.forEach(vm.moviegenres.moviegenres, function (value, key) {
-            $scope.oldIds.push(value.genreId.id);
-        });
-
+        };    
     };
     
     //#endregion

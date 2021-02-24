@@ -62,10 +62,7 @@
                                 k-ng-model="selectedIds"></select>
                         <p style="padding-top: 1em;">
                             Selected:  {{selectedIds}}
-                        </p>
-                        <p style="padding-top: 1em;">
-                            Old:  {{oldIds}}
-                        </p>
+                        </p>                       
                     </div>
                 </div>
             <div class="row">
@@ -80,7 +77,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-10">
                     <div class="panel-body">
                         <div>Ocjena {{vm.movie.rating}}:</div>
                         <input kendo-rating k-min="1" k-max="6" k-ng-model="vm.movie.rating" style="width: 100%;" />

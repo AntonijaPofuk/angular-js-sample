@@ -384,6 +384,9 @@
                             ]
                         });
                     },
+                    moviegenres: function () {
+                        return {};
+                    }, 
                     movie: function () {
                         return {};
                     },
