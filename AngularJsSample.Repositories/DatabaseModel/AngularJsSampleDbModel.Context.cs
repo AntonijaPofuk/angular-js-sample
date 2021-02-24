@@ -385,5 +385,18 @@ namespace AngularJsSample.Repositories.DatabaseModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MovieIdGenreId_Save", movieIdParameter, genreIdParameter);
         }
+    
+        public virtual int MovieIdGenreId_Insert(Nullable<int> genreId, Nullable<int> movieId)
+        {
+            var genreIdParameter = genreId.HasValue ?
+                new ObjectParameter("GenreId", genreId) :
+                new ObjectParameter("GenreId", typeof(int));
+    
+            var movieIdParameter = movieId.HasValue ?
+                new ObjectParameter("MovieId", movieId) :
+                new ObjectParameter("MovieId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MovieIdGenreId_Insert", genreIdParameter, movieIdParameter);
+        }
     }
 }

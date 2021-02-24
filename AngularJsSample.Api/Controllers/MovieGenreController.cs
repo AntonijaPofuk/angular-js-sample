@@ -79,6 +79,29 @@ namespace AngularJsSample.Api.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("")]
+        public IHttpActionResult Post(MovieGenreViewModel movieGenre)
+        {
+            var loggedUserId = HttpContext.Current.GetOwinContext().GetUserId();           
+
+            var request = new SaveMovieGenreRequest()
+            {
+                RequestToken = Guid.NewGuid(),
+                UserId = loggedUserId,
+                MovieId = movieGenre.MovieId.Id,
+                GenreId = movieGenre.GenreId.Id
+            };
+
+            var movieGenresResponse = _movieGenreService.SaveMovieGenre(request);
+
+            if (!movieGenresResponse.Success)
+            {
+                return BadRequest(movieGenresResponse.Message);
+            }
+
+            return Ok(movieGenre = movieGenresResponse.MovieGenre.MapToViewModel());
+        }
     }
 }
 

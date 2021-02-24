@@ -54,6 +54,18 @@
                                 }
                             );
                         });
+
+                        $scope.toAdd = $scope.selectedIds.filter(item => !$scope.oldIds.some(other => item === other));
+                        angular.forEach($scope.toAdd, function (value, key) {
+                            moviesSvc.addMovieGenre({ "movieId": { "Id": vm.movie.id }, "genreId": { "Id": value } })
+                                .then(function (result) { }
+                                , function (error) {
+                                    console.log(error);
+                                    //add error handling
+                                }
+                            );
+                        });
+
                     }
                     Swal.fire('Uspješno ste ažurirali film!')
                     $state.go("moviesOverview");

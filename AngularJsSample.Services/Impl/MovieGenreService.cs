@@ -20,7 +20,6 @@ namespace AngularJsSample.Services.Impl
 
         }
 
-
         public GetMovieGenreResponse GetMovieGenre(GetMovieGenreRequest request)
         {
             var response = new GetMovieGenreResponse()
@@ -81,36 +80,23 @@ namespace AngularJsSample.Services.Impl
        
         SaveMovieGenreResponse IMovieGenreService.SaveMovieGenre(SaveMovieGenreRequest request)
         {
-            //var response = new SaveMovieGenreResponse()
-            //{
-            //    Request = request,
-            //    ResponseToken = Guid.NewGuid()
-            //};
-            //try
-            //{
-            //    if (request.MovieGenre?.MovieId == 0)
-            //    {
-            //        response.MovieGenre = request.MovieGenre;
-            //        response.MovieGenre.MovieId = _repository.Add(request.MovieGenre.MapToModel());
-            //        response.Success = true;
-            //    }
-            //    else if (request.MovieGenre?.MovieId > 0)
-            //    {
-            //        response.MovieGenre = _repository.Save(request.MovieGenre.MapToModel()).MapToView();
-            //        response.Success = true;
-            //    }
-            //    else
-            //    {
-            //        response.Success = false;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    response.Message = ex.Message;
-            //    response.Success = false;
-            //}
-            //return response;
-            return null;
+            var response = new SaveMovieGenreResponse()
+            {
+                Request = request,
+                ResponseToken = Guid.NewGuid()
+            };
+            try
+            {
+                     _repository.AddMovieGenre(request.MovieId, request.GenreId);
+
+                    response.Success = true;               
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+            return response;
         }
     }
 }

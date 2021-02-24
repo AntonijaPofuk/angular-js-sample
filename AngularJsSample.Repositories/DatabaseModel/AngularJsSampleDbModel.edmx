@@ -267,6 +267,10 @@
           <Parameter Name="MovieId" Type="int" Mode="In" />
           <Parameter Name="GenreId" Type="int" Mode="In" />
         </Function>
+        <Function Name="MovieIdGenreId_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GenreId" Type="int" Mode="In" />
+          <Parameter Name="MovieId" Type="int" Mode="In" />
+        </Function>
         <Function Name="MovieIdGenreId_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MovieId" Type="int" Mode="In" />
           <Parameter Name="GenreId" Type="int" Mode="In" />
@@ -516,6 +520,10 @@
           <FunctionImport Name="MovieIdGenreId_Save">
             <Parameter Name="MovieId" Mode="In" Type="Int32" />
             <Parameter Name="GenreId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MovieIdGenreId_Insert">
+            <Parameter Name="GenreId" Mode="In" Type="Int32" />
+            <Parameter Name="MovieId" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="MoviePerson_Get_Result">
@@ -1117,6 +1125,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="MovieIdGenreId_Delete" FunctionName="AngularJsSampleDbModel.Store.MovieIdGenreId_Delete" />
           <FunctionImportMapping FunctionImportName="MovieIdGenreId_Save" FunctionName="AngularJsSampleDbModel.Store.MovieIdGenreId_Save" />
+          <FunctionImportMapping FunctionImportName="MovieIdGenreId_Insert" FunctionName="AngularJsSampleDbModel.Store.MovieIdGenreId_Insert" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

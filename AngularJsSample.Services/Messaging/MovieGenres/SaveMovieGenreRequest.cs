@@ -10,6 +10,7 @@ namespace AngularJsSample.Services.Messaging
 {
     public class SaveMovieGenreRequest:RequestBase
     {
-        public MovieGenre MovieGenre { get; set; }
+        public int MovieId { get; set; }
+        public int GenreId { get; set; }
     }
 }

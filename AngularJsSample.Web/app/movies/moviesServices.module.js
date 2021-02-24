@@ -29,6 +29,9 @@
         }
         this.deleteMovieGenre = function (movieId, genreId) {
             return $http.delete(`${serviceBase}/api/moviegenres/${movieId}/${genreId}`);
-        }      
+        }  
+        this.addMovieGenre = function (moviegenre) {
+            return $http.post(`${serviceBase}/api/moviegenres`, moviegenre);
+        }  
     };
 })();

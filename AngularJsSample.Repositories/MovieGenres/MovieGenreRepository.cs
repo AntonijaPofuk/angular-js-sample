@@ -17,6 +17,15 @@ namespace AngularJsSample.Repositories
             throw new NotImplementedException();
         }
 
+        public int AddMovieGenre(int genreId, int movieId)
+        {
+            using (var context = new AngularJsSampleDbEntities())
+            {
+                return context.MovieIdGenreId_Insert(movieId, genreId);
+
+            }
+        }
+
         public bool Delete(MovieGenre item)
         {
             try

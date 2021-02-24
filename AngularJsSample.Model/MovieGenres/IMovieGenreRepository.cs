@@ -5,6 +5,7 @@ namespace AngularJsSample.Model.MovieGenres
 {
     public interface IMovieGenreRepository:IRepository<MovieGenre,int>
     {
-         
+        int AddMovieGenre(int genreId, int movieId);
+
     }
 }
