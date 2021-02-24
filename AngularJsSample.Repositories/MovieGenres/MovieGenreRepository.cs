@@ -19,7 +19,19 @@ namespace AngularJsSample.Repositories
 
         public bool Delete(MovieGenre item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var context = new AngularJsSampleDbEntities())
+                {
+                    context.MovieIdGenreId_Delete(item.MovieId.Id, item.GenreId.Id);
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"The exception is: '{e}'");
+                return false;
+            }
         }
 
         public List<MovieGenre> FindAll()

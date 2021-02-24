@@ -66,6 +66,8 @@
     <Compile Include="Mapping\MoviePersonsMapper.cs" />
     <Compile Include="Mapping\UsersMapper.cs" />
     <Compile Include="Messaging\GenericErrorMessageFactory.cs" />
+    <Compile Include="Messaging\MovieGenres\DeleteMovieGenreRequest.cs" />
+    <Compile Include="Messaging\MovieGenres\DeleteMovieGenreResponse.cs" />
     <Compile Include="Messaging\MovieGenres\GetMovieGenreRequest.cs" />
     <Compile Include="Messaging\MovieGenres\GetMovieGenreResponse.cs" />
     <Compile Include="Messaging\MovieGenres\SaveMovieGenreRequest.cs" />

@@ -359,5 +359,31 @@ namespace AngularJsSample.Repositories.DatabaseModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GenresFromMovie_Get_Result>("GenresFromMovie_Get", idParameter);
         }
+    
+        public virtual int MovieIdGenreId_Delete(Nullable<int> movieId, Nullable<int> genreId)
+        {
+            var movieIdParameter = movieId.HasValue ?
+                new ObjectParameter("MovieId", movieId) :
+                new ObjectParameter("MovieId", typeof(int));
+    
+            var genreIdParameter = genreId.HasValue ?
+                new ObjectParameter("GenreId", genreId) :
+                new ObjectParameter("GenreId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MovieIdGenreId_Delete", movieIdParameter, genreIdParameter);
+        }
+    
+        public virtual int MovieIdGenreId_Save(Nullable<int> movieId, Nullable<int> genreId)
+        {
+            var movieIdParameter = movieId.HasValue ?
+                new ObjectParameter("MovieId", movieId) :
+                new ObjectParameter("MovieId", typeof(int));
+    
+            var genreIdParameter = genreId.HasValue ?
+                new ObjectParameter("GenreId", genreId) :
+                new ObjectParameter("GenreId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MovieIdGenreId_Save", movieIdParameter, genreIdParameter);
+        }
     }
 }

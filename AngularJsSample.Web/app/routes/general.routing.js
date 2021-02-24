@@ -321,6 +321,9 @@
                             ]
                         });
                     },
+                    moviegenres: function (moviesServices, moviesSvc, $stateParams) {
+                        return moviesSvc.getMovieGenres($stateParams.id);
+                    }, 
                     movie: function (moviesServices, moviesSvc, $stateParams) {
                         return moviesSvc.getMovie($stateParams.id);
                     },
@@ -492,9 +495,7 @@
                     }
 
                 }
-            })
-
-            ;
+            });
     }
 
 })();

@@ -8,6 +8,7 @@ namespace AngularJsSample.Services
     {
         GetMovieGenreResponse GetMovieGenre(GetMovieGenreRequest request);
         SaveMovieGenreResponse SaveMovieGenre(SaveMovieGenreRequest request);
+        DeleteMovieGenreResponse DeleteMovieGenre(DeleteMovieGenreRequest request);
 
 
     }

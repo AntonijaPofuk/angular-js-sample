@@ -10,11 +10,13 @@ using System.Net.Http;
 using System.Web.Services.Description;
 using System.Net;
 using AngularJsSample.Api.Mapping.MovieGenres;
+using System.Web.Http.Cors;
 
 namespace AngularJsSample.Api.Controllers
 {
     [Authorize]
     [RoutePrefix("api/moviegenres")]
+
     public class MovieGenreController : ApiController
     {
         private readonly IMovieGenreService _movieGenreService; //injection
@@ -22,9 +24,7 @@ namespace AngularJsSample.Api.Controllers
         public MovieGenreController(IMovieGenreService movieGenreService)
         {
             _movieGenreService = movieGenreService;
-        }
-
-       
+        }               
 
         [HttpGet]
         [Route("{id}")]
@@ -54,7 +54,31 @@ namespace AngularJsSample.Api.Controllers
             );
 
         }
-       
+
+        [HttpDelete]
+        [Route("{movieId}/{genreId}")]
+
+        public IHttpActionResult Delete(int movieId, int genreId)
+        {
+            var loggedUserId = HttpContext.Current.GetOwinContext().GetUserId();
+
+            var request = new DeleteMovieGenreRequest()
+            {
+                RequestToken = Guid.NewGuid(),
+                MovieId=movieId,
+                GenreId = genreId
+            };
+
+            var movieGenresResponse = _movieGenreService.DeleteMovieGenre(request);
+
+            if (!movieGenresResponse.Success)
+            {
+                return BadRequest(movieGenresResponse.Message);
+            }
+
+            return Ok();
+        }
+
     }
 }
 

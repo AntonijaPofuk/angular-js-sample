@@ -58,12 +58,16 @@
                     <div class="panel-body">
                         <strong><div>Žanrovi:</div></strong>
                         <select kendo-multi-select
-                                k-options="selectOptions" 
+                                k-options="selectOptions"
                                 k-ng-model="selectedIds"></select>
-                        <p ng-show="selectedIds.length" style="padding-top: 1em;">Selected: {{ selectedIds }}</p>
+                        <p style="padding-top: 1em;">
+                            Selected:  {{selectedIds}}
+                        </p>
+                        <p style="padding-top: 1em;">
+                            Old:  {{oldIds}}
+                        </p>
                     </div>
                 </div>
-            </div>
             <div class="row">
                 <div class="col-sm-10">
                     <div class="panel-body">

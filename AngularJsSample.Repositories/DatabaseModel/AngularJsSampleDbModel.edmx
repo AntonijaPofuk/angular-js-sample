@@ -42,6 +42,7 @@
           </Key>
           <Property Name="MovieId" Type="int" Nullable="false" />
           <Property Name="GenreId" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" />
         </EntityType>
         <EntityType Name="MoviePerson">
           <Key>
@@ -261,6 +262,14 @@
         </Function>
         <Function Name="MovieData_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="MovieData.Get">
           <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MovieIdGenreId_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MovieId" Type="int" Mode="In" />
+          <Parameter Name="GenreId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="MovieIdGenreId_Save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MovieId" Type="int" Mode="In" />
+          <Parameter Name="GenreId" Type="int" Mode="In" />
         </Function>
         <Function Name="MoviePerson_Get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="MoviePerson.Get" />
         <Function Name="MoviePerson_GetDateCreated" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="MoviePerson.GetDateCreated" />
@@ -498,7 +507,15 @@
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="GenresFromMovie_Get" ReturnType="Collection(AngularJsSampleDbModel.GenresFromMovie_Get_Result)">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MovieIdGenreId_Delete">
+            <Parameter Name="MovieId" Mode="In" Type="Int32" />
+            <Parameter Name="GenreId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="MovieIdGenreId_Save">
+            <Parameter Name="MovieId" Mode="In" Type="Int32" />
+            <Parameter Name="GenreId" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="MoviePerson_Get_Result">
@@ -1098,6 +1115,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MovieIdGenreId_Delete" FunctionName="AngularJsSampleDbModel.Store.MovieIdGenreId_Delete" />
+          <FunctionImportMapping FunctionImportName="MovieIdGenreId_Save" FunctionName="AngularJsSampleDbModel.Store.MovieIdGenreId_Save" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -6,8 +6,8 @@
         .module('manageMovie', ['moviesServices'])
         .controller('manageMovieCtrl', manageMovieCtrl);
 
-    manageMovieCtrl.$inject = ['$scope', '$http', 'movie', 'moviesSvc', '$state'];
-    function manageMovieCtrl($scope, $http, movie, moviesSvc, $state) {
+    manageMovieCtrl.$inject = ['$scope', '$http', 'movie', 'moviesSvc', '$state', 'moviegenres'];
+    function manageMovieCtrl($scope, $http, movie, moviesSvc, $state, moviegenres) {
 
         //#region JS variables
         var vm = this;
@@ -18,7 +18,8 @@
         vm.movie = movie.data; // data is in general.routing.js
         vm.save = saveMovie;
         vm.datepicker = datePicker;
-        vm.genres = getGenres;
+        vm.moviegenres = moviegenres.data;
+
 
         //#endregion
 
@@ -42,6 +43,18 @@
             } else {
                 //update
                 moviesSvc.updateMovie(dataItem.id, vm.movie).then(function () {
+                    $scope.isSame = angular.equals($scope.selectedIds, $scope.oldIds);
+                    if (!$scope.isSame) {
+                        $scope.toDelete = $scope.oldIds.filter(item => !$scope.selectedIds.some(other => item === other));
+                        angular.forEach($scope.toDelete, function (value, key) {
+                            moviesSvc.deleteMovieGenre(vm.movie.id, value).then(function (result) { }
+                                , function (error) {
+                                    console.log(error);
+                                    //add error handling
+                                }
+                            );
+                        });
+                    }
                     Swal.fire('Uspješno ste ažurirali film!')
                     $state.go("moviesOverview");
                 }, function (error) {
@@ -58,34 +71,16 @@
             };
         }
 
-        function getGenres() {
-            let options = {
-                dataSource: {
-                    transport: {
-                        read: function (options) {
-                            $http.get(serviceBase + "api/movies")
-                                .then(function (result) {
-                                    options.success(result.data.movies);
-                                }, function (error) {
-                                    console.log("Error for " + serviceBase + "api/movies" + " is:" + error.status + error.message);
-                                });
-                        },
-                    },
-                },               
-            };
-
-            return options;
-        }
-
         $scope.selectOptions = {
             placeholder: "Odaberi žanr...",
             dataTextField: "name",
             dataValueField: "id",
             valuePrimitive: true,
+            value: $scope.selectedIds,
             autoBind: false,
             dataSource: {
                 transport: {
-                    read: function (options) {
+                    read: function (options) {                    
                         $http.get(serviceBase + "api/genres")
                             .then(function (result) {
                                 options.success(result.data.genres);
@@ -96,8 +91,19 @@
                 },
             }
         };
-        $scope.selectedIds = [1];
-    }
+
+        $scope.selectedIds = [];
+        angular.forEach(vm.moviegenres.moviegenres, function (value, key) {
+            $scope.selectedIds.push(value.genreId.id);
+        });
+
+        $scope.oldIds = [];
+        angular.forEach(vm.moviegenres.moviegenres, function (value, key) {
+            $scope.oldIds.push(value.genreId.id);
+        });
+
+    };
+    
     //#endregion
 
 })();

@@ -43,6 +43,41 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
+         public DeleteMovieGenreResponse DeleteMovieGenre(DeleteMovieGenreRequest request)
+        {
+            var response = new DeleteMovieGenreResponse()
+            {
+                Request = request,
+                ResponseToken = Guid.NewGuid()
+            };
+
+            try
+            {
+                _repository.Delete(
+                    new MovieGenre()
+                    {
+                        GenreId = new Model.Genres.Genre()
+                        {
+                            Id = request.GenreId
+                        },
+                        MovieId = new Model.Movies.Movie()
+                        {
+                            Id = request.MovieId
+                        }
+
+                    }
+                    );
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Success = false;
+            }
+
+            return response;
+        }
+
        
         SaveMovieGenreResponse IMovieGenreService.SaveMovieGenre(SaveMovieGenreRequest request)
         {
