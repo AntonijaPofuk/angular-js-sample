@@ -38,3 +38,37 @@ textarea {
     visibility: hidden;
 }
 
+#listView {
+    width: 100%;
+}
+
+.itemList {
+    display: inline-block;
+    border: 1px solid grey;
+}
+
+.ridge {
+    border-style: ridge;
+    padding: 5px;
+    border-color: #B6C0C8;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+#listView {
+    padding: 0;
+    margin: 0;
+    border-width: 0;
+    border-style: solid;
+    box-sizing: border-box;
+    outline: 0;
+    font-size: inherit;
+    line-height: 1.42857143;
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+    background-color: #fff;
+    border-color: #dedee0;
+    color: #515967;
+    width: 100%;
+}

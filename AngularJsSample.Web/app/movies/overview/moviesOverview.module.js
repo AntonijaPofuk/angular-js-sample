@@ -73,6 +73,7 @@
                         field: "description",
                         title: "Kratki opis",
                         width: 300,
+                        height: 200,
                         headerAttributes: {
                             style: "text-align: center"
                         },
@@ -112,8 +113,7 @@
                         <button class="btn btn-sm btn-success" ui-sref="manageMovie({id:dataItem.id})"> Ažuriraj</button>
                         <button class="btn btn-sm btn-danger" ng-click="showDialog(dataItem.id, 'Brisanje', 'Sigurno želite obrisati odabrani film?')">Obriši</button>
                         `
-                    }    
-                  
+                    }
                 ]
             };
             return options;

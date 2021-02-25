@@ -21,17 +21,6 @@
                     <div><strong>{{vm.movie.releaseDate| date:'dd.MM.yyyy.'}}</strong></div>
                 </div>
             </div>
-                <div class="col-sm-12">
-                    <div class="panel-body">
-                        <strong><div>Žanrovi:</div></strong>
-                        <select kendo-multi-select
-                                k-options="selectOptions"
-                                k-ng-model="selectedIds"></select>                       
-                        <p style="padding-top: 1em;">
-                            Selected:  {{selectedIds}}
-                        </p>
-                    </div>
-            </div>
             <div class="col-sm-12">
                 <div class="panel-body">
                     <div>Kratki opis:</div>
@@ -40,21 +29,21 @@
             </div>
             <div class="col-sm-12">
                 <div class="panel-body">
-                    <div>Žanrovi:</div>
-                    <div>{{vm.movie.genres}}</div>
+                            <div id="listView" class="k-widget k-listview"></div>
+                        </div>
+                    </div>
+                <div class="col-sm-12">
+                    <div class="panel-body">
+                        <div>Ocjena {{vm.movie.rating}}:</div>
+                        <input kendo-rating k-min="1" k-max="6" k-ng-model="vm.movie.rating" style="width: 100%;" />
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="panel-body">
-                    <div>Ocjena {{vm.movie.rating}}:</div>
-                    <input kendo-rating k-min="1" k-max="6" k-ng-model="vm.movie.rating" style="width: 100%;" />
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="panel-body">
-                    <div>IMDB url:</div>
-                    <div>
-                        <a target="_blank" href={{vm.movie.imdbUrl}}>{{vm.movie.imdbUrl}}</a>
+                <div class="col-sm-12">
+                    <div class="panel-body">
+                        <div>IMDB url:</div>
+                        <div>
+                            <a target="_blank" href={{vm.movie.imdbUrl}}>{{vm.movie.imdbUrl}}</a>
+                        </div>
                     </div>
                 </div>
             </div>

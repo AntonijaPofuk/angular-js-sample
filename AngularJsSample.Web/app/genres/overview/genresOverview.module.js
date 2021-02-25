@@ -187,8 +187,8 @@
                     {
                         width: 450,
                         template: `
-                        <button class="btn btn-success" ng-click="saveGenre(dataItem)">Ažuriraj</button>
-                        <button class="btn btn-danger" ng-click="showDialog(dataItem.id, 'Delete Confirmation', 'Delete selected genre?')">Obriši</button>
+                        <button class="btn btn-sm btn-success" ng-click="saveGenre(dataItem)">Ažuriraj</button>
+                        <button class="btn btn-sm btn-danger" ng-click="showDialog(dataItem.id, 'Potvrda brisanja', 'Sigurno želite obrisati odabrani žanr?')">Obriši</button>
                         `,
                         width: "200px"
                     }

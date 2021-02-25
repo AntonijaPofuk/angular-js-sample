@@ -20,6 +20,12 @@
         vm.delete = deleteMovie;
         vm.moviegenres = moviegenres.data;
 
+        $("#listView").kendoListView({
+            dataSource: vm.moviegenres.moviegenres,
+            template: "<div class='itemList ridge'>#:genreId.name#</div>"
+        });
+
+
         //#endregion
 
         //#region On activate
@@ -42,7 +48,7 @@
 
         //#endregion
 
-
+     
         $scope.selectOptions = {
             placeholder: "Odaberi žanr...",
             dataTextField: "name",
@@ -52,13 +58,7 @@
             autoBind: false,
             dataSource: {
                 transport: {
-                    read: function (options) {
-                        //$http.get(serviceBase + "api/moviegenres/" + movie.data.id)
-                        //    .then(function (result) {
-                        //        options.success(result.data.moviegenres);
-                        //    }, function (error) {
-                        //        console.log("Error for " + serviceBase + "api/moviegenres" + " is:" + error.status + error.message);
-                        //    });
+                    read: function (options) {            
                         $http.get(serviceBase + "api/genres")
                             .then(function (result) {
                                 options.success(result.data.genres);
@@ -69,7 +69,7 @@
                 },
             }
         };
-
+      
         $scope.selectedIds = [];
         angular.forEach(vm.moviegenres.moviegenres, function (value, key) {
             $scope.selectedIds.push(value.genreId.id);
