@@ -3,6 +3,7 @@ using AngularJsSample.Services.Mapping;
 using AngularJsSample.Services.Messaging;
 using AngularJsSample.Services.Messaging.Movies;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Web;
 using System.Web.ModelBinding;
 
@@ -128,14 +129,28 @@ namespace AngularJsSample.Services.Impl
             {
                 if (request.Movie?.Id == 0)
                 {
-                    response.Movie = request.Movie;
-                    response.Movie.Id = _repository.Add(request.Movie.MapToModel());
-                    response.Success = true;
+                    if (ServerValidation(request)) //server-side validation
+                    {
+                        response.Movie = request.Movie;
+                        response.Movie.Id = _repository.Add(request.Movie.MapToModel());
+                        response.Success = true;
+                    }
+                    else
+                    {
+                        response.Success = false;
+                    }
                 }
                 else if (request.Movie?.Id > 0)
                 {
-                    response.Movie = _repository.Save(request.Movie.MapToModel()).MapToView();
-                    response.Success = true;
+                    if (ServerValidation(request)) //server-side validation
+                    {
+                        response.Movie = _repository.Save(request.Movie.MapToModel()).MapToView();
+                        response.Success = true;
+                    }
+                    else
+                    {
+                        response.Success = false;
+                    }
                 }
                 else
                 {
@@ -149,5 +164,26 @@ namespace AngularJsSample.Services.Impl
             }
             return response;
         }
+        /// <summary>
+        /// Validation function 
+        /// </summary>
+        /// <param name="item">SaveMovieRequest</param>
+        /// <returns>System.Boolean: true if validation is ok, else false</returns>
+        bool ServerValidation(SaveMovieRequest item)
+        {
+            try
+            {
+                if (item.Movie.Name == null || !(item.Movie.Name is String) || item.Movie.Name.Length > 50) throw new ValidationException("Movie name is required or is bigger than 50!");
+                if (item.Movie.ReleaseDate == null) throw new ValidationException("Release date is required!");
+
+                // TODO fix server-validation for not required fields
+                return true;
+            }
+            catch (ValidationException e)
+            {
+                return false;
+            }
+        }
     }
 }
+

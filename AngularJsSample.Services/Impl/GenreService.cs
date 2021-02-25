@@ -3,17 +3,20 @@ using AngularJsSample.Services.Mapping;
 using AngularJsSample.Services.Messaging;
 using AngularJsSample.Services.Messaging.Genres;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Web;
 using System.Web.ModelBinding;
 
 namespace AngularJsSample.Services.Impl
 {
 
-    public class GenreService : IGenreService {
+    public class GenreService : IGenreService
+    {
 
         private IGenreRepository _repository;
 
-        public GenreService(IGenreRepository repository) {
+        public GenreService(IGenreRepository repository)
+        {
 
             _repository = repository;
 
@@ -124,14 +127,28 @@ namespace AngularJsSample.Services.Impl
             {
                 if (request.Genre?.Id == 0)
                 {
-                    response.Genre = request.Genre;
-                    response.Genre.Id = _repository.Add(request.Genre.MapToModel());
-                    response.Success = true;
+                    if (ServerValidation(request)) //server-side validation
+                    {
+                        response.Genre = request.Genre;
+                        response.Genre.Id = _repository.Add(request.Genre.MapToModel());
+                        response.Success = true;
+                    }
+                    else
+                    {
+                        response.Success = false;
+                    }
                 }
                 else if (request.Genre?.Id > 0)
                 {
-                    response.Genre = _repository.Save(request.Genre.MapToModel()).MapToView();
-                    response.Success = true;
+                    if (ServerValidation(request)) //server-side validation
+                    {
+                        response.Genre = _repository.Save(request.Genre.MapToModel()).MapToView();
+                        response.Success = true;
+                    }
+                    else
+                    {
+                        response.Success = false;
+                    }
                 }
                 else
                 {
@@ -144,6 +161,24 @@ namespace AngularJsSample.Services.Impl
                 response.Success = false;
             }
             return response;
+        }
+        /// <summary>
+        /// Validation function 
+        /// </summary>
+        /// <param name="item">SaveGenreRequest</param>
+        /// <returns>System.Boolean: true if validation is ok, else false</returns>
+        bool ServerValidation(SaveGenreRequest item)
+        {
+            try
+            {
+                if (item.Genre.Name == null || !(item.Genre.Name is String) || item.Genre.Name.Length > 50) throw new ValidationException("Genre name is required or is bigger than 50!");
+                // TODO fix server-validation for not required fields genre
+                return true;
+            }
+            catch (ValidationException e)
+            {
+                return false;
+            }
         }
     }
 }

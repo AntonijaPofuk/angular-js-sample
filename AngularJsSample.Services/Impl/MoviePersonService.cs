@@ -165,7 +165,7 @@ namespace AngularJsSample.Services.Impl
         /// <summary>
         /// Validation function 
         /// </summary>
-        /// <param name="item"></param>
+        /// <param name="item">SaveMoviePersonRequest</param>
         /// <returns>System.Boolean: true if validation is ok, else false</returns>
         bool ServerValidation(SaveMoviePersonRequest item)
         {
