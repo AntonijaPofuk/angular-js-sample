@@ -19,7 +19,11 @@ namespace AngularJsSample.Services.Impl
 
         }
 
-
+        /// <summary>
+        /// Handling get request and response
+        /// </summary>
+        /// <param name="request">Messaging.Genres</param>
+        /// <returns>Messaging.Genres</returns>
         public GetGenreResponse GetGenre(GetGenreRequest request)
         {
             var response = new GetGenreResponse()
@@ -41,7 +45,11 @@ namespace AngularJsSample.Services.Impl
 
             return response;
         }
-
+        /// <summary>
+        /// Handling get request and response
+        /// </summary>
+        /// <param name="request">Messaging.Genres.GetGenresRequest</param>
+        /// <returns>Messaging.Genres.GetGenresResponse</returns>
         public GetGenresResponse GetGenres(GetGenresRequest request)
         {
             var response = new GetGenresResponse()
@@ -63,7 +71,11 @@ namespace AngularJsSample.Services.Impl
 
             return response;
         }
-
+        /// <summary>
+        /// Handling delete request and response
+        /// </summary>
+        /// <param name="request">Messaging.Genres.DeleteGenreRequest</param>
+        /// <returns>Messaging.Genres.DeleteGenreResponse</returns>
         public DeleteGenreResponse DeleteGenre(DeleteGenreRequest request)
         {
             var response = new DeleteGenreResponse()
@@ -96,6 +108,11 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
+        /// <summary>
+        /// Handling save request and response
+        /// </summary>
+        /// <param name="request">Messaging.Genres.SaveGenreRequest</param>
+        /// <returns>Messaging.Genres.SaveGenreResponse</returns>
         SaveGenreResponse IGenreService.SaveGenre(SaveGenreRequest request)
         {
             var response = new SaveGenreResponse()

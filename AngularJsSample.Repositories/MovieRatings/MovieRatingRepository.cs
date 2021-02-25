@@ -11,6 +11,11 @@ namespace AngularJsSample.Repositories
 {
     public class MovieRatingRepository : IMovieRatingRepository
     {
+        /// <summary>
+        /// Adds object with items to POST request
+        /// </summary>
+        /// <param name="item">Model.MovieRatings.MovieRating object</param>
+        /// <returns>context.Rating_Insert</returns>
         public int Add(Model.MovieRatings.MovieRating item)
         {
             using (var context = new AngularJsSampleDbEntities())
@@ -42,6 +47,11 @@ namespace AngularJsSample.Repositories
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Adds object to UPDATE request 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>Model.MovieRatings.MovieRating</returns>
         public Model.MovieRatings.MovieRating Save(Model.MovieRatings.MovieRating item)
         {
             using (var context = new AngularJsSampleDbEntities())

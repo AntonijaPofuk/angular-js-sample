@@ -19,7 +19,11 @@ namespace AngularJsSample.Services.Impl
 
         }
 
-
+        /// <summary>
+        /// Handling get request and response
+        /// </summary>
+        /// <param name="request">Messaging.MovieRatings.GetMovieRatingRequest</param>
+        /// <returns>Messaging.MovieRatings.GetMovieRatingResponse</returns>
         public GetMovieRatingResponse GetMovieRating(GetMovieRatingRequest request)
         {
             var response = new GetMovieRatingResponse()
@@ -42,7 +46,11 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
-       
+        /// <summary>
+        /// Handling save request and response
+        /// </summary>
+        /// <param name="request">Messaging.MovieRatings.SaveMovieRatingRequest</param>
+        /// <returns>Messaging.MovieRatings.SaveMovieRatingResponse</returns>
         SaveMovieRatingResponse IMovieRatingService.SaveMovieRating(SaveMovieRatingRequest request)
         {
             var response = new SaveMovieRatingResponse()

@@ -8,6 +8,11 @@ namespace AngularJsSample.Repositories
 {
     public static class MoviePersonMapper
     {
+        /// <summary>
+        /// Maps Model from DatabaseModel
+        /// </summary>
+        /// <param name="model">DatabaseModel.MoviePerson</param>
+        /// <returns>Model.MoviePersons.MoviePerson</returns>
         public static Model.MoviePersons.MoviePerson MapToMoviePerson(this DatabaseModel.MoviePerson model)
         {
             if (model == null)
@@ -28,6 +33,11 @@ namespace AngularJsSample.Repositories
             };
         }
 
+        /// <summary>
+        /// Maps Model from stored procedure for one Movie Person
+        /// </summary>
+        /// <param name="dbResult">MoviePersonData_Get_Result</param>
+        /// <returns>Model.MoviePersons.MoviePerson</returns>
         public static Model.MoviePersons.MoviePerson MapToModel(this MoviePersonData_Get_Result dbResult)
         {
             if (dbResult == null)
@@ -48,6 +58,11 @@ namespace AngularJsSample.Repositories
     }
 
 
+        /// <summary>
+        /// Maps Model from stored procedure for all MoviePersons
+        /// </summary>
+        /// <param name="dbResult">MoviePerson_Get_Result</param>
+        /// <returns>Model.MoviePersons.MoviePerson </returns>
         public static Model.MoviePersons.MoviePerson MapToModels(this MoviePerson_Get_Result dbResult)
         {
             if (dbResult == null)

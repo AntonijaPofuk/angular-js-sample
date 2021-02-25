@@ -8,6 +8,11 @@ namespace AngularJsSample.Repositories
 {
     public class UserRepository : IUserRepository
     {
+
+        /// <summary>
+        /// Gets all UserInfos 
+        /// </summary>
+        /// <returnsList<Model.Users.UserInfo>></returns>
         public List<Model.Users.UserInfo> FindAll()
         {
             using (var context = new Context.AngularJsSampleDbEntities())
@@ -16,6 +21,11 @@ namespace AngularJsSample.Repositories
             }
         }
 
+        /// <summary>
+        /// Gets UserInfos by id
+        /// </summary>
+        /// <param name="key">Id</param>
+        /// <returns>context.UserInfoes</returns>
         public Model.Users.UserInfo FindAll(int key)
         {
             using (var context = new Context.AngularJsSampleDbEntities())

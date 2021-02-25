@@ -18,7 +18,11 @@ namespace AngularJsSample.Api.Controllers
             _userService = userService;
         }
 
-
+        /// <summary>
+        /// GET request
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <returnsIHttpActionResult: OK or BadRequest></returns>
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -38,6 +42,10 @@ namespace AngularJsSample.Api.Controllers
             return BadRequest(response.Message);
         }
 
+        /// <summary>
+        /// GET request 
+        /// </summary>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpGet]
         public IHttpActionResult Get()
         {

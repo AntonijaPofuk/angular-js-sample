@@ -10,7 +10,11 @@ namespace AngularJsSample.Api.Mapping.Movies
 {
     public static class MoviesMapper
     {
-
+        /// <summary>
+        /// Maps Messaging.Views.Movie into MovieViewModel for FK values
+        /// </summary>
+        /// <param name="view">Messaging.Views.Movie</param>
+        /// <returns>MovieViewModel</returns>
         public static MovieViewModel MapToViewModelFK(this Movie view)
         {
             if (view == null)
@@ -21,6 +25,12 @@ namespace AngularJsSample.Api.Mapping.Movies
                 Name = view.Name
             };
         }
+
+        /// <summary>
+        /// Maps Messaging.Views.Movie into Api.ModelsMovieViewModel 
+        /// </summary>
+        /// <param name="view">Messaging.Views.Movie</param>
+        /// <returns>MovieViewModel</returns>
         public static MovieViewModel MapToViewModel(this Movie view)
         {
             if (view == null)
@@ -41,6 +51,11 @@ namespace AngularJsSample.Api.Mapping.Movies
             };
         }
 
+        /// <summary>
+        /// Maps Api.Models.MovieViewModel into  Messaging.Views.Movie
+        /// </summary>
+        /// <param name="viewModel">Api.Models.MovieViewModel</param>
+        /// <returns> Messaging.Views.Movie</returns>
         public static Movie MapToView(this MovieViewModel viewModel)
         {
             if (viewModel == null)
@@ -62,6 +77,11 @@ namespace AngularJsSample.Api.Mapping.Movies
             };
         }
 
+        /// <summary>
+        /// Maps IEnumerable<Movie> into List<MovieViewModel>
+        /// </summary>
+        /// <param name="views">IEnumerable<Movie></param>
+        /// <returns>List<MovieViewModel></returns>
         public static List<MovieViewModel> MapToViewModels(this IEnumerable<Movie> views)
         {
             var result = new List<MovieViewModel>();

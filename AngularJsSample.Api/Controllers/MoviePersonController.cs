@@ -24,6 +24,10 @@ namespace AngularJsSample.Api.Controllers
             _moviePersonService = moviePersonService;
         }
 
+        /// <summary>
+        /// GET request for MoviePersons
+        /// </summary>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpGet]
         [Route("")]
         public IHttpActionResult Get()
@@ -51,6 +55,11 @@ namespace AngularJsSample.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// GET request for MoviePerson
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult Get(int id)
@@ -74,6 +83,11 @@ namespace AngularJsSample.Api.Controllers
             return Ok( moviePersonResponse.MoviePerson.MapToViewModel());
         }
 
+        /// <summary>
+        /// DELETE request for MoviePerson
+        /// </summary>
+        /// <param name="id">MoviePerson id</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpDelete]
         [Route("{id}")]
         public IHttpActionResult Delete(int id)
@@ -97,6 +111,11 @@ namespace AngularJsSample.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// POST request for MoviePerson
+        /// </summary>
+        /// <param name="moviePerson">MoviePersonViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPost]
         [Route("")]
         public IHttpActionResult Post(MoviePersonViewModel moviePerson)
@@ -126,6 +145,12 @@ namespace AngularJsSample.Api.Controllers
             return Ok(moviePerson = moviePersonsResponse.MoviePerson.MapToViewModel());
         }
 
+        /// <summary>
+        /// PUT request for MoviePerson
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="moviePerson">MoviePersonViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPut]
         [Route("{id}")]
         public IHttpActionResult Put(int id, MoviePersonViewModel moviePerson)

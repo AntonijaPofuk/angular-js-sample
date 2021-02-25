@@ -11,6 +11,12 @@ namespace AngularJsSample.Api.Mapping.Genres
     public static class GenresMapper
     {
 
+        /// <summary>
+        /// Maps Messaging.Views.Genre into GenreViewModel for FK values
+        /// </summary>
+        /// <param name="view">Messaging.Views.Genre</param>
+        /// <returns>GenreViewModel</returns>
+
         public static GenreViewModel MapToViewModelFK(this Genre view)
         {
             if (view == null)
@@ -20,7 +26,13 @@ namespace AngularJsSample.Api.Mapping.Genres
                 Id = view.Id,
                 Name = view.Name
             };
-        }
+        } 
+        
+          /// <summary>
+          /// Maps Messaging.Views.Genre into Api.ModelsGenreViewModel 
+          /// </summary>
+          /// <param name="view">Messaging.Views.Genre</param>
+          /// <returns>GenreViewModel</returns>
         public static GenreViewModel MapToViewModel(this Genre view)
         {
             if (view == null)
@@ -36,6 +48,11 @@ namespace AngularJsSample.Api.Mapping.Genres
             };
         }
 
+        /// <summary>
+        /// Maps Api.Models.GenreViewModel into  Messaging.Views.Genre
+        /// </summary>
+        /// <param name="viewModel">Api.Models.GenreViewModel</param>
+        /// <returns> Messaging.Views.Genre</returns>
         public static Genre MapToView(this GenreViewModel viewModel)
         {
             if (viewModel == null)
@@ -50,7 +67,11 @@ namespace AngularJsSample.Api.Mapping.Genres
                 UserCreated = viewModel.UserCreated.MapToView()
             };
         }
-
+        /// <summary>
+        /// Maps IEnumerable<Genre> into List<GenreViewModel>
+        /// </summary>
+        /// <param name="views">IEnumerable<Genre></param>
+        /// <returns>List<GenreViewModel></returns>
         public static List<GenreViewModel> MapToViewModels(this IEnumerable<Genre> views)
         {
             var result = new List<GenreViewModel>();

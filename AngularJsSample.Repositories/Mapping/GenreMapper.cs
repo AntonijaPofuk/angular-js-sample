@@ -8,6 +8,11 @@ namespace AngularJsSample.Repositories
 {
     public static class GenreMapper
     {
+        /// <summary>
+        /// Maps Model from DatabaseModel
+        /// </summary>
+        /// <param name="model">DatabaseModel.Genre</param>
+        /// <returns>Model.MoviePersons.Genre</returns>
         public static Model.Genres.Genre MapToGenre(this DatabaseModel.Genre model)
         {
             if (model == null)
@@ -21,6 +26,11 @@ namespace AngularJsSample.Repositories
             };
         }
 
+        /// <summary>
+        /// Maps Model from stored procedure for one Genre
+        /// </summary>
+        /// <param name="dbResult">GenreData_Get_Result</param>
+        /// <returns>Model.Genres.Genre</returns>
         public static Model.Genres.Genre MapToModel(this GenreData_Get_Result dbResult)
         {
             if (dbResult == null)
@@ -34,7 +44,11 @@ namespace AngularJsSample.Repositories
         };
     }
 
-
+        /// <summary>
+        /// Maps Model from stored procedure for all MoviePersons
+        /// </summary>
+        /// <param name="dbResult">Genres_Get_Result</param>
+        /// <returns>Model.Genres.Genre </returns>
         public static Model.Genres.Genre MapToModels(this Genres_Get_Result dbResult)
         {
             if (dbResult == null)

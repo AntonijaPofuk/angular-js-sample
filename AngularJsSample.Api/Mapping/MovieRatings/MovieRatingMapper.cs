@@ -10,6 +10,11 @@ namespace AngularJsSample.Api.Mapping.MovieRatings
 {
     public static class MovieRatingsMapper
     {
+        /// <summary>
+        /// Maps Messaging.Views.MovieRating into MovieRating.ViewModel 
+        /// </summary>
+        /// <param name="view">Messaging.Views.MovieRating</param>
+        /// <returns>Messaging.Views.MovieRating</returns>
         public static MovieRatingViewModel MapToViewModel(this MovieRating view)
         {
             if (view == null)
@@ -24,6 +29,11 @@ namespace AngularJsSample.Api.Mapping.MovieRatings
             };
         }
 
+        /// <summary>
+        /// Maps Api.Models.MovieRatingViewModel into Messaging.Views.MovieRating
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns> Messaging.Views.MovieRating</returns>
         public static MovieRating MapToView(this MovieRatingViewModel viewModel)
         {
             if (viewModel == null)

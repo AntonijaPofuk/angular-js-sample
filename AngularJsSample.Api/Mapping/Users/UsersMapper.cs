@@ -9,6 +9,11 @@ namespace AngularJsSample.Api.Mapping.Users
 {
     public static class UsersMapper
     {
+        /// <summary>
+        /// Maps Messaging.Views.User into UserViewModel
+        /// </summary>
+        /// <param name="view">UserInfo</param>
+        /// <returns>UserViewModel</returns>
         public static UserViewModel MapToViewModel(this UserInfo view)
         {
             if (view == null)
@@ -23,6 +28,11 @@ namespace AngularJsSample.Api.Mapping.Users
             };
         }
 
+        /// <summary>
+        /// Maps UserViewModel into Messaging.Views.User
+        /// </summary>
+        /// <param name="viewModel"></param>
+        /// <returns></returns>
         public static UserInfo MapToView(this UserViewModel viewModel)
         {
             if (viewModel == null)

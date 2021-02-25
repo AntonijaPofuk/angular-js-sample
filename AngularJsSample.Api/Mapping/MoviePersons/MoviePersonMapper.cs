@@ -10,6 +10,11 @@ namespace AngularJsSample.Api.Mapping.MoviePersons
 {
     public static class MoviePersonsMapper
     {
+        /// <summary>
+        /// Maps Messaging.Views.MoviePerson into Api.ModelsMoviePersonViewModel 
+        /// </summary>
+        /// <param name="view">Messaging.Views.MoviePerson</param>
+        /// <returns>MoviePersonViewModel</returns>
         public static MoviePersonViewModel MapToViewModel(this MoviePerson view)
         {
             if (view == null)
@@ -32,6 +37,11 @@ namespace AngularJsSample.Api.Mapping.MoviePersons
             };
         }
 
+        /// <summary>
+        /// Maps Api.Models.MoviePersonViewModel into  Messaging.Views.MoviePerson
+        /// </summary>
+        /// <param name="viewModel">Api.Models.MoviePersonViewModel</param>
+        /// <returns> Messaging.Views.MoviePerson</returns>
         public static MoviePerson MapToView(this MoviePersonViewModel viewModel)
         {
             if (viewModel == null)
@@ -54,6 +64,11 @@ namespace AngularJsSample.Api.Mapping.MoviePersons
             };
         }
 
+        /// <summary>
+        /// Maps IEnumerable<MoviePerson> into List<MoviePersonViewModel>
+        /// </summary>
+        /// <param name="views">IEnumerable<MoviePerson></param>
+        /// <returns>List<MoviePersonViewModel></returns>
         public static List<MoviePersonViewModel> MapToViewModels(this IEnumerable<MoviePerson> views)
         {
             var result = new List<MoviePersonViewModel>();

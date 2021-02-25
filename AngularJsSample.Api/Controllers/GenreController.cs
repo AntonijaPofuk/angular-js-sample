@@ -24,7 +24,10 @@ namespace AngularJsSample.Api.Controllers
         {
             _genreService = genreService;
         }
-
+        /// <summary>
+        /// GET request for Genres
+        /// </summary>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpGet]
         [Route("")]
         public IHttpActionResult Get()
@@ -52,6 +55,11 @@ namespace AngularJsSample.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// DELETE request for Genres
+        /// </summary>
+        /// <param name="id">Genre id</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult Get(int id)
@@ -75,6 +83,11 @@ namespace AngularJsSample.Api.Controllers
             return Ok( genreResponse.Genre.MapToViewModel());
         }
 
+        /// <summary>
+        ///  DELETE request for MoviePerson
+        /// </summary>
+        /// <param name="id">Genre id</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpDelete]
         [Route("{id}")]
         public IHttpActionResult Delete(int id)
@@ -98,6 +111,12 @@ namespace AngularJsSample.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// PUT request for Genre
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="genre">GenreViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPut]
         [Route("{id}")]
         public IHttpActionResult Put(int id, GenreViewModel genre)
@@ -136,6 +155,11 @@ namespace AngularJsSample.Api.Controllers
 
         }
 
+        /// <summary>
+        /// POST request for Genre
+        /// </summary>
+        /// <param name="genre">GenreViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPost]
         [Route("")]
         public IHttpActionResult Post(GenreViewModel genre)

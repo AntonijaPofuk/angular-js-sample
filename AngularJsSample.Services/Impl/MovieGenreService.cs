@@ -20,6 +20,11 @@ namespace AngularJsSample.Services.Impl
 
         }
 
+        /// <summary>
+        /// Handling get request and response
+        /// </summary>
+        /// <param name="request">Messaging.MovieGenres.GetMovieGenreRequest</param>
+        /// <returns>Messaging.MovieGenres.GetMovieGenreResponse</returns>
         public GetMovieGenreResponse GetMovieGenre(GetMovieGenreRequest request)
         {
             var response = new GetMovieGenreResponse()
@@ -41,8 +46,12 @@ namespace AngularJsSample.Services.Impl
 
             return response;
         }
-
-         public DeleteMovieGenreResponse DeleteMovieGenre(DeleteMovieGenreRequest request)
+        /// <summary>
+        /// Handling delete request and response
+        /// </summary>
+        /// <param name="request">Messaging.MovieGenres.DeleteMovieGenreRequest</param>
+        /// <returns>Messaging.MovieGenres.DeleteMovieGenreResponse</returns>
+        public DeleteMovieGenreResponse DeleteMovieGenre(DeleteMovieGenreRequest request)
         {
             var response = new DeleteMovieGenreResponse()
             {
@@ -77,7 +86,11 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
-       
+        /// <summary>
+        /// Handling save request and response
+        /// </summary>
+        /// <param name="request">Messaging.MovieGenres.SaveMovieGenreResponse</param>
+        /// <returns>Messaging.MovieGenres.SaveMovieGenreRequest</returns>
         SaveMovieGenreResponse IMovieGenreService.SaveMovieGenre(SaveMovieGenreRequest request)
         {
             var response = new SaveMovieGenreResponse()

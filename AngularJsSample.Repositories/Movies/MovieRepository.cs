@@ -9,8 +9,20 @@ using Context = AngularJsSample.Repositories.DatabaseModel;
 
 namespace AngularJsSample.Repositories
 {
+    /*
+    Repository class
+    Contains implementation of methods from IMovieRepository
+    */
     public class MovieRepository : IMovieRepository
     {
+
+        /// <summary>
+        /// Adds items for insertion into db
+        /// </summary>
+        /// <returns>
+        /// context.Movie_Insert
+        /// </returns>
+        /// <param name="item">Model.Movies.Movie</param>
         public int Add(Model.Movies.Movie item)
         {
             using (var context = new AngularJsSampleDbEntities())
@@ -19,6 +31,13 @@ namespace AngularJsSample.Repositories
             }
         }
 
+        /// <summary>
+        /// Delete item 
+        /// </summary>
+        /// <returns>
+        /// System.Boolean
+        /// </returns>
+        /// <param name="item">Model.Movies.Movie</param>
         public bool Delete(Model.Movies.Movie item)
         {
             try
@@ -36,6 +55,12 @@ namespace AngularJsSample.Repositories
             }
         }
 
+        /// <summary>
+        /// Finds items 
+        /// </summary>
+        /// <returns>
+        /// List<Model.Movies.Movie>
+        /// </returns>
         public List<Model.Movies.Movie> FindAll()
         {
             using (var context = new AngularJsSampleDbEntities())
@@ -48,7 +73,11 @@ namespace AngularJsSample.Repositories
                 return list;
             }
         }
-
+        /// <summary>
+        /// Finds movies by param key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns>Context.MovieData_Get</returns>
         public Model.Movies.Movie FindAll(int key)
         {
             using (var context = new AngularJsSampleDbEntities())
@@ -62,16 +91,14 @@ namespace AngularJsSample.Repositories
             throw new NotImplementedException();
         }
 
-        public List<Model.Genres.Genre> FindGenres(int key)
-        {
-            List<Model.MovieGenres.MovieGenre> list = new List<Model.MovieGenres.MovieGenre>();
-            //foreach (var item in context.Movies_Get().ToList())
-            //{
-            //    list.Add(item.MapToModels());
-            //}
-            return null;
-        }
 
+        /// <summary>
+        /// Adds items for updating existing item 
+        /// </summary>
+        /// <returns>
+        /// context.Movie_Save
+        /// </returns>
+        /// <param name="item">Model.Movies.Movie</param>
         public Model.Movies.Movie Save(Model.Movies.Movie item)
         {
             using (var context = new AngularJsSampleDbEntities())

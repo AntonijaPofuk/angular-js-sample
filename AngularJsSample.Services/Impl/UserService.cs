@@ -19,6 +19,11 @@ namespace AngularJsSample.Services.Impl
             _repository = repository;
         }
 
+        /// <summary>
+        /// Handling request and response 
+        /// </summary>
+        /// <param name="request">GetUserInfoRequest</param>
+        /// <returns>GetUserInfoResponse</returns>
         public GetUserInfoResponse GetUserInfo(GetUserInfoRequest request)
         {
             var response = new GetUserInfoResponse()

@@ -18,7 +18,11 @@ namespace AngularJsSample.Services.Impl
             _repository = repository;
 
         }
-
+        /// <summary>
+        /// Handling delete request and response
+        /// </summary>
+        /// <param name="request">Messaging.MoviePersons.DeleteMoviePersonRequest</param>
+        /// <returns>Messaging.MoviePersons.DeleteMoviePersonResponse</returns>
         public DeleteMoviePersonResponse DeleteMoviePerson(DeleteMoviePersonRequest request)
         {
             var response = new DeleteMoviePersonResponse()
@@ -50,7 +54,11 @@ namespace AngularJsSample.Services.Impl
 
             return response;
         }
-
+        /// <summary>
+        /// Handling get request and response
+        /// </summary>
+        /// <param name="request">Messaging.MoviePersons.GetMoviePersonRequest</param>
+        /// <returns>Messaging.MoviePersons.GetMoviePersonResponse</returns>
         public GetMoviePersonResponse GetMoviePerson(GetMoviePersonRequest request)
         {
             var response = new GetMoviePersonResponse()
@@ -73,6 +81,11 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
+        /// <summary>
+        /// Handling get request and response
+        /// </summary>
+        /// <param name="request">Messaging.MoviePersons.GetMoviePersonsRequest</param>
+        /// <returns>Messaging.MoviePersons.GetMoviePersonsResponse</returns>
         public GetMoviePersonsResponse GetMoviePersons(GetMoviePersonsRequest request)
         {
             var response = new GetMoviePersonsResponse()
@@ -95,6 +108,11 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
+        /// <summary>
+        /// Handling save request and response
+        /// </summary>
+        /// <param name="request">Messaging.MoviePersons.SaveMoviePersonRequest</param>
+        /// <returns>Messaging.MoviePersons.SaveMoviePersonResponse</returns>
         public SaveMoviePersonResponse SaveMoviePerson(SaveMoviePersonRequest request)
         {
             var response = new SaveMoviePersonResponse()
@@ -143,6 +161,12 @@ namespace AngularJsSample.Services.Impl
 
             return response;
         }
+
+        /// <summary>
+        /// Validation function 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>System.Boolean: true if validation is ok, else false</returns>
         bool ServerValidation(SaveMoviePersonRequest item)
         {
             try

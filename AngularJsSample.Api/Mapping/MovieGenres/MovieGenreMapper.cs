@@ -13,6 +13,11 @@ namespace AngularJsSample.Api.Mapping.MovieGenres
 {
     public static class MovieGenresMapper
     {
+        /// <summary>
+        /// Maps Messaging.Views.MovieGenre into Api.ModelsMovieGenreViewModel 
+        /// </summary>
+        /// <param name="view">Messaging.Views.MovieGenre</param>
+        /// <returns>MovieGenreViewModel</returns>
         public static MovieGenreViewModel MapToViewModel(this MovieGenre view)
         {
             if (view == null)
@@ -23,6 +28,11 @@ namespace AngularJsSample.Api.Mapping.MovieGenres
                 MovieId = view.MovieId.MapToViewModelFK()                         
             };
         }
+        /// <summary>
+        /// Maps Api.Models.MovieGenreViewModel into  Messaging.Views.MovieGenre
+        /// </summary>
+        /// <param name="viewModel">Api.Models.MovieGenreViewModel</param>
+        /// <returns> Messaging.Views.MovieGenre</returns>
 
         public static MovieGenre MapToView(this MovieGenreViewModel viewModel)
         {
@@ -35,7 +45,11 @@ namespace AngularJsSample.Api.Mapping.MovieGenres
 
             };
         }
-
+        /// <summary>
+        /// Maps IEnumerable<MovieGenre> into List<MovieGenreViewModel>
+        /// </summary>
+        /// <param name="views">IEnumerable<MovieGenre></param>
+        /// <returns>List<MovieGenreViewModel></returns>
         public static List<MovieGenreViewModel> MapToViewModels(this IEnumerable<MovieGenre> views)
         {
             var result = new List<MovieGenreViewModel>();

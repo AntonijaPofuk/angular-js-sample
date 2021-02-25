@@ -8,6 +8,11 @@ namespace AngularJsSample.Repositories
 {
     public static class UserInfoMapper
     {
+        /// <summary>
+        /// Maps DatabaseModel into Model
+        /// </summary>
+        /// <param name="model">DatabaseModel.UserInfo</param>
+        /// <returns>Model.Users.UserInfo</returns>
         public static Model.Users.UserInfo MapToUserInfo(this DatabaseModel.UserInfo model)
         {
             if (model == null)
@@ -21,6 +26,11 @@ namespace AngularJsSample.Repositories
             };
         }
 
+        /// <summary>
+        /// Maps UserInfo into List<Model.Users.UserInfo>
+        /// </summary>
+        /// <param name="items">IEnumerable<DatabaseModel.UserInfo></param>
+        /// <returns>List<Model.Users.UserInfo></returns>
         public static List<Model.Users.UserInfo> MapToUserInfos(this IEnumerable<DatabaseModel.UserInfo> items)
         {
             var result = new List<Model.Users.UserInfo>();

@@ -24,7 +24,10 @@ namespace AngularJsSample.Api.Controllers
         {
             _movieService = movieService;
         }
-
+        /// <summary>
+        /// GET request for Movies
+        /// </summary>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpGet]
         [Route("")]
         public IHttpActionResult Get()
@@ -52,6 +55,11 @@ namespace AngularJsSample.Api.Controllers
             );
         }
 
+        /// <summary>
+        /// GET request for Movie
+        /// </summary>
+        /// <param name="id">Movie id</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult Get(int id)
@@ -74,7 +82,11 @@ namespace AngularJsSample.Api.Controllers
 
             return Ok( movieResponse.Movie.MapToViewModel());
         }
-
+        /// <summary>
+        /// DELETE request for Movie
+        /// </summary>
+        /// <param name="id">Movie id</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpDelete]
         [Route("{id}")]
         public IHttpActionResult Delete(int id)
@@ -98,6 +110,12 @@ namespace AngularJsSample.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// PUT request for Movie
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="movie">MovieViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPut]
         [Route("{id}")]
         public IHttpActionResult Put(int id, MovieViewModel movie)
@@ -136,6 +154,11 @@ namespace AngularJsSample.Api.Controllers
 
         }
 
+        /// <summary>
+        /// POST request for Movie
+        /// </summary>
+        /// <param name="movie">MovieViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPost]
         [Route("")]
         public IHttpActionResult Post(MovieViewModel movie)

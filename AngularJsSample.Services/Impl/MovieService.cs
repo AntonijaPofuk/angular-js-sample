@@ -21,7 +21,11 @@ namespace AngularJsSample.Services.Impl
 
         }
 
-
+        /// <summary>
+        /// Handling get movie request and response
+        /// </summary>
+        /// <param name="request">Services.Messaging.GetMovieRequest</param>
+        /// <returns>Services.Messaging.GetMovieResponse</returns>
         public GetMovieResponse GetMovie(GetMovieRequest request)
         {
             var response = new GetMovieResponse()
@@ -44,6 +48,11 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
+        /// <summary>
+        /// Handling get all movies request and response
+        /// </summary>
+        /// <param name="request">Services.Messaging.GetMoviesRequest</param>
+        /// <returns>Services.Messaging.GetMoviesResponse</returns>
         public GetMoviesResponse GetMovies(GetMoviesRequest request)
         {
             var response = new GetMoviesResponse()
@@ -66,6 +75,11 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
+        /// <summary>
+        /// Handling delete request and response 
+        /// </summary>
+        /// <param name="request">Services.Messaging.DeleteMovieRequest</param>
+        /// <returns>Services.Messaging.DeleteMovieResponse</returns>
         public DeleteMovieResponse DeleteMovie(DeleteMovieRequest request)
         {
             var response = new DeleteMovieResponse()
@@ -98,6 +112,11 @@ namespace AngularJsSample.Services.Impl
             return response;
         }
 
+        /// <summary>
+        /// Handling save request and response 
+        /// </summary>
+        /// <param name="request">Services.Messaging.SaveMovieRequest</param>
+        /// <returns>Services.Messaging.SaveMovieResponse</returns>
         SaveMovieResponse IMovieService.SaveMovie(SaveMovieRequest request)
         {
             var response = new SaveMovieResponse()

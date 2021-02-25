@@ -12,6 +12,11 @@ namespace AngularJsSample.Repositories
     public class MoviePersonRepository : IMoviePersonRepository
     {
 
+        /// <summary>
+        /// Adds object for POST request
+        /// </summary>
+        /// <param name="item">Model.MoviePersons.MoviePerson</param>
+        /// <returns>context.MoviePerson_Insert</returns>
         public int Add(Model.MoviePersons.MoviePerson item)
         {
             using (var context = new AngularJsSampleDbEntities())
@@ -21,6 +26,11 @@ namespace AngularJsSample.Repositories
             }
         }
 
+        /// <summary>
+        /// Adds object for DELETE request
+        /// </summary>
+        /// <param name="item">Model.MoviePersons.MoviePerson</param>
+        /// <returns>System.Boolean</returns>
         public bool Delete(Model.MoviePersons.MoviePerson item)
         {
             try
@@ -38,6 +48,10 @@ namespace AngularJsSample.Repositories
             }
         }
 
+        /// <summary>
+        /// Adds object for GET request
+        /// </summary>
+        /// <returns>List<Model.MoviePersons.MoviePerson></returns>
         public List<Model.MoviePersons.MoviePerson> FindAll()
         {
             using (var context = new AngularJsSampleDbEntities()) {
@@ -50,6 +64,11 @@ namespace AngularJsSample.Repositories
             }
         }
 
+        /// <summary>
+        /// Adds id for GET request
+        /// </summary>
+        /// <param name="key">MoviePerson id</param>
+        /// <returns>Model.MoviePersons.MoviePerson</returns>
         public Model.MoviePersons.MoviePerson FindAll(int key)
         {
             using (var context = new AngularJsSampleDbEntities()) {
@@ -62,6 +81,11 @@ namespace AngularJsSample.Repositories
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Adds id for UPDATE request
+        /// </summary>
+        /// <param name="item">Model.MoviePersons.MoviePerson</param>
+        /// <returns>Model.MoviePersons.MoviePerson</returns>
         public Model.MoviePersons.MoviePerson Save(Model.MoviePersons.MoviePerson item)
         {
             using (var context = new AngularJsSampleDbEntities())

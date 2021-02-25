@@ -25,7 +25,12 @@ namespace AngularJsSample.Api.Controllers
             _movieratingService = movieratingService;
         }
 
-       [HttpGet]
+        /// <summary>
+        /// GET request 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
+        [HttpGet]
         [Route("{id}")]
         public IHttpActionResult Get(int id)
         {
@@ -48,14 +53,17 @@ namespace AngularJsSample.Api.Controllers
             return Ok( movieratingResponse.MovieRating.MapToViewModel());
         }
 
-       
+        /// <summary>
+        /// PUT request
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="movierating">MovieRatingViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPut]
         [Route("{id}")]
         public IHttpActionResult Put(int id, MovieRatingViewModel movierating)
         {
-            var loggedUserId = HttpContext.Current.GetOwinContext().GetUserId();
-
-          
+            var loggedUserId = HttpContext.Current.GetOwinContext().GetUserId();          
 
             if (ModelState.IsValid)
             {
@@ -82,6 +90,11 @@ namespace AngularJsSample.Api.Controllers
 
         }
 
+        /// <summary>
+        /// POST request
+        /// </summary>
+        /// <param name="movierating">MovieRatingViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPost]
         [Route("")]
         public IHttpActionResult Post(MovieRatingViewModel movierating)

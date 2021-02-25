@@ -24,8 +24,13 @@ namespace AngularJsSample.Api.Controllers
         public MovieGenreController(IMovieGenreService movieGenreService)
         {
             _movieGenreService = movieGenreService;
-        }               
+        }
 
+        /// <summary>
+        /// GET request for MovieGenres
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult Get(int id)
@@ -55,6 +60,12 @@ namespace AngularJsSample.Api.Controllers
 
         }
 
+        /// <summary>
+        /// DELETE request for MovieGenre
+        /// </summary>
+        /// <param name="movieId">Movie id</param>
+        /// <param name="genreId">Genre id</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpDelete]
         [Route("{movieId}/{genreId}")]
 
@@ -79,6 +90,11 @@ namespace AngularJsSample.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// POST request for MovieGenre
+        /// </summary>
+        /// <param name="movieGenre">MovieGenreViewModel</param>
+        /// <returns>IHttpActionResult: OK or BadRequest</returns>
         [HttpPost]
         [Route("")]
         public IHttpActionResult Post(MovieGenreViewModel movieGenre)
